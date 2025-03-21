@@ -3,11 +3,10 @@
 import AllCategory from "@/app/components/AllCategory";
 import ProductSlider from "@/app/components/ProductSlider";
 import Image from "next/image";
-import ClientLayout from "./ClientLayout";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import ProductCard from "./components/ProductCard";
 import HeroCarousel from "./components/HeroCarousel";
+import ClientLayout from "./ClientLayout";
 
 export default function Home() {
 
@@ -22,7 +21,6 @@ export default function Home() {
         try {
             const response = await axios.get('https://api.therashtriya.com/api/products');
             setproductData(response.data);
-            // console.log(JSON.stringify(response.data))
           } catch (error) {
             console.error(error);
           }

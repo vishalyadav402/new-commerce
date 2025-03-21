@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Image from 'next/image';
 
-const LoginToken = localStorage.hasOwnProperty('loginToken');
+const LoginToken = typeof window !== "undefined" && localStorage.getItem("loginToken") !== null;
 
 const placeholderTexts = [
   'Search "curd"',
@@ -34,11 +34,12 @@ const route = useRouter();
 
   const deliveryLocation = () => {
     try {
-      const location = localStorage.getItem("delivery-location");
-      if (location && location !== "") {
-        setSelectedLocation(location);
-        setIsLocationXOpen(false);
-      }
+      if (typeof window !== "undefined") {
+        const location = localStorage.getItem("delivery-location");
+        if (location && location !== "") {
+          setSelectedLocation(location);
+          setIsLocationXOpen(false);
+        }}
     } catch (error) {
       console.error("Error accessing localStorage:", error);
     }

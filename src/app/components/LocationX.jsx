@@ -6,9 +6,15 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const LocationX = ({ isOpen, setIsOpen }) => {
-  const [selectedLocation, setSelectedLocation] = useState(
-    localStorage.getItem("delivery-location") || "Choose delivery location"
-  );
+  const [selectedLocation, setSelectedLocation] = useState()
+  //   localStorage.getItem("delivery-location") || "Choose delivery location"
+  // );
+  if (typeof window !== "undefined") {
+    const storedLocation = localStorage.getItem("delivery-location");
+    if (storedLocation) {
+      setSelectedLocation(storedLocation);
+    }
+  }
 
   const handleOpenModal = () => setIsOpen(true);
   const handleCloseModal = () =>
