@@ -50,7 +50,8 @@ const AddNewAddress = ({ open, setOpen }) => {
       mobile_no: formData.mobileNumber,
     };
 
-    const LoginToken = localStorage.getItem('loginToken');
+    const LoginToken = localStorage.getItem('loginToken') || "";
+
 
     try {
       const response = await axios.post("https://api.therashtriya.com/user/delivery-address", requestData, {
