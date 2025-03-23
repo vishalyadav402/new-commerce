@@ -50,51 +50,51 @@ const Footer = () => {
 
           {/* all categories */}
           <div className="flex flex-col items-start md:items-start space-y-4">
-            <p className='text-xl font-semibold'>All categories</p>
+            <p className='text-lg font-semibold'>All categories</p>
             <ul className="space-y-2 text-sm">
-            <li><a href="/categories" className="text-lg font-medium">Grocery</a></li>
-              <li><a href="/categories" className="text-lg font-medium">Daily Essentials</a></li>
-              <li><a href="/categories" className="text-lg font-medium">Cleaning Needs</a></li>
-              <li><a href="/categories" className="text-lg font-medium">Laundary</a></li>
+            <li><a href="/categories" className="text-md font-medium">Grocery</a></li>
+              <li><a href="/categories" className="text-md font-medium">Daily Essentials</a></li>
+              <li><a href="/categories" className="text-md font-medium">Cleaning Needs</a></li>
+              <li><a href="/categories" className="text-md font-medium">Laundary</a></li>
             </ul>
           </div>
 
           {/* popular categories */}
           <div className="flex flex-col items-start md:items-start space-y-4">
-            <p className='text-xl font-semibold'>Popular categories</p>
+            <p className='text-lg font-semibold'>Popular categories</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="/categories" className="text-lg font-medium">Fruits & Vegetables</a></li>
-              <li><a href="/categories" className="text-lg font-medium">Dairy Products</a></li>
-              <li><a href="/categories" className="text-lg font-medium">Food & Beverages</a></li>
-              <li><a href="/categories" className="text-lg font-medium">Baby Care</a></li>
+              <li><a href="/categories" className="text-md font-medium">Fruits & Vegetables</a></li>
+              <li><a href="/categories" className="text-md font-medium">Dairy Products</a></li>
+              <li><a href="/categories" className="text-md font-medium">Food & Beverages</a></li>
+              <li><a href="/categories" className="text-md font-medium">Baby Care</a></li>
             </ul>
           </div>
 
           {/* Customer Account */}
           <div className="flex flex-col items-start md:items-start space-y-4">
-            <p className='text-xl font-semibold'>Customer Account</p>
+            <p className='text-lg font-semibold'>Customer Account</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="/account/profile" className="text-lg font-medium">My Profile</a></li>
-              <li><a href="/account/order" className="text-lg font-medium">My Order</a></li>
-              <li><a href="/account/addresses" className="text-lg font-medium">My Addresses</a></li>
+              <li><a href="/account/profile" className="text-md font-medium">My Profile</a></li>
+              <li><a href="/account/order" className="text-md font-medium">My Order</a></li>
+              <li><a href="/account/addresses" className="text-md font-medium">My Addresses</a></li>
             </ul>
           </div>
 
           {/* help and support */}
           <div className="flex flex-col items-start md:items-start space-y-4">
-            <p className='text-xl font-semibold'>Help & Support</p>
+            <p className='text-lg font-semibold'>Help & Support</p>
               <ul className="space-y-2 text-sm">
-                <li><a href="/policies/faq" className="text-lg font-medium">FAQs</a></li>
-                <li><a href="/policies/privacypolicy" className="text-lg font-medium">Privacy Policy</a></li>
-                <li><a href="/policies/return" className="text-lg font-medium">Pricing, Delivery, Return and Refund Policy</a></li>
-                <li><a href="/policies/terms" className="text-lg font-medium">Terms and Conditions</a></li>
-                <li><a href="/policies/disclaimer" className="text-lg font-medium">Disclaimer</a></li>
-                <li><a href="/policies/about" className="text-lg font-medium">About Us</a></li>
+                <li><a href="/policies/faq" className="text-md font-medium">FAQs</a></li>
+                <li><a href="/policies/privacypolicy" className="text-md font-medium">Privacy Policy</a></li>
+                <li><a href="/policies/return" className="text-md font-medium">Pricing, Delivery, Return and Refund Policy</a></li>
+                <li><a href="/policies/terms" className="text-md font-medium">Terms and Conditions</a></li>
+                <li><a href="/policies/disclaimer" className="text-md font-medium">Disclaimer</a></li>
+                <li><a href="/policies/about" className="text-md font-medium">About Us</a></li>
               </ul>
           </div>
           {/* contact us */}
           <div className="flex flex-col items-start md:items-start space-y-4">
-          <p className='text-xl font-semibold'>Contact Us</p>
+          <p className='text-lg font-semibold'>Contact Us</p>
             <ul className="space-y-2 text-sm">
               <li><a href="https://wa.link/qsk9fu" className="text-md font-medium">WhatsApp us: 9506280968</a></li>
               <li><a href="tel:+919506280968" className="text-md font-medium">Call us: 9506280968</a></li>

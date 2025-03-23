@@ -26,11 +26,6 @@ const data = [
     image:'/images/banner/cakeshop.png',
     alts:''
   },
-  {
-    id:3,
-    image:'/images/banner/medical_shop.png',
-    alts:''
-  }
 ]
 
 const HeroCarousel = () => {
@@ -79,8 +74,7 @@ const HeroCarousel = () => {
                   alt={item && item.alts} 
                   height={300}
                   width={300} 
-                  style={{height:'100%',width:'100%'}}
-                  layout="responsive"
+                  style={{height:'100%',width:'100%',objectFit:'contain'}}
                   className="shadow-sm rounded-xl"/>
               </SwiperSlide>
             ))}

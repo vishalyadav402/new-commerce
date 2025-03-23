@@ -38,7 +38,7 @@ const ProductSlider = ({productData}) => {
             },
             // when window width is >= 480px
             480: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 10,
             },
             // when window width is >= 600px

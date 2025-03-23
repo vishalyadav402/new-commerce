@@ -65,11 +65,11 @@ export default function Home() {
           <AllCategory />
 
           {/* Product Slider */}
-          <p className="text-2xl text-gray-700 mt-4 font-bold">Baby Care Products</p>
+          <p className="text-xl text-gray-700 mt-4 font-bold">Baby Care Products</p>
           <ProductSlider productData={productData} />
         
           {/* Product Slider */}
-          <p className="text-2xl text-gray-700 mt-4 font-bold">Explore by Products</p>
+          <p className="text-xl text-gray-700 mt-4 font-bold">Explore by Products</p>
           <ProductSlider productData={productData} />
         </div>
 

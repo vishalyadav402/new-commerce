@@ -6,11 +6,11 @@ const ProductCard = ({data}) => {
  
   return (
     <>    
-    <div className="max-w-xs mx-auto py-1 border gap-4 rounded-lg overflow-hidden bg-white shadow-md">
+    <div className="max-w-xs mx-auto py-1 gap-4 rounded-lg overflow-hidden bg-white border shadow-md">
       <img 
         onError={(e) => {
         e.target.onerror = null; // Prevents infinite loop in case the fallback image also fails
-        e.target.src = '/no-photo.png'; // Fallback image
+        e.target.src = '/icon.png'; // Fallback image
       }}
       onClick={()=>router.push('/'+'baby-care/baby-food/'+`${data.Product_Slug}`.replaceAll(' ','-'))}
        className="cursor-pointer w-full h-32 object-contain" src={data.ProductImage || '/no-photo.png'} alt={data.ProductName} />

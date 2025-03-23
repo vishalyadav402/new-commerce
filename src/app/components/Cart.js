@@ -315,10 +315,9 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
 
   return (
     <>
-      {/* {cartState.totalQuantity !== 0 &&  */}
       <button
         onClick={toggleDrawer(true)}
-        className="flex gap-2 items-center bg-[#DA498D] hover:bg-[#69247C] text-white font-semibold rounded-lg px-2 py-1 text-sm ml-0 md:ml-4"
+        className="flex gap-2 items-center bg-[#DA498D] text-[#F9E6CF] font-semibold rounded-lg px-2 py-1 text-sm ml-0 md:ml-4"
       >
         <LocalMallIcon />
         <div className="flex flex-col items-start">
@@ -326,7 +325,9 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
           <span>₹{totalAmount}</span>
         </div>
       </button>
-       {/* } */}
+
+
+    
       <AddressComponent/>
       <Drawer anchor="right" open={open}>
         {DrawerList}

@@ -16,29 +16,29 @@ export default function RootLayout({ children }) {
       <link rel="manifest" href="/site.webmanifest"></link>
 
       <head>
-    <link rel="canonical" href="https://https://vegamart.com/" />
+    <link rel="canonical" href="https://https://vegacartgo.com/" />
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     {/* <meta name="viewport" content="width=device-width, initial-scale=1.0"/> */}
       <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Dailyneeds delivering in minutes | VegaMart</title>
+    <title>Dailyneeds delivering in minutes | VegaCart</title>
 
-    <meta name="title" content="Dailyneeds delivering in minutes | VegaMart"/>
+    <meta name="title" content="Dailyneeds delivering in minutes | VegaCart"/>
     <meta name="description" content="we are offering fastest delivery for our proucts."/>
     <meta name="robots" content="index, follow"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="language" content="English"/>
     <meta name="author" content="Vishal Yadav"/>
 
-    <meta property="og:title" content="Dailyneeds delivering in minutes | VegaMart"/>
-    <meta property="og:site_name" content="VegaMart"/>
-    <meta property="og:url" content="https://https:/vegamart.com/"/>
+    <meta property="og:title" content="Dailyneeds delivering in minutes | VegaCart"/>
+    <meta property="og:site_name" content="VegaCart"/>
+    <meta property="og:url" content="https://https:/vegacartgo.com/"/>
     <meta property="og:description" content="Daily Kirana Needs"/>
     <meta property="og:type" content=""/>
-    <meta property="og:image" content="https://vegamart.s3.us-east-2.amazonaws.com/public/github/landwind/og-image.png"/>
+    <meta property="og:image" content="https://vegacart.s3.us-east-2.amazonaws.com/public/github/landwind/og-image.png"/>
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@vegamart" />
-    <meta name="twitter:creator" content="@vegamart" />
+    <meta name="twitter:site" content="@vegacart" />
+    <meta name="twitter:creator" content="@vegacart" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>

@@ -40,9 +40,9 @@ const router= useRouter();
       onClick={() => router.push('/' + category.Cat_Slug)}
       key={category.CategoryID}
     >
-      <div className="flex justify-center text-center rounded-xl">
+      <div className="flex justify-center text-center rounded-xl shadow-sm">
         <Image
-          src={category.CategoryImage || '/no-photo.png'}
+          src={category.CategoryImage || '/icon.png'}
           alt={category.CategoryName}
           className="w-full h-24 object-contain rounded-xl"
           height={100}
