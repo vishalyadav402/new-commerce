@@ -9,7 +9,7 @@ const Addtocartbtn = ({ data, pagetitle}) => {
 
   // Get the quantity of the current item from the Redux store
   const getItemQuantity = (id) => {
-    const item = cartItems.find((item) => item.id === id);
+    const item = cartItems?.find((item) => item.id === id);
     return item ? item.quantity : 0;
   };
   const [quantity, setQuantity] = useState(0);

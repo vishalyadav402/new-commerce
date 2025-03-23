@@ -26,6 +26,11 @@ const data = [
     image:'/images/banner/cakeshop.png',
     alts:''
   },
+  {
+    id:3,
+    image:'/images/banner/medical_shop.png',
+    alts:''
+  }
 ]
 
 const HeroCarousel = () => {

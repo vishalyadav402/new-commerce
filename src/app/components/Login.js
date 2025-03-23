@@ -6,6 +6,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Image from "next/image";
 
 const Login = ({ isOpen = null, onClose = null }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -138,10 +139,10 @@ const Login = ({ isOpen = null, onClose = null }) => {
             </button>
 
             <div className="flex justify-center mb-4">
-              <img src="/images/logo/vishcart_icon.png" alt="logo" className="h-20" />
+            <Image src="/icon.png" height={80} width={80} className="text-gray-700" alt="logo"></Image>
             </div>
 
-            <button onClick={closeModal} className="absolute top-6 right-6 text-red-600 hover:text-red-800">
+            <button onClick={closeModal} className="absolute top-6 right-6 text-[#DA498D] hover:text-[#69247C]">
               <CloseIcon />
             </button>
 

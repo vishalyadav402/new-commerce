@@ -6,7 +6,9 @@ const Master = ({children}) => {
   return (
     <div>
         <Header/>
-            {children}
+        <div className='mb-20 min-h-[50vh]'>
+          {children}
+        </div>
         <Footer/>
     </div>
   )
