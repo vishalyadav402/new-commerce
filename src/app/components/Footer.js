@@ -44,7 +44,7 @@ const Footer = () => {
     </footer>
 
     {/* Main Footer (Hidden on mobile, visible on larger screens) */}
-    <footer className="hidden md:block lg:px-[8rem] px-4 text-gray-800 bg-[#f7ecdd]">
+    <footer className="pb-20 md:pb-0 lg:px-[8rem] px-4 text-gray-800 bg-[#f7ecdd]">
     <div className="container mx-auto pt-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-lg md:text-left">
 

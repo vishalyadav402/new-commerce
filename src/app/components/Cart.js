@@ -288,7 +288,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
        <div className="absolute bottom-0 left-0 right-0">
         <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-[#F9E6CF]">
           {/* Left Side: Payment Info */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 md:text-left">
             <p className="text-gray-700 text-[12px] leading-tight">To Pay</p>
             <p className="text-sm font-semibold text-gray-900 leading-tight">₹{totalAmount + 15}.00</p>
           </div>
