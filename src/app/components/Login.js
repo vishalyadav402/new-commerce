@@ -142,7 +142,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
             <Image src="/icon.png" height={80} width={80} className="text-gray-700" alt="logo"></Image>
             </div>
 
-            <button onClick={closeModal} className="absolute top-6 right-6 text-[#DA498D] hover:text-[#69247C]">
+            <button onClick={closeModal} className="absolute top-6 right-6 text-pink-dark hover:text-purple-dark">
               <CloseIcon />
             </button>
 

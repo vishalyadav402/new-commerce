@@ -6,8 +6,10 @@ const Master2 = ({children,searchField,setsearchField}) => {
   return (
     <div>
         <Header setsearchField={setsearchField} pageTitle={"search"} searchField={searchField}/>
+        <div className="md:my-20">
             {searchField}
             {children}
+        </div>
         <Footer/>
     </div>
   )

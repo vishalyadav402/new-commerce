@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <>
     {/* Mobile Footer (Only visible on mobile screens) */}
-    <footer className="block md:hidden fixed z-50 bottom-0 left-0 right-0 py-3 bg-[#69247C] text-[#F9E6CF]">
+    <footer className="block md:hidden fixed z-50 bottom-0 left-0 right-0 py-3 bg-purple-dark text-beige-light">
       <div className="flex justify-around items-center">
         {/* Home */}
         <button onClick={() => router.push("/")} className="flex flex-col items-center">
@@ -44,7 +44,7 @@ const Footer = () => {
     </footer>
 
     {/* Main Footer (Hidden on mobile, visible on larger screens) */}
-    <footer className="pb-20 md:pb-0 lg:px-[8rem] px-4 text-gray-800 bg-[#f7ecdd]">
+    <footer className="pb-20 md:pb-0 lg:px-[8rem] px-4 text-gray-800 bg-beige-light">
     <div className="container mx-auto pt-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-lg md:text-left">
 
@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <p className="text-center flex self-center text-sm text-gray-600 p-4 mt-4 gap-4 border-t border-gray-400">
+        <p className="text-center flex self-center text-sm text-gray-600 py-4 px-0 mt-4 gap-4 border-t border-gray-400">
           <a href="/" className="flex items-center text-2xl font-bold">
                 <Image src="/icon.png" height={50} width={50} className="text-gray-700" alt="logo"></Image>
             </a>

@@ -9,11 +9,13 @@ import axios from "axios";
 
 const Menu = ({ activeSection, setActiveSection, refresh }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
+
   const menuItems = [
     { name: "Profile", icon: <Person />, route: "/account/profile" },
     { name: "Addresses", icon: <Home />, route: "/account/addresses" },
     { name: "Orders", icon: <LocalMall />, route: "/account/order" },
-    { name: "Customer Support", icon: <SupportAgent /> },
+    { name: "Customer Support", icon: <SupportAgent />, route: "/account/support"},
     { name: "Log Out", icon: <Logout /> },
   ];
 
@@ -21,6 +23,7 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
     setActiveSection(item.name);
     if (item.route) {
       router.push(item.route);
+      setLoading(false);
     }
   };
 
@@ -74,7 +77,7 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
   );
 };
 
-const AccountLayout = ({ children, refresh }) => {
+const AccountLayout = ({ children, refresh, loading}) => {
   const router = useRouter();
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("Profile");
@@ -86,6 +89,7 @@ const AccountLayout = ({ children, refresh }) => {
       "/account/addresses": "Addresses",
       "/account/order": "Orders",
       "/account/order/order-details": "Order-Details",
+      "/account/support": "Support",
 
     };
 
@@ -107,7 +111,7 @@ const AccountLayout = ({ children, refresh }) => {
             <div onClick={() => router.back()} className="bg-white cursor-pointer border-b p-2 font-semibold flex items-center">
               <ArrowBackIosIcon /> {activeSection}
             </div>
-            <div className="min-h-screen p-4 max-h-screen overflow-y-auto">{children || "Loading"}</div>
+            <div className="min-h-screen p-4 max-h-screen overflow-y-auto">{children || "loading"}</div>
           </div>
         </div>
       </div>

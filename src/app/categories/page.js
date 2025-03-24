@@ -32,7 +32,7 @@ const page = () => {
   const router = useRouter();
   return (
     <ClientLayout>
-    <main className="p-4 md:px-14 mt-20">
+    <main className="p-4 md:px-14 my-5">
     <p className='text-3xl text-black-700 font-semibold mb-5'>Categories</p>
     {data.map((item, index) => (
       <div key={index}>

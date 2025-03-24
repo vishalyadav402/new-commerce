@@ -1,6 +1,5 @@
 import AdminLayout from '@/app/AdminLayout'
 import React from 'react'
-import Whatsapp from '../component/Whatapp';
 
 const page = () => {
   return (
@@ -81,7 +80,7 @@ const page = () => {
           </div>
         </div>
 
-        <Whatsapp/>
+       
       </div>
     </AdminLayout>
   );

@@ -87,7 +87,7 @@ export default function Cart() {
   };
 
   if (!isHydrated) {
-    return <div>Loading...</div>; // or any loading indicator you prefer
+    return <div></div>; // or any loading indicator you prefer
   }
 
   const toggleDrawer = (newOpen) => () => {
@@ -286,7 +286,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
 
 
        <div className="absolute bottom-0 left-0 right-0">
-        <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-[#F9E6CF]">
+        <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-beige-light">
           {/* Left Side: Payment Info */}
           <div className="flex-1 md:text-left">
             <p className="text-gray-700 text-[12px] leading-tight">To Pay</p>
@@ -298,7 +298,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
             {/* <button onClick={()=>onContinueOnlineClick()} className="w-[90px] h-11 text-[13px] font-semibold text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-300 text-center leading-tight">
               Pay Online
             </button> */}
-            <button onClick={()=>onContinueCODClick()} className="w-[110px] h-11 text-[13px] font-semibold text-white bg-[#DA498D] rounded-lg hover:bg-[#69247C] transition duration-300 text-center leading-tight">
+            <button onClick={()=>onContinueCODClick()} className="w-[110px] h-11 text-[13px] font-semibold text-white bg-pink-dark rounded-lg hover:bg-purple-dark transition duration-300 text-center leading-tight">
               Pay Cash/UPI <br />
               <span className="text-[11px] font-light">(On delivery)</span>
             </button>
@@ -317,7 +317,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
     <>
       <button
         onClick={toggleDrawer(true)}
-        className="flex gap-2 items-center bg-[#DA498D] text-[#F9E6CF] font-semibold rounded-lg px-2 py-1 text-sm ml-0 md:ml-4"
+        className="flex gap-2 items-center bg-pink-dark text-beige-light font-semibold rounded-lg px-2 py-1 text-sm ml-0 md:ml-4"
       >
         <LocalMallIcon />
         <div className="flex flex-col items-start">

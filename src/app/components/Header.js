@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import Cart from './Cart';
 import LocationX from './LocationX';
@@ -27,6 +27,7 @@ const Header = ({ setsearchField, pageTitle, searchField }) => {
   const [isLocationXOpen, setIsLocationXOpen] = useState(true);
 
 const route = useRouter();
+const inputRef = useRef(null);
 
   useEffect(() => {
     deliveryLocation();
@@ -48,7 +49,6 @@ const route = useRouter();
 // for placeholder interval
   useEffect(() => {
     if (inputValue) return;
-
     const intervalId = setInterval(() => {
       setCurrentPlaceholder((prev) => (prev + 1) % placeholderTexts.length);
     }, 2000);
@@ -57,9 +57,14 @@ const route = useRouter();
   }, [inputValue]);
 
 
+  useEffect(() => {
+    if (route.pathname === "/search" && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [route.pathname]);
 
   return (
-    <header className="flex flex-wrap bg-[#F9E6CF] md:fixed md:top-0 md:left-0 md:right-0 md:z-10 w-full items-center justify-between px-4 md:px-6 border-b border-gray-200">
+    <header className="flex flex-wrap bg-beige-light md:fixed md:top-0 md:left-0 md:right-0 md:z-10 w-full items-center justify-between px-4 md:px-6 border-b border-gray-200">
       {/* logo */}
       <a href='/' className="self-center md:mb-0 hidden lg:block lg:order-1">
         <Image src="/VegaCart.png" height={100} width={150} alt='logo'></Image>
@@ -77,6 +82,7 @@ const route = useRouter();
           <input
             type="text"
             id="searchtxt"
+            ref={inputRef}
             value={searchField}
             onClick={()=>route.push('/search')}
             onChange={(e) => setsearchField(e.target.value)}
@@ -87,7 +93,7 @@ const route = useRouter();
       </div>
       {/* login */}
       <div className="order-2 lg:order-5">
-        {LoginToken ? <p onClick={()=>route.push('/account')} className='cursor-pointer'>
+        {LoginToken ? <p onClick={()=>route.push('/account/profile')} className='cursor-pointer'>
           <span>Account <ArrowDropDownIcon/></span>
         </p> : <Login />}
       </div>
