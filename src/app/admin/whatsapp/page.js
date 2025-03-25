@@ -1,6 +1,6 @@
 import AdminLayout from '@/app/AdminLayout'
 import React from 'react'
-import Whatsapp from '../component/Whatapp'
+import Whatsapp from '../component/Whatsapp'
 
 const page = () => {
   return (
