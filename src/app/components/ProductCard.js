@@ -6,7 +6,7 @@ const ProductCard = ({data}) => {
  
   return (
     <>    
-    <div className="max-w-xs mx-auto py-1 gap-4 rounded-lg overflow-hidden bg-white border shadow-md">
+    <div className="max-w-xs mx-auto py-1 gap-4 rounded-lg overflow-hidden border bg-white border-purple-200">
       <img 
         onError={(e) => {
         e.target.onerror = null; // Prevents infinite loop in case the fallback image also fails

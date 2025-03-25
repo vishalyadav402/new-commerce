@@ -64,20 +64,20 @@ const inputRef = useRef(null);
   }, [route.pathname]);
 
   return (
-    <header className="flex flex-wrap bg-beige-light md:fixed md:top-0 md:left-0 md:right-0 md:z-10 w-full items-center justify-between px-4 md:px-6 border-b border-gray-200">
+    <header className="flex flex-wrap bg-gradient-to-b from-purple-100 to-white md:fixed md:top-0 md:left-0 md:right-0 md:z-10 w-full items-center justify-between px-4 md:px-6 border-b border-purple-200">
       {/* logo */}
       <a href='/' className="self-center md:mb-0 hidden lg:block lg:order-1">
         <Image src="/VegaCart.png" height={100} width={150} alt='vegacart logo'></Image>
       </a>
       {/* border */}
-      <div className="border-l border-gray-200 h-[80px] hidden lg:block lg:order-2" />
+      <div className="border-l border-purple-200 h-[80px] hidden lg:block lg:order-2" />
       {/* location */}
       <div className="mb-2 md:mb-0 order-1 lg:order-3">
         <LocationX isOpen={isLocationXOpen} setIsOpen={setIsLocationXOpen} />
       </div>
       {/* search */}
-      <div className="order-3 lg:order-4 flex items-center cursor-pointer bg-gray-100 border border-gray-300 rounded-lg px-3 py-2 w-full lg:w-1/2 mb-2 lg:mb-0">
-        <SearchIcon className="text-gray-500 mr-2" />
+      <div className="order-3 lg:order-4 flex items-center cursor-pointer bg-white border border-purple-200 rounded-lg px-3 py-2 w-full lg:w-1/2 mb-2 lg:mb-0">
+        <SearchIcon className="text-black mr-2" />
         <div className="relative w-full">
           <input
             type="text"

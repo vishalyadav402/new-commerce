@@ -77,7 +77,7 @@ const Addtocartbtn = ({ data, pagetitle}) => {
       )}
     </div>
     :
-    <div className="flex items-center space-x-2 rounded-md bg-green-600 text-white">
+    <div className="flex items-center space-x-2 rounded-md bg-pink-dark text-beige-light">
       {quantity > 0 ? (
         <>
           <button
@@ -105,7 +105,7 @@ const Addtocartbtn = ({ data, pagetitle}) => {
           onClick={() => {
             increment();
           }}
-          className="px-4 py-[0.4em] font-medium text-[0.9em] bg-green-50 text-green-700 rounded-md border border-green-600"
+          className="px-4 py-[0.4em] font-medium text-[0.9em] bg-pink-50 text-pink-dark rounded-md border border-pink-dark"
         >
           ADD
         </button>

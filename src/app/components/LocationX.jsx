@@ -72,7 +72,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
           >
             <button className="text-left flex gap-2" onClick={handleOpenModal}>
                   <div className="justify-center">
-                    <p className="text-md font-normal text-gray-600"><span className="text-green-600 text-md font-semibold">Delivery in 30 Minutes</span></p>
+                    <p className="text-lg text-gray-900 gap-4 font-bold">Delivery in <span className="text-pink-dark text-md font-bold">30 Mins</span></p>
                     <div className="flex">
                       <p className="text-sm font-semibold">{selectedLocation}</p>
                       <ArrowDropDownIcon />

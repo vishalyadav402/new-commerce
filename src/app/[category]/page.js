@@ -69,8 +69,8 @@ const page = () => {
         <div class="flex space-x-4 bg-white overflow-x-auto">
           {data.map((item, index) => (
             <ul key={index}>
-              <li onClick={()=>router.push('/'+item.Cat_Slug)} class={item.Cat_Slug === url_category ? "flex-1 text-nowrap text-black p-2 my-4 rounded font-medium cursor-pointer bg-green-100 hover:bg-green-200":
-                "flex-1 text-nowrap text-black p-2 my-4 rounded cursor-pointer hover:bg-green-200"
+              <li onClick={()=>router.push('/'+item.Cat_Slug)} class={item.Cat_Slug === url_category ? "flex-1 text-nowrap text-black p-2 my-4 rounded font-medium cursor-pointer bg-purple-100 hover:bg-purple-200":
+                "flex-1 text-nowrap text-black p-2 my-4 rounded cursor-pointer hover:bg-purple-200"
               }>
                 {item.cat_isActive=="true" && item.CategoryName}
               </li>
@@ -91,7 +91,7 @@ const page = () => {
              
               {item.Cat_Slug == url_category && (
                 <>
-                 <li onClick={()=>router.push('/'+url_category)} class="p-2 flex flex-col md:flex-row pointer-events-auto cursor-pointer bg-green-100 hover:bg-green-200">
+                 <li onClick={()=>router.push('/'+url_category)} class="p-2 flex flex-col md:flex-row pointer-events-auto cursor-pointer bg-purple-100 hover:bg-purple-200">
                         <div className="flex justify-center items-center h-[48px] w-[48px] overflow-hidden bg-[`rgb(248, 248, 248`)]">
                           <GridViewIcon color="#ccc"/>
                         </div>
@@ -104,7 +104,7 @@ const page = () => {
                     item.Subcategories.map((subcategory, subIndex) => (
                       <>
                       {subcategory.subcat_isActive=="true"&&
-                      <li key={subIndex} onClick={()=>router.push('/'+item.Cat_Slug+"/"+subcategory.subCat_Slug)} class="p-1 md:p-2 flex flex-col md:flex-row cursor-pointer hover:bg-green-200">
+                      <li key={subIndex} onClick={()=>router.push('/'+item.Cat_Slug+"/"+subcategory.subCat_Slug)} class="p-1 md:p-2 flex flex-col md:flex-row cursor-pointer hover:bg-purple-200">
                         <div className="h-[48px] w-[48px] overflow-hidden bg-[`rgb(248, 248, 248`)]">
                           <Image
                             src={
