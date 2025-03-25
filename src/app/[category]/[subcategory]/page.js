@@ -109,7 +109,7 @@ const page = () => {
                       <GridViewIcon color="#ccc"/>
                     </div>
                     <p className="self-center ps-2 text-md font-medium">
-                      {/* {item.CategoryName} */} All l
+                      {/* {item.CategoryName} */} All
                     </p>
                   </li>
                   
@@ -153,7 +153,6 @@ const page = () => {
             {productData.map((data, index) => (
               <div key={index}>
                 <ProductCard data={data} />
-                {/* <Button onClick={()=>router.push('/'+(data.ProductName).replaceAll(' ','-'))}>click</Button> */}
               </div>
             ))}
           </div>

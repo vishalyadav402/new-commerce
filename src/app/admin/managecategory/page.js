@@ -6,8 +6,8 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+// import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+// import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { Box, Modal } from '@mui/material';
 
 const ManageCategory = () => {
@@ -93,10 +93,10 @@ const ManageCategory = () => {
 
     if (isEditing) {
       await axios.put(`https://api.therashtriya.com/api/category/${currentCategory.CategoryID}`, formData);
+      console.log("category updated")
     } else {
       await axios.post('https://api.therashtriya.com/api/category', formData);
     }
-
     fetchCategories();
     handleClose();
   };
@@ -116,7 +116,7 @@ const ManageCategory = () => {
     } else {
       await axios.post('https://api.therashtriya.com/api/subcategory', formData);
     }
-
+     alert("Sub category updated successfully.")
     fetchCategories();
     handleCloseSubcategory();
   };
@@ -158,9 +158,17 @@ const updateSubCategoryStatus = async (id, status) => {
   } catch (error) {
       alert('Error updating category status:'+ error);
       throw error;
+  }finally{
+    fetchCategories();
+    console.log("updated")
   }
 };
 
+const [expandedCategory, setExpandedCategory] = useState(null);
+
+const toggleCategory = (categoryID) => {
+  setExpandedCategory(expandedCategory === categoryID ? null : categoryID);
+};
   return (
     <AdminLayout>
     <div className="container mx-auto p-4">
@@ -179,7 +187,7 @@ const updateSubCategoryStatus = async (id, status) => {
             </tr>
           </thead>
           <tbody>
-            {categories.map(category => (
+            {/* {categories.map(category => (
               <React.Fragment key={category.CategoryID}>
                 <tr>
                 <td className="py-2 px-4 border-b">
@@ -217,7 +225,85 @@ const updateSubCategoryStatus = async (id, status) => {
                   </tr>
                 ))}
               </React.Fragment>
-            ))}
+            ))} */}
+            {categories.map((category) => (
+          <React.Fragment key={category.CategoryID}>
+            <tr className="bg-gray-100 border-b">
+              <td className="py-2 px-4">
+                <img src={category.CategoryImage} alt={category.CategoryName} className="w-12 h-12" />
+              </td>
+              <td className="py-2 px-4 font-medium self-center">
+                <div className='flex'>
+                <button
+                  className="mr-2 focus:outline-none"
+                  onClick={() => toggleCategory(category.CategoryID)}
+                >
+                  {expandedCategory === category.CategoryID ? "▼" : "▶"}
+                </button>
+                <KeyboardArrowRightIcon fontSize="medium" color="info" /> {category.CategoryName}
+                </div>
+              </td>
+              <td className="py-2 px-4 text-gray-400">{category.Cat_Slug}</td>
+              <td className="py-2 px-4 self-center">
+                <div className='flex'>
+                <button
+                  className={
+                    category.cat_isActive === "true"
+                      ? "bg-orange-700 hover:bg-orange-800 text-white px-2 py-1 rounded mr-2 text-sm font-semibold"
+                      : "bg-gray-400 hover:bg-gray-600 text-white px-2 py-1 rounded mr-2 text-sm font-semibold"
+                  }
+                  onClick={() => updateCategoryStatus(category.CategoryID)}
+                >
+                  {category.cat_isActive === "true" ? "Online" : "Offline"}
+                </button>
+                <button className="bg-green-700 text-white px-2 py-1 rounded hover:bg-green-800 mr-2" onClick={() => handleOpen(category)}>
+                  <EditNoteIcon />
+                </button>
+                <button className="bg-red-700 text-white px-2 py-1 rounded hover:bg-red-800" onClick={() => handleDelete(category.CategoryID)}>
+                  <DeleteForeverIcon />
+                </button>
+                </div>
+              </td>
+            </tr>
+
+            {expandedCategory === category.CategoryID &&
+              category.Subcategories.map((subcategory) => (
+                <tr key={subcategory.SubcategoryID} className="bg-gray-50 border-b">
+                  <td className="py-2 px-4">
+                    <img src={subcategory.SubcategoryImage} alt={subcategory.SubcategoryName} className="w-12 h-12" />
+                  </td>
+                  <td className="py-2 px-4 text-gray-700 self-center">
+                  <div className='flex'><KeyboardDoubleArrowRightIcon color="warning" /> {subcategory.SubcategoryName}</div>
+                  </td>
+                  <td className="py-2 px-4 text-gray-400 self-center">{subcategory.subCat_Slug}</td>
+                  <td className="py-2 px-4 self-center">
+                  <div className='flex'>
+                    {category.cat_isActive === "false" ? (
+                      <button className="bg-gray-400 hover:bg-gray-600 text-white px-2 py-1 rounded mr-2 text-sm font-semibold">Offline</button>
+                    ) : (
+                      <button
+                        className={
+                          subcategory.subcat_isActive === "true"
+                            ? "bg-orange-700 hover:bg-orange-800 text-white px-2 py-1 rounded mr-2 text-sm font-semibold"
+                            : "bg-gray-400 hover:bg-gray-600 text-white px-2 py-1 rounded mr-2 text-sm font-semibold"
+                        }
+                        onClick={() => updateSubCategoryStatus(subcategory.SubcategoryID)}
+                      >
+                        {subcategory.subcat_isActive === "true" ? "Online" : "Offline"}
+                      </button>
+                    )}
+                    <button className="bg-green-700 text-white px-2 py-1 rounded hover:bg-green-800 mr-2" onClick={() => handleOpenSubcategory({ ...subcategory, CategoryID: category.CategoryID })}>
+                      <EditNoteIcon />
+                    </button>
+                    <button className="bg-red-700 text-white px-2 py-1 rounded hover:bg-red-800" onClick={() => handleDeleteSubcategory(subcategory.SubcategoryID)}>
+                      <DeleteForeverIcon />
+                    </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+          </React.Fragment>
+        ))}
           </tbody>
         </table>
       </div>
@@ -323,11 +409,7 @@ const updateSubCategoryStatus = async (id, status) => {
         </Modal>
 
     {/* open modal popup */}
-      
-
-
-
-    </div>
+        </div>
     </AdminLayout>
   );
 };

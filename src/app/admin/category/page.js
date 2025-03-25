@@ -134,13 +134,13 @@ const Page = () => {
         );
 
         if (response.status === 200) {
-          alert("Category deleted successfully!");
+          setAlertMessage("Category deleted successfully!");
           setCategories((prev) => prev.filter((category) => category.CategoryID !== categoryId)); // Remove category from list
         } else {
-          alert("Error deleting category.");
+          setAlertMessage("Error deleting category.");
         }
       } catch (error) {
-        alert("Error deleting category: " + error);
+        setAlertMessage("Error deleting category: " + error);
       }
     }
   };

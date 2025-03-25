@@ -20,6 +20,7 @@ const page = () => {
           "https://api.therashtriya.com/api/categories"
         );
         setData(response.data);
+        // console.log(response.data)
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -71,7 +72,7 @@ const page = () => {
               <li onClick={()=>router.push('/'+item.Cat_Slug)} class={item.Cat_Slug === url_category ? "flex-1 text-nowrap text-black p-2 my-4 rounded font-medium cursor-pointer bg-green-100 hover:bg-green-200":
                 "flex-1 text-nowrap text-black p-2 my-4 rounded cursor-pointer hover:bg-green-200"
               }>
-                {item.CategoryName}
+                {item.cat_isActive=="true" && item.CategoryName}
               </li>
             </ul>
           ))}
@@ -101,6 +102,8 @@ const page = () => {
 
                   {item.Subcategories &&
                     item.Subcategories.map((subcategory, subIndex) => (
+                      <>
+                      {subcategory.subcat_isActive=="true"&&
                       <li key={subIndex} onClick={()=>router.push('/'+item.Cat_Slug+"/"+subcategory.subCat_Slug)} class="p-1 md:p-2 flex flex-col md:flex-row cursor-pointer hover:bg-green-200">
                         <div className="h-[48px] w-[48px] overflow-hidden bg-[`rgb(248, 248, 248`)]">
                           <Image
@@ -124,7 +127,8 @@ const page = () => {
                             ? subcategory.SubcategoryName
                             : subcategory.SubcategoryName}
                         </p>
-                      </li>
+                      </li>}
+                      </>
                     ))}
                 </>
               )}
