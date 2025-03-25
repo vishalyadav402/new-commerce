@@ -21,12 +21,10 @@ export default function Home() {
         try {
             const response = await axios.get('https://api.therashtriya.com/api/products');
             setproductData(response.data);
-            // console.log(JSON.stringify(response.data))
           } catch (error) {
             console.error(error);
           }
     }
-
 
   return (
     <ClientLayout>
