@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 
 const Page = () => {
   const router = useRouter();
