@@ -35,13 +35,20 @@ const InstallPWA = () => {
   return (
     isVisible && (
       <>
-      {/* <button
+      <button
         onClick={handleInstall}
         className="fixed top-32 right-5 bg-purple-dark text-white px-4 py-2 rounded-md shadow-lg hover:bg-pink-dark"
       >
         Install App
-      </button> */}
-       <div className="fixed top-32 right-5 bg-[#eee1f2] p-4 border border-[#69247C] rounded-md shadow-lg">
+      </button>
+      <button
+            className="border fixed top-42 right-5 border-pink-dark px-4 py-1 rounded-md shadow-lg text-pink-dark"
+            onClick={setIsVisible(false)}
+          >
+            Skip
+          </button>
+
+       {/* <div className="fixed top-32 right-5 bg-[#eee1f2] p-4 border border-[#69247C] rounded-md shadow-lg">
         <p className="mb-3 text-2xl text-purple-dark font-semibold">
           Install VegaCart Light
         </p>
@@ -62,7 +69,7 @@ const InstallPWA = () => {
             Skip
           </button>
         </div>
-      </div>
+      </div> */}
       </>
     )
   );
