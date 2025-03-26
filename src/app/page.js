@@ -51,6 +51,8 @@ export default function Home() {
               height={100}
               width={100}
               layout="responsive"
+              placeholder="blur"
+              blurDataURL="/no-photo.png" // Low-quality placeholder image
             />
           </div>
 
