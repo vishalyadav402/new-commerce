@@ -77,6 +77,10 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
   );
 };
 
+
+
+
+
 const AccountLayout = ({ children, refresh, loading}) => {
   const router = useRouter();
   const pathname = usePathname();

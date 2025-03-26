@@ -144,6 +144,7 @@ const AddProductCategory = ({ ProdID,fetchProducts }) => {
         </button>
       </div>
 
+{/* {JSON.stringify(MasterCat)} */}
         {MasterCat.map((item) => (
           <div
             key={item.id}

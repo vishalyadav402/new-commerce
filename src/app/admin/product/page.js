@@ -152,8 +152,9 @@ const Product = () => {
               <th className="border border-gray-300 px-4 py-2">Product Name</th>
               <th className="border border-gray-300 px-4 py-2">Product Slug</th>
               <th className="border border-gray-300 px-4 py-2">Price</th>
-              <th className="border border-gray-300 px-4 py-2">S.P.</th>
-              <th className="border border-gray-300 px-4 py-2">Actions</th>
+              <th className="border border-gray-300 px-4 py-2">Sell Price</th>
+              <th className="border border-gray-300 px-4 py-2">(%)Disc</th>
+              <th className="border border-gray-300 px-4 py-2">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -172,14 +173,17 @@ const Product = () => {
                   {product.ProductName}<br/>
                   <Addproductcategory ProdID={product.ProductID}/>
                 </td>
-                {/* <td className="border border-gray-300 px-4 py-2">
+                <td className="border border-gray-300 px-4 py-2">
                 {product.Product_Slug}
-                </td> */}
+                </td>
                 <td className="border border-gray-300 px-4 py-2">
                <strike> ₹ {product.ProductPrice}</strike>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                 ₹ {product.ProductPrice}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                0 %
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                 <div className="flex space-x-2">

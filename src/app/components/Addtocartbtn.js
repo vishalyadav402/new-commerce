@@ -20,7 +20,7 @@ const Addtocartbtn = ({ data, pagetitle}) => {
   }, [cartItems, data.ProductID]);
 
   const handleAddItem = () => {
-    dispatch(addItem({ id: data.ProductID, name: data.ProductName, price: data.ProductPrice,image: data.ProductImage }));
+    dispatch(addItem({ id: data.ProductID, name: data.ProductName, price: parseInt(data.ProductPrice),image: data.ProductImage }));
   };
 
   // console.log(JSON.stringify(data)); 

@@ -74,7 +74,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                   <div className="justify-center">
                     <p className="text-lg text-gray-900 gap-4 font-bold">Delivery in <span className="text-pink-dark text-md font-bold">30 Mins</span></p>
                     <div className="flex">
-                      <p className="text-sm font-semibold">{selectedLocation}</p>
+                      <p className="text-sm font-semibold">{selectedLocation || "Jaunpur"}</p>
                       <ArrowDropDownIcon />
                     </div>
                   </div>

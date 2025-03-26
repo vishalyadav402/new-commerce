@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import GridViewIcon from '@mui/icons-material/GridView';
 import ClientLayout from "../ClientLayout";
+import Loader from "../components/Loader";
 
 const page = () => {
   const params = useParams();
@@ -20,7 +21,6 @@ const page = () => {
           "https://api.therashtriya.com/api/categories"
         );
         setData(response.data);
-        // console.log(response.data)
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -40,6 +40,7 @@ const page = () => {
   const [productData, setproductData] = useState([]);
 
   const product_Data = async () => {
+    // alert(url_category)
     try {
       const response = await axios.get(
         "https://api.therashtriya.com/api/products"
@@ -51,14 +52,6 @@ const page = () => {
       setLoading(false);
     }
   };
-
-  const [filtersubcategorydata,setFiltersubcategorydata] = useState([]);
-    
-  //subcategory filter data
-  const filtersubcategory = () =>{
-    // data.filter()
-    // setFiltersubcategorydata
-  }
 
 
   return (
@@ -88,7 +81,7 @@ const page = () => {
         <div class="col-span-1 max-h-[75vh] overflow-auto">
           {data.map((item, index) => (
             <ul key={index} class="space-y-2 bg-white">
-             
+
               {item.Cat_Slug == url_category && (
                 <>
                  <li onClick={()=>router.push('/'+url_category)} class="p-2 flex flex-col md:flex-row pointer-events-auto cursor-pointer bg-purple-100 hover:bg-purple-200">
@@ -98,7 +91,7 @@ const page = () => {
                         <p className="flex justify-center items-center text-md font-medium">
                          All
                         </p>
-                      </li>
+                  </li>
 
                   {item.Subcategories &&
                     item.Subcategories.map((subcategory, subIndex) => (
@@ -138,14 +131,19 @@ const page = () => {
 
         {/* products */}
         <div class="col-span-4 max-h-[75vh] overflow-auto">
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 p-1 md:gap-4 bg-gray-100 md:p-4 p:2 rounded">
-            {productData.map((data, index) => (
+          {loading?
+          <div className="flex justify-center items-center min-h-[80vh] w-full"><Loader/></div>
+          :
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 min-h-screen p-1 md:gap-4 bg-gray-100 md:p-4 p:2 rounded">
+           {productData.map((data, index) => (
               <div key={index}>
                 <ProductCard data={data} />
               </div>
             ))}
           </div>
+          }
         </div>
+        
       </div>
     </div>
     </ClientLayout>

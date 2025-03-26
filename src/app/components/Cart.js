@@ -245,6 +245,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
                   >
                     +
                   </button>
+                  
                 </div>
               </div>
             ))}
