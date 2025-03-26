@@ -1,5 +1,4 @@
 "use client"
-import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const InstallPWA = () => {
@@ -36,7 +35,13 @@ const InstallPWA = () => {
   return (
     isVisible && (
       <>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px] bg-[#eee1f2] p-4 border border-purple-dark rounded-md text-center">
+      {/* <button
+        onClick={handleInstall}
+        className="fixed top-32 right-5 bg-purple-dark text-white px-4 py-2 rounded-md shadow-lg hover:bg-pink-dark"
+      >
+        Install App
+      </button> */}
+       <div className="fixed top-32 right-5 transform -translate-x-1/2 -translate-y-1/2 w-[350px] bg-[#eee1f2] p-4 border border-[#69247C] rounded-md text-center">
         <p className="mb-3 text-2xl text-purple-dark font-semibold">
           Install VegaCart Light
         </p>
