@@ -31,16 +31,41 @@ const InstallPWA = () => {
     setDeferredPrompt(null);
     setIsVisible(false); // Hide the button after install attempt
   };
-
+  // skip
+    const handleSkip=()=>{
+      setIsVisible(false)
+    }
   return (
-    isVisible && (
-      <button
-        onClick={handleInstall}
-        className="fixed top-32 right-5 bg-purple-dark text-white px-4 py-2 rounded-md shadow-lg hover:bg-pink-dark"
-      >
-        Install App
-      </button>
-      
+    !isVisible && (
+      // <button
+      //   onClick={handleInstall}
+      //   className="fixed top-32 right-5 bg-purple-dark text-white px-4 py-2 rounded-md shadow-lg hover:bg-pink-dark"
+      // >
+      //   Install App
+      // </button>
+    
+      <div className="fixed z-10 top-32 right-5 w-[350px] bg-[#eee1f2] p-4 border border-[#69247C] rounded-md shadow-lg text-center">
+      <p className="mb-3 text-xl text-purple-dark font-bold">
+        VegaCart Light
+      </p>
+      <p className="mb-3 leading-snug text-purple-dark text-sm font-light">
+        Get a better experience by installing our VegaCart Light app on your device.
+      </p>
+      <div className="flex gap-2 justify-center">
+        <button
+          className="bg-pink-dark px-4 py-1 rounded-md shadow-lg text-beige-light"
+          onClick={handleInstall}
+        >
+          Install App
+        </button>
+        <button
+          className="border border-pink-dark px-4 py-1 rounded-md shadow-lg text-pink-dark"
+          onClick={handleSkip}
+        >
+          Skip
+        </button>
+      </div>
+    </div>
     )
   );
 };
