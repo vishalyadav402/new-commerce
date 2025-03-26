@@ -41,7 +41,7 @@ const InstallPWA = () => {
       >
         Install App
       </button> */}
-       <div className="fixed top-32 right-5 transform -translate-x-1/2 -translate-y-1/2 w-[350px] bg-[#eee1f2] p-4 border border-[#69247C] rounded-md text-center">
+       <div className="fixed top-32 right-5 bg-[#eee1f2] p-4 border border-[#69247C] rounded-md shadow-lg">
         <p className="mb-3 text-2xl text-purple-dark font-semibold">
           Install VegaCart Light
         </p>
