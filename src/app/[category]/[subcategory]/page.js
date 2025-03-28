@@ -62,14 +62,14 @@ const page = () => {
 
   return (
     <ClientLayout>
-    <div className="px-4">
+    <div className="px-0 md:px-4">
       {/* horizontal category */}
-      <div class="grid grid-cols-1 gap-4 mb-2">
-        <div class="flex space-x-4 bg-white overflow-x-auto">
+      <div class="grid grid-cols-1 gap-3 md:mb-2">
+        <div class="flex space-x-4 bg-white overflow-x-auto no-scrollbar">
           {data.map((item, index) => (
             <ul key={index}>
-              <li onClick={()=>router.push('/'+item.Cat_Slug)} class={item.Cat_Slug === url_category ? "flex-1 text-nowrap text-black p-2 rounded font-medium":
-                "flex-1 text-nowrap text-black p-2 rounded"
+              <li onClick={()=>router.push('/'+item.Cat_Slug)} class={item.Cat_Slug === url_category ? "flex-1 text-nowrap text-purple-dark text-sm p-2 my-2 rounded font-medium cursor-pointer bg-purple-100 hover:bg-purple-200":
+                "flex-1 text-nowrap text-black p-2 my-2 rounded text-sm cursor-pointer hover:bg-purple-200"
               }>
                 {item.CategoryName}
               </li>
@@ -82,41 +82,27 @@ const page = () => {
 
 
       {/* sub category & products */}
-      <div class="grid grid-cols-5 gap-2">
+      <div class="grid grid-cols-5 md:gap-2 gap-0">
         {/* sub category */}
-        <div class="col-span-1 max-h-[75vh] overflow-auto">
+        <div class="col-span-1 max-h-[75vh] overflow-auto no-scrollbar">
           {data.map((item, index) => (
-            <ul key={index} class="space-y-2 bg-white">
+            <ul key={index} class="space-y-0 bg-white">
              
               {item.Cat_Slug == url_category && (
                 <>
-                 <li onClick={()=>router.push('/'+url_category)} class="p-2 flex flex-col md:flex-row cursor-pointer">
+                 <li onClick={()=>router.push('/'+url_category)} class="p-2 flex justify-center items-center md:justify-start flex-col md:flex-row pointer-events-auto cursor-pointer bg-white hover:bg-purple-200 md:border-purple-100 md:border">
                     <div className="flex justify-center items-center h-[48px] w-[48px] overflow-hidden bg-[`rgb(248, 248, 248`)]">
-                      {/* <Image
-                        src={
-                          item.CategoryImage || "/no-photo.png"
-                        }
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          position: "relative",
-                          top: "8px",
-                          transform: "scale(0.95)",
-                        }}
-                        height={100}
-                        width={100}
-                      ></Image> */}
                       <GridViewIcon color="#ccc"/>
                     </div>
-                    <p className="self-center ps-2 text-md font-medium">
-                      {/* {item.CategoryName} */} All
+                    <p className="flex justify-center md:ps-3 md:items-center text-sm md:text-md font-normal">
+                       All
                     </p>
                   </li>
                   
                   {item.Subcategories &&
                     item.Subcategories.map((subcategory, subIndex) => (
                       <li key={subIndex} onClick={()=>router.push('/'+item.Cat_Slug+"/"+subcategory.subCat_Slug)} 
-                      class={subcategory.subCat_Slug === url_subcategory?"p-2 flex flex-col md:flex-row bg-green-100 hover:bg-green-200 cursor-pointer":"p-2 flex flex-col md:flex-row cursor-pointer hover:bg-green-200"
+                      class={subcategory.subCat_Slug === url_subcategory?"p-1 md:p-2 gap-1 flex flex-col justify-center items-center md:justify-start md:flex-row bg-purple-100 hover:bg-purple-200 cursor-pointer":"p-2 gap-1 flex flex-col justify-center items-center md:justify-start md:flex-row cursor-pointer hover:bg-purple-200 md:border-purple-100 md:border-x md:border-b"
                       }>
                         <div className="h-[48px] w-[48px] overflow-hidden bg-[`rgb(248, 248, 248`)]">
                           <Image
@@ -127,7 +113,6 @@ const page = () => {
                               height: "100%",
                               width: "100%",
                               position: "relative",
-                              top: "8px",
                               transform: "scale(0.95)",
                             }}
                             height={100}
@@ -135,7 +120,7 @@ const page = () => {
                             alt="sub category image"
                           ></Image>
                         </div>
-                        <p className="self-center md:ps-2 text-sm">
+                        <p className="md:self-center md:ps-2 text-gray-500 text-center font-normal md:text-gray-700 md:font-medium text-[11px] leading-none md:text-sm text-ellipsis line-clamp-3 overflow-hidden">
                           {url_category == subcategory.subCat_Slug
                             ? subcategory.SubcategoryName
                             : subcategory.SubcategoryName}
@@ -148,8 +133,8 @@ const page = () => {
           ))}
         </div>
         {/* products */}
-        <div class="col-span-4 max-h-[75vh] overflow-auto">
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-4 bg-gray-100 md:p-4 p:2 rounded">
+        <div class="col-span-4 max-h-[75vh] overflow-auto no-scrollbar">
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 min-h-screen p-1 md:gap-4 bg-gray-100 md:p-4 p:2 rounded">
             {productData.map((data, index) => (
               <div key={index}>
                 <ProductCard data={data} />

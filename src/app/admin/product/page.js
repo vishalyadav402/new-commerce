@@ -13,8 +13,10 @@ const Product = () => {
   const [open, setOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({
     productName: "",
+    Product_Slug:"",
     productDescription: "",
     productImage: null,
+    ProductMrp:"",
     price: "",
   });
   const [editingProduct, setEditingProduct] = useState(null);
@@ -48,8 +50,9 @@ const Product = () => {
   const handleSubmitProduct = async () => {
     const formData = new FormData();
     formData.append("productName", currentProduct.productName);
-    // formData.append("Product_Slug", currentProduct.Product_Slug);
+    formData.append("Product_Slug", currentProduct.Product_Slug);
     formData.append("productDescription", currentProduct.productDescription);
+    formData.append("ProductMrp", currentProduct.ProductMrp);
     formData.append("price", currentProduct.price);
     if (currentProduct.productImage) {
       formData.append("productImage", currentProduct.productImage);
@@ -106,18 +109,20 @@ const Product = () => {
       setEditingProduct(product);
       setCurrentProduct({
         productName: product.ProductName,
-        // Product_Slug: product.Product_Slug,
+        Product_Slug: product.Product_Slug,
         productDescription: product.ProductDescription,
         productImage: null,
+        ProductMrp : product.ProductMrp,
         price: product.ProductPrice,
       });
     } else {
       setEditingProduct(null);
       setCurrentProduct({
         productName: "",
-        // Product_Slug: "",
+        Product_Slug: "",
         productDescription: "",
         productImage: null,
+        ProductMrp:"",
         price: "",
       });
     }
@@ -129,9 +134,10 @@ const Product = () => {
     setEditingProduct(null);
     setCurrentProduct({
       productName: "",
-      // Product_Slug: "",
+      Product_Slug: "",
       productDescription: "",
       productImage: null,
+      ProductMrp:"",
       price: "",
     });
   };
@@ -151,7 +157,7 @@ const Product = () => {
               <th className="border border-gray-300 px-4 py-2">Image</th>
               <th className="border border-gray-300 px-4 py-2">Product Name</th>
               <th className="border border-gray-300 px-4 py-2">Product Slug</th>
-              <th className="border border-gray-300 px-4 py-2">Price</th>
+              <th className="border border-gray-300 px-4 py-2">MRP</th>
               <th className="border border-gray-300 px-4 py-2">Sell Price</th>
               <th className="border border-gray-300 px-4 py-2">(%)Disc</th>
               <th className="border border-gray-300 px-4 py-2">Action</th>
@@ -177,7 +183,7 @@ const Product = () => {
                 {product.Product_Slug}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-               <strike> ₹ {product.ProductPrice}</strike>
+               <strike> ₹ {product.ProductMrp}</strike>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                 ₹ {product.ProductPrice}
@@ -239,14 +245,14 @@ const Product = () => {
             placeholder="Product Name"
             className="w-full border px-3 py-2 rounded mb-4"
           />
-           {/* <input
+           <input
             type="text"
             name="Product_Slug"
             value={currentProduct.Product_Slug}
             onChange={handleProductChange}
             placeholder="Product Slug"
             className="w-full border px-3 py-2 rounded mb-4"
-          /> */}
+          />
           <Editor
             apiKey="9hjqys1r2up70nnvnczhz36wbrm1p8a2x6tnrzxl83ewf2d0"
             value={currentProduct.productDescription}
@@ -267,6 +273,14 @@ const Product = () => {
             className="w-full border px-3 py-2 rounded"
           />
           </div>
+          <input
+            type="text"
+            name="mrp"
+            value={currentProduct.ProductMrp}
+            onChange={handleProductChange}
+            placeholder="MRP"
+            className="w-full border px-3 py-2 rounded mb-4"
+          />
           <input
             type="text"
             name="price"
