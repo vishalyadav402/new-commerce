@@ -74,7 +74,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                   <div className="justify-center">
                     <p className="text-lg text-gray-900 gap-4 font-bold">Delivery in <span className="text-pink-dark text-md font-bold">30 Mins</span></p>
                     <div className="flex">
-                      <p className="text-sm font-semibold">{selectedLocation || "Jaunpur"}</p>
+                      <p className="text-sm font-semibold">{selectedLocation || "222001, Jaunpur"}</p>
                       <ArrowDropDownIcon />
                     </div>
                   </div>
@@ -95,12 +95,12 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                 overflow: "hidden",
               }}
             >
-                <div className="flex justify-between p-3 bg-cyan-50 rounded-md">
+                <div className="flex justify-between p-3 bg-gradient-to-b from-purple-100 to-white rounded-md">
                   <div>
                     <p className="font-bold md:text-3xl text-2xl">Where should we deliver?</p>
                     <p className="font-light my-2">Provide your location to serve you better</p>
                   </div>
-                  <ClearIcon onClick={handleCloseModal} style={{ cursor: "pointer",color:'red' }} />
+                  <ClearIcon onClick={handleCloseModal} className="text-pink-dark cursor-pointer" />
                 </div>
 
 
@@ -108,8 +108,8 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                   {locations.map((location, index) => (
                     <button
                       key={index}
-                      className={`text-xs border-2 border-dashed rounded-md border-cyan-100 text-gray-700 font-semibold px-1 py-1 h-10 self-center text-ellipsis overflow-hidden line-clamp-2 hover:bg-cyan-100 hover:text-gray-900 ${
-                        location === selectedLocation ? "bg-green-700 border-green-700 text-green-100" : ""
+                      className={`text-xs border border-separate rounded-md border-purple-300 text-black font-normal px-1 py-1 h-10 self-center text-ellipsis overflow-hidden line-clamp-2 hover:bg-purple-dark hover:text-white ${
+                        location === selectedLocation ? "bg-purple-dark border-purple-300 text-white" : ""
                       }`}
                       onClick={() => handleLocationClick(location)}
                     >
@@ -119,7 +119,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                 </div>
 
                 <div className="text-center my-3 py-2">
-                  <h2 className="text-yellow-700 text-2xl font-semibold">
+                  <h2 className="text-pink-dark text-2xl font-semibold">
                     अब घर बैठे किराना का सामान मंगवाएं!📱
                   </h2>
                   {/* <h3 className="font-medium text-green-700">

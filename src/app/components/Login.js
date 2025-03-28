@@ -115,10 +115,10 @@ const Login = ({ isOpen = null, onClose = null }) => {
 
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const logout = () => {
-    localStorage.removeItem("loginToken"); 
-    window.location.reload(); // Refresh the page to apply logout state
-  };
+  // const logout = () => {
+  //   localStorage.removeItem("loginToken"); 
+  //   window.location.reload(); // Refresh the page to apply logout state
+  // };
 
   return (
     <>
@@ -133,7 +133,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
 
       {(isModalOpen || isOpen) && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-8 pt-2 m-5 rounded-xl shadow-lg max-w-xl w-full relative">
+          <div className="bg-gradient-to-b from-purple-100 to-white p-8 pt-2 m-5 rounded-xl shadow-lg max-w-xl w-full relative">
             <button onClick={closeModal} className="absolute top-6 left-6 text-gray-600 hover:text-gray-900">
               <KeyboardBackspaceIcon />
             </button>
@@ -155,7 +155,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
                   <div className="flex mt-1 w-full max-w-80 relative">
                     <input
                       type="text"
-                      className="flex-1 block w-full pl-10 pr-3 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-0"
+                      className="flex-1 block w-full pl-12 pr-3 py-3 placeholder:text-base placeholder:tracking-wide text-xl tracking-widest bg-white border border-purple-300 rounded-xl focus:outline-none focus:ring-0"
                       placeholder="Enter Whatsapp Number"
                       maxLength="10"
                       value={mobileNumber}
@@ -176,10 +176,10 @@ const Login = ({ isOpen = null, onClose = null }) => {
                 </div>
               ) : (
                 <div className="flex flex-col w-full max-w-80 items-center justify-center mb-4">
-                  <p className="text-green-500 text-xs mb-2">OTP sent on <span className="text-green-500"><WhatsAppIcon/></span> {mobileNumber}.</p>
+                  <p className="text-green-500 text-xs mb-2"><span className="text-green-500"><WhatsAppIcon/></span> OTP sent on {mobileNumber}.</p>
                   <input
                     type="text"
-                    className="flex-1 text-center block w-full px-3 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-0"
+                    className="flex-1 text-center block w-full px-3 py-3 bg-white border border-purple-300 rounded-xl focus:outline-none focus:ring-0"
                     placeholder="Enter OTP"
                     maxLength="6"
                     value={otp}
@@ -195,7 +195,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
                     {isLoading ? "Verifying OTP..." : "Verify OTP"}
                   </button>
 
-                  {otpVerified !== null && (
+                  {/* {otpVerified !== null && (
                     <div className="mt-4">
                       {otpVerified ? (
                         <div className="flex gap-2">
@@ -205,7 +205,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
                         <CancelIcon className="text-red-500" fontSize="large" />
                       )}
                     </div>
-                  )}
+                  )} */}
                   {errorMessage && <p className="text-red-500 text-xs mt-2">{errorMessage}</p>}
                   {successMessage && <p className="text-green-500 text-xs mt-2">{successMessage}</p>}
                 </div>

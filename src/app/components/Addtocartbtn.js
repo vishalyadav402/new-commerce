@@ -42,25 +42,25 @@ const Addtocartbtn = ({ data, pagetitle}) => {
 
   return (
     <>
-    {pagetitle=="previewpage" ?<div className="flex items-center space-x-2 rounded-md bg-green-600 text-white">
+    {pagetitle=="previewpage" ?<div className="flex items-center space-x-2 rounded-md bg-pink-dark text-beige-light">
       {quantity > 0 ? (
         <>
           <button
             onClick={() => {
               decrement();
             }}
-            className="text-green-50 py-1 px-2 font-semibold rounded"
+            className="text-beige-light py-1 px-2 font-semibold rounded"
           >
             -
           </button>
-          <span className="text-green-50 py-1 w-3 font-semibold text-sm text-center">
+          <span className="text-beige-light py-1 w-3 font-semibold text-sm text-center">
             {quantity}
           </span>
           <button
             onClick={() => {
               increment();
             }}
-            className="text-green-50 py-1 px-2 font-semibold rounded"
+            className="text-beige-light py-1 px-2 font-semibold rounded"
           >
             +
           </button>
@@ -70,9 +70,9 @@ const Addtocartbtn = ({ data, pagetitle}) => {
           onClick={() => {
             increment();
           }}
-          className="px-4 py-[0.4em] font-medium text-[0.9em] bg-green-50 text-green-700 rounded-md border border-green-600"
+          className="px-4 py-[0.4em] font-medium text-[0.9em] text-gray-700 bg-white rounded-md border border-purple-300"
         >
-          ADD TO CART
+          Add to Cart
         </button>
       )}
     </div>
@@ -84,18 +84,18 @@ const Addtocartbtn = ({ data, pagetitle}) => {
             onClick={() => {
               decrement();
             }}
-            className="text-green-50 py-[0.4em] ps-2 font-semibold rounded"
+            className="text-beige-light py-[0.4em] ps-2 font-semibold rounded"
           >
             -
           </button>
-          <span className="text-green-50 py-[0.4em] w-4 font-semibold text-sm text-center">
+          <span className="text-beige-light py-[0.4em] w-4 font-semibold text-sm text-center">
             {quantity}
           </span>
           <button
             onClick={() => {
               increment();
             }}
-            className="text-green-50 py-[0.4em] pe-2 font-semibold rounded"
+            className="text-beige-light py-[0.4em] pe-2 font-semibold rounded"
           >
             +
           </button>

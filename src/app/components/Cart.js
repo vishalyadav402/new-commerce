@@ -183,7 +183,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
           </p>
           <a
             href="/"
-            className="bg-green-600 hover:bg-green-700 rounded-md px-4 py-2 my-3 text-sm font-semibold text-white transition duration-200"
+            className="bg-pink-dark hover:bg-purple-dark hover:text-white rounded-md px-4 py-2 my-3 text-sm font-semibold text-beige-light transition duration-200"
           >
             Continue Shopping
           </a>

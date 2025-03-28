@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation';
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Image from 'next/image';
 
-const LoginToken = typeof window !== "undefined" && localStorage.getItem("loginToken") !== null;
 
 const placeholderTexts = [
   'Search "curd"',
@@ -21,6 +20,12 @@ const placeholderTexts = [
 
 const Header = ({ setsearchField, pageTitle, searchField }) => {
  
+  const [LoginToken, setLoginToken] = useState("");
+  useEffect(() => {
+    setLoginToken(typeof window !== "undefined" && localStorage.getItem("loginToken") !== null);
+  }, [LoginToken])
+
+
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
   const [inputValue, setInputValue] = useState(searchField || '');
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -67,7 +72,7 @@ const inputRef = useRef(null);
     <header className="flex flex-wrap bg-gradient-to-b from-purple-100 to-white md:fixed md:top-0 md:left-0 md:right-0 md:z-10 w-full items-center justify-between px-4 md:px-6 border-b border-purple-200">
       {/* logo */}
       <a href='/' className="self-center md:mb-0 hidden lg:block lg:order-1">
-        <Image src="/VegaCart.png" height={100} width={150} alt='vegacart logo'></Image>
+        <Image src="/Vegacart (384 x 105 px).svg" height={100} width={150} alt='vegacart logo'></Image>
       </a>
       {/* border */}
       <div className="border-l border-purple-200 h-[80px] hidden lg:block lg:order-2" />

@@ -13,19 +13,19 @@ const page = () => {
   const whyshopquestions=[
     {
       id:1,
-      imgicon:'/images/fastdelivery.png',
+      imgicon:'/why-us/fastdelivery.svg',
       title:'Superfast Delivery',
       para:'Get your order delivered to your doorstep at the earliest from dark stores near you.'
     },
     {
       id:2,
-      imgicon:'/images/special_offer.png',
+      imgicon:'/why-us/special_offer.svg',
       title:'Best Prices & Offers',
       para:'Best price destination with offers directly from the manufacturers.'
     },
     {
       id:3,
-      imgicon:'/images/assortment.png',
+      imgicon:'/why-us/assortment.svg',
       title:'Wide Assortment',
       para:'Choose from 5000+ products across food, personal care, household & other categories.'
     }
@@ -83,9 +83,10 @@ const slug = params.productdetail;
     {/* right part */}
     <div class="col-span-1 md:col-span-1 p-3 md:p-10 overflow-y-auto max-h-[100vh] border">
       <div>
-        <p className='text-gray-400 font-semibold text-[0.75rem]'>Home/category/subcategory/{productdetails?.ProductName}</p>
+        <p className='text-gray-400 font-semibold text-[0.75rem]'>{params.category+"/"+params.subcategory+"/"+params.productdetail}
+          {/* {productdetails?.ProductName}*/}</p>
         <p className='text-[1.5rem] leading-tight font-semibold my-2'>{productdetails?.ProductName}</p>
-        <p className='bg-[#f0f0f0] rounded-sm p-1 my-2 text-gray-400 text-sm max-w-[5rem] text-center'>30 MINS</p>
+        <p className='bg-[#f0f0f0] rounded-sm p-1 my-2 text-gray-400 text-sm max-w-[5rem] text-center'>30 Mins</p>
         <a href='/' className='text-[#0C831F] text-[18px] font-[500] my-1'>View all by Shop Name <ArrowRightIcon/></a>
         <hr class="border-t border-gray-200 my-5"/>
       </div>

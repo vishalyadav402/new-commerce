@@ -5,26 +5,32 @@ import "swiper/css/navigation";
 import { FreeMode, Mousewheel, Keyboard, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import { Box, Stack, Skeleton } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const data = [
   {
     id: 0,
     image: "/images/banner/medical_shop.png",
     alts: "Medical Shop",
+    link:"/pharma-wellness",
   },
   {
     id: 1,
     image: "/images/banner/baby_care.png",
     alts: "Baby Care",
+    link:"/baby-care",
   },
   {
     id: 2,
     image: "/images/banner/cakeshop.png",
     alts: "Cake Shop",
+    link:"/bakery-biscuits/cakes-and-rolls",
   },
 ];
 
 const HeroCarousel = () => {
+const router = useRouter();
+
   const [loadingStates, setLoadingStates] = useState(
     new Array(data.length).fill(true) // Initialize all images as loading
   );
@@ -41,8 +47,8 @@ const HeroCarousel = () => {
   return (
     <Box>
       <Swiper
-        cssMode={true}
-        slidesPerView={2}
+        // cssMode={true}
+        slidesPerView={1}
         spaceBetween={10}
         grabCursor={true}
         freeMode={true}
@@ -86,7 +92,8 @@ const HeroCarousel = () => {
                     opacity: loadingStates[index] ? 0 : 1, // Ensure smooth transition
                     transition: "opacity 0.5s ease-in-out",
                   }}
-                  className="shadow-sm rounded-xl"
+                  className="shadow-sm rounded-xl cursor-pointer"
+                  onClick={()=>router.push(item.link)}
                 />
               </Box>
             </SwiperSlide>
