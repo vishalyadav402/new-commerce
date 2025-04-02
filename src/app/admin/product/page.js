@@ -142,6 +142,16 @@ const Product = () => {
     });
   };
 
+  // Calculate Discount Percentage
+  const calculateDiscount = () => {
+    const { ProductMrp, price } = currentProduct;
+    const mrp = parseFloat(ProductMrp);
+    const sellingPrice = parseFloat(price);
+    if (!isNaN(mrp) && !isNaN(sellingPrice) && mrp > sellingPrice) {
+      return Math.round(((mrp - sellingPrice) / mrp) * 100);
+    }
+    return null;
+  };
   return (
     <AdminLayout>
     <div className="container mx-auto">
@@ -155,11 +165,11 @@ const Product = () => {
           <thead className="text-left">
             <tr className="bg-gray-100">
               <th className="border border-gray-300 px-4 py-2">Image</th>
-              <th className="border border-gray-300 px-4 py-2">Product Name</th>
-              <th className="border border-gray-300 px-4 py-2">Product Slug</th>
+              <th className="border border-gray-300 px-4 py-2">Name</th>
+              <th className="border border-gray-300 px-4 py-2">Slug</th>
               <th className="border border-gray-300 px-4 py-2">MRP</th>
-              <th className="border border-gray-300 px-4 py-2">Sell Price</th>
-              <th className="border border-gray-300 px-4 py-2">(%)Disc</th>
+              <th className="border border-gray-300 px-4 py-2">SP</th>
+              <th className="border border-gray-300 px-4 py-2">Discount(%)</th>
               <th className="border border-gray-300 px-4 py-2">Action</th>
             </tr>
           </thead>
@@ -176,8 +186,7 @@ const Product = () => {
                   )}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {product.ProductName}<br/>
-                  <Addproductcategory ProdID={product.ProductID}/>
+                  {product.ProductName} <Addproductcategory ProdID={product.ProductID}/>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                 {product.Product_Slug}
@@ -189,7 +198,7 @@ const Product = () => {
                 ₹ {product.ProductPrice}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                0 %
+                {product.ProductMrp && product.ProductPrice ? `${Math.round(((product.ProductMrp - product.ProductPrice) / product.ProductMrp) * 100)}%` : "0%"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                 <div className="flex space-x-2">
@@ -251,7 +260,8 @@ const Product = () => {
             value={currentProduct.Product_Slug}
             onChange={handleProductChange}
             placeholder="Product Slug"
-            className="w-full border px-3 py-2 rounded mb-4"
+            className="w-full bg-gray-100 border px-3 py-2 rounded mb-4"
+            disabled="true"
           />
           <Editor
             apiKey="9hjqys1r2up70nnvnczhz36wbrm1p8a2x6tnrzxl83ewf2d0"
@@ -273,9 +283,9 @@ const Product = () => {
             className="w-full border px-3 py-2 rounded"
           />
           </div>
-          <input
+          {/* <input
             type="text"
-            name="mrp"
+            name="ProductMrp"
             value={currentProduct.ProductMrp}
             onChange={handleProductChange}
             placeholder="MRP"
@@ -288,7 +298,30 @@ const Product = () => {
             onChange={handleProductChange}
             placeholder="Price"
             className="w-full border px-3 py-2 rounded mb-4"
-          />
+          /> */}
+      <div className="flex flex-row justify-between">
+      <input
+        type="text"
+        name="ProductMrp"
+        value={currentProduct.ProductMrp}
+        onChange={handleProductChange}
+        placeholder="MRP"
+        className="border px-3 py-2 rounded mb-4"
+      />
+      <input
+        type="text"
+        name="price"
+        value={currentProduct.price}
+        onChange={handleProductChange}
+        placeholder="Price"
+        className="border px-3 py-2 rounded mb-4"
+      />
+      {calculateDiscount() !== null && (
+        <p className="text-green-600 font-medium">
+          Discount: {calculateDiscount()}% OFF
+        </p>
+      )}
+    </div>
           <div className="flex justify-end">
             <button
               onClick={handleSubmitProduct}

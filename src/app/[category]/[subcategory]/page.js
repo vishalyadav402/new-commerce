@@ -51,6 +51,7 @@ const Page = () => {
         const response = await axios.get(
           `https://api.therashtriya.com/api/products?category=${url_category}&subcategory=${url_subcategory || ""}`
         );
+        console.log(JSON.stringify(response.data))
         setProductData(response.data);
       } catch (error) {
         setError(error);
@@ -167,7 +168,7 @@ const Page = () => {
             <ul className="space-y-0 bg-white">
               {/* "All" Option */}
               <li
-                onClick={() => handleSubcategoryClick(null)}
+                onClick={() => handleSubcategoryClick("all")}
                 className="p-2 flex justify-center items-center md:justify-start flex-col md:flex-row cursor-pointer bg-white hover:bg-purple-200 md:border-purple-100 md:border"
               >
                 <div className="flex justify-center items-center h-[48px] w-[48px] overflow-hidden bg-gray-100">

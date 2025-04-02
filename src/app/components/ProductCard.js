@@ -22,8 +22,8 @@ const ProductCard = ({data}) => {
        <p className='text-gray-600 font-light mb-5 text-[0.8em]'>500 gm</p>
         <div className="flex items-center justify-between my-2">
           <div className="flex flex-col self-center">
-          <span className="text-gray-800 leading-[0.2em] text-[0.8em] font-medium me-1">₹{data.ProductPrice}</span>
-          <span><strike className="text-gray-500 leading-[0.2em] text-[0.8em] font-light">₹{data.ProductPrice}</strike></span>
+          <span className="text-gray-800 leading-[0.2em] text-[0.8em] font-medium me-1">₹{data.ProductMrp?data.ProductMrp:data.ProductPrice}</span>
+          {data.ProductMrp&&<span><strike className="text-gray-500 leading-[0.2em] text-[0.8em] font-light">₹{data.ProductPrice}</strike></span>}
           </div>
           <Addtocartbtn data={data}/>
         </div>

@@ -13,6 +13,7 @@ const nextConfig = withPWA({
   reactStrictMode: true,
   images: {
     domains: ["api.therashtriya.com", "via.placeholder.com"],
+    formats: ['image/avif', 'image/webp'],
     // Uncomment if needed
     // remotePatterns: [
     //   {

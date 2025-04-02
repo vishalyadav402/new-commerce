@@ -21,7 +21,7 @@ export default function Cart() {
   const [openorderStatus, setOpenorderstatus] = useState(false);
   // const savedAddress = localStorage.hasOwnProperty("savedAddress")?JSON.parse(localStorage.getItem("savedAddress")) : {};
   const [savedAddress, setSavedAddress] = useState({});
-
+  const DeliveryCharge = 15;
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedAddr = localStorage.getItem("savedAddress");
@@ -259,11 +259,11 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
             </div>
             <div className="flex justify-between text-[0.85rem] text-normal">
               <p>Delivery Charge</p>
-              <p>₹15</p>
+              <p>₹{DeliveryCharge}</p>
             </div>
             <div className="flex justify-between text-[0.85rem] text-normal">
               <p>Grand Total</p>
-              <p>₹{totalAmount + 15}</p>
+              <p>₹{totalAmount + DeliveryCharge}</p>
             </div>
           </div>
 
@@ -287,15 +287,15 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
 
 
        <div className="absolute bottom-0 left-0 right-0">
-        <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-beige-light">
+        <div className="flex flex-row items-center justify-between p-4 bg-purple-dark rounded-t-lg">
           {/* Left Side: Payment Info */}
           <div className="flex-1 md:text-left">
-            <p className="text-gray-700 text-[12px] leading-tight">To Pay</p>
-            <p className="text-sm font-semibold text-gray-900 leading-tight">₹{totalAmount + 15}.00</p>
+            <p className="text-beige-light text-[12px] leading-tight">To Pay</p>
+            <p className="text-sm font-semibold text-beige-light leading-tight">₹{totalAmount + DeliveryCharge}</p>
           </div>
 
           {/* Right Side: Payment Options */}
-          <div className="flex flex-col md:flex-row gap-2 mt-3 md:mt-0">
+          <div className="flex flex-col md:flex-row gap-2 md:mt-0">
             {/* <button onClick={()=>onContinueOnlineClick()} className="w-[90px] h-11 text-[13px] font-semibold text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-300 text-center leading-tight">
               Pay Online
             </button> */}

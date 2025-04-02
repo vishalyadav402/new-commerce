@@ -134,7 +134,6 @@ const ManageCategory = () => {
 // update category status
   const updateCategoryStatus = async (id, status) => {
     const url = `https://api.therashtriya.com/api/category/status/${id}`;
-
     try {
         const response = await axios.put(url, { status });
         console.log('Response:', response.data);
@@ -156,7 +155,7 @@ const updateSubCategoryStatus = async (id, status) => {
       fetchCategories();
       return response.data;
   } catch (error) {
-      alert('Error updating category status:'+ error);
+      console.error('Error updating category status:'+ error);
       throw error;
   }finally{
     fetchCategories();
