@@ -154,10 +154,10 @@ const Product = () => {
   };
   return (
     <AdminLayout>
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-20">
       <button
         onClick={() => handleOpenProduct()}
-        className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">
+        className="bg-green-700 text-white px-4 mx-2 md:mx-0 py-2 rounded hover:bg-green-800">
         Add Product
       </button>
       <div className="mt-6">
@@ -181,23 +181,23 @@ const Product = () => {
                     <img
                       src={product.ProductImage}
                       alt="Product"
-                      className="h-16 w-16 object-cover"
+                      className="h-20 w-20 object-cover rounded-xl shadow-lg"
                     />
                   )}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  {product.ProductName} <Addproductcategory ProdID={product.ProductID}/>
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
+                  {product.ProductName}  <Addproductcategory ProdID={product.ProductID}/>
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
                 {product.Product_Slug}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
                <strike> ₹ {product.ProductMrp}</strike>
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm">
                 ₹ {product.ProductPrice}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
                 {product.ProductMrp && product.ProductPrice ? `${Math.round(((product.ProductMrp - product.ProductPrice) / product.ProductMrp) * 100)}%` : "0%"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
@@ -224,7 +224,7 @@ const Product = () => {
       </div>
 
       {/* Modal for Adding/Editing Product */}
-      <Modal open={open} onClose={handleCloseProduct}>
+      <Modal open={open} className="overflow-scroll" onClose={handleCloseProduct}>
         <Box
           sx={{
             minWidth: 200,
@@ -268,7 +268,7 @@ const Product = () => {
             value={currentProduct.productDescription}
             onEditorChange={handleProductDescriptionChange}
             init={{
-              height: 200,
+              height: 400,
               menubar: false,
               plugins: "link image code",
               toolbar:
@@ -299,7 +299,7 @@ const Product = () => {
             placeholder="Price"
             className="w-full border px-3 py-2 rounded mb-4"
           /> */}
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-start gap-1">
       <input
         type="text"
         name="ProductMrp"

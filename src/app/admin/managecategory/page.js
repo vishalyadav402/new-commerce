@@ -170,7 +170,7 @@ const toggleCategory = (categoryID) => {
 };
   return (
     <AdminLayout>
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <div className="flex mb-4">
         <button className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded mr-2" onClick={() => handleOpen()}>Add Category</button>
         <button className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded" onClick={() => handleOpenSubcategory()}>Add Subcategory</button>

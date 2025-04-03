@@ -120,11 +120,11 @@ const Page = () => {
 
   return (
     <AdminLayout>
-      <div className="container mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4">Orders</h2>
+      <div className="container mx-auto">
+        <h2 className="text-2xl font-bold mb-4 px-2 md:px-0">Orders</h2>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-2 mb-4 items-center">
+        <div className="flex flex-wrap gap-2 p-2 md:px-0 mb-4 items-center">
   <input 
     type="date" 
     value={startDate} 
@@ -173,7 +173,7 @@ const Page = () => {
   >
     Export Excel
   </button>
-</div>
+        </div>
 
 
         {/* Table */}

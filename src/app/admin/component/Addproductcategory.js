@@ -132,29 +132,27 @@ const AddProductCategory = ({ ProdID,fetchProducts }) => {
 
       <div className="flex flex-wrap gap-2">
 
-      <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.5rem)] bg-gray-100 rounded-md border border-dashed border-gray-700 p-2">
+      <div className="w-full self-center lg:w-[calc(33.33%-0.5rem)] bg-gray-100 rounded-md border border-dashed border-gray-700 p-1">
         <button
           onClick={() => setIsOpen(true)}
-          className="text-blue-400 font-semibold text-sm hover:text-blue-500 flex w-full gap-2"
+          className="text-blue-400 font-semibold text-[0.6rem] md:text-[0.7rem] hover:text-blue-500 flex w-full gap-1"
         >
           <div className="rounded-md bg-blue-400 hover:bg-blue-500 text-white p-1">
               <AddIcon/>
             </div>
-            <span className='self-center'> Add Category</span>
+            <span className='self-center leading-none'> Add Category</span>
         </button>
       </div>
-
-{/* {JSON.stringify(MasterCat)} */}
         {MasterCat.map((item) => (
           <div
             key={item.id}
-            className="flex items-center justify-between w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.5rem)] bg-gray-100 rounded-md border border-dashed border-gray-700 p-1"
+            className="flex items-center justify-between w-full lg:w-[calc(33.33%-0.5rem)] bg-gray-100 rounded-md border border-dashed border-gray-700 p-1"
           >
             <div className="flex flex-col">
-              <span className="text-gray-800 font-medium text-sm">
+              <span className="text-gray-800 font-medium text-[0.6rem] md:text-[0.7rem] leading-none capitalize">
                 {item.CategorySlug}
               </span>
-              <span className="text-gray-600 text-sm">
+              <span className="text-gray-600 text-[0.6rem] md:text-[0.7rem] leading-none capitalize">
                 {" "}
                 {item.SubcategorySlug}
               </span>
@@ -167,7 +165,7 @@ const AddProductCategory = ({ ProdID,fetchProducts }) => {
             </button>
           </div>
         ))}
-      </div>
+        </div>
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
