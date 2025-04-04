@@ -5,17 +5,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import Cart from './Cart';
 import LocationX from './LocationX';
 import Login from './Login';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Image from 'next/image';
 
 
 const placeholderTexts = [
-  'Search "curd"',
-  'Search "milk"',
-  'Search "bread"',
-  'Search "vegetables"',
-  'Search "fruits"'
+  'Search "diaper"',
+  'Search "facewash"',
+  'Search "powder"',
+  'Search "oil"',
+  'Search "cream"'
 ];
 
 const Header = ({ setsearchField, pageTitle, searchField }) => {
@@ -61,13 +61,22 @@ const inputRef = useRef(null);
     return () => clearInterval(intervalId);
   }, [inputValue]);
 
+//focus search box
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (route.pathname === "/search" && inputRef.current) {
+    if (pathname === "/search" && inputRef.current) {
       inputRef.current.focus();
+      setIsFocused(true);
     }
-  }, [route.pathname]);
+  }, [pathname]);
 
+  const [isFocused, setIsFocused] = useState(false);
+  // prefetch search page so that no delay
+  useEffect(() => {
+    route.prefetch('/search');
+  }, []);
+  
   return (
     <header className="flex flex-wrap bg-gradient-to-b from-purple-100 to-white md:fixed md:top-0 md:left-0 md:right-0 md:z-10 w-full items-center justify-between px-4 md:px-6 border-b border-purple-200">
       {/* logo */}
@@ -90,7 +99,11 @@ const inputRef = useRef(null);
             ref={inputRef}
             value={searchField}
             onClick={()=>route.push('/search')}
-            onChange={(e) => setsearchField(e.target.value)}
+            onChange={(e) => {
+              if (isFocused) {
+                setsearchField(e.target.value);
+              }
+            }}
             placeholder={placeholderTexts[currentPlaceholder]}
             className="bg-transparent cursor-text hover:bg-none focus:outline-none w-full h-8 text-sm md:text-base"
           />

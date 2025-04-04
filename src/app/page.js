@@ -43,7 +43,7 @@ export default function Home() {
           </div> */}
          
 
-          <div className="shadow-lg rounded-xl w-full">
+          <div className="shadow-lg rounded-xl w-full hidden md:block">
             <Image
               className="rounded-xl"
               src="/images/carousel/gif_banner.gif"
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
 
            {/* carousel */}
-           <div className="w-full mt-4">
+           <div className="w-full md:mt-4">
           <HeroCarousel/>
           </div>
          

@@ -133,18 +133,17 @@ const Page = () => {
       setIsEnd(swiper.isEnd);
     }}
   >
-    {categories.map((item, index) => (
-      <SwiperSlide key={index} className="!w-auto"> {/* ✅ Prevent Full Width */}
+    {categories.filter((item) => item.cat_isActive === "true").map((item, index) => (
+      <SwiperSlide key={index} className="!w-auto">
         <li
           onClick={() => handleCategoryClick(item.Cat_Slug)}
-          className={`
-            px-4 py-2 text-sm rounded cursor-pointer whitespace-nowrap inline-flex 
+          className={`px-2 mt-1 py-1 text-sm rounded cursor-pointer whitespace-nowrap inline-flex 
             ${item.Cat_Slug === url_category 
               ? "text-purple-dark bg-purple-100 hover:bg-purple-200 font-medium"
               : "text-black hover:bg-purple-200"}
           `}
         >
-          {item.CategoryName}
+         {item.CategoryName}
         </li>
       </SwiperSlide>
     ))}

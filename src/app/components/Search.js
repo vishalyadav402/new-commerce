@@ -66,8 +66,6 @@ export default function CustomizedInputBase({ bordersearchbox, searchpage, setDe
   };
 
   const handleSearch = (value) => {
-    // let city = localStorage.getItem("city") || 'Hyderabad';
-    // city = city.replaceAll(" ", "-");
     const formattedSearchKey = value.replaceAll(" ", "-");
 
     let city = "";

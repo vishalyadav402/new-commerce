@@ -1,19 +1,21 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import Addtocartbtn from './Addtocartbtn';
+import Image from 'next/image';
 const ProductCard = ({data}) => {
   const router = useRouter();
  
   return (
     <>    
     <div className="max-w-xs mx-auto py-1 gap-4 rounded-lg overflow-hidden border bg-white border-purple-200">
-      <img 
-        onError={(e) => {
-        e.target.onerror = null; // Prevents infinite loop in case the fallback image also fails
-        e.target.src = '/icon.png'; // Fallback image
-      }}
+      <Image
+      //   onError={(e) => {
+      //   e.target.onerror = null; // Prevents infinite loop in case the fallback image also fails
+      //   e.target.src = '/icon.png'; // Fallback image
+      // }}
+      height={100} width={100}
       onClick={()=>router.push('/'+'baby-care/baby-food/'+`${data.Product_Slug}`.replaceAll(' ','-'))}
-       className="cursor-pointer w-full h-32 object-contain" src={data.ProductImage || '/no-photo.png'} alt={data.ProductName} />
+       className="cursor-pointer w-full h-32 object-contain" src={data.ProductImage || '/icon.png'} alt={data.ProductName} />
       <div className="p-2">
         <p className='p-1 mb-2 bg-slate-100 rounded-md. w-16 text-[0.5em] font-semibold text-center'> 30 MINS</p>
         <div className='min-h-12'>

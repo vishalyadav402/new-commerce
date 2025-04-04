@@ -174,6 +174,7 @@ const Product = () => {
             </tr>
           </thead>
           <tbody>
+            {JSON.stringify(products)}
             {products.map((product) => (
               <tr key={product.ProductID}>
                 <td className="border border-gray-300 px-4 py-2">
