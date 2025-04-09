@@ -172,3 +172,28 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
+
+// seo dynamic meta for Privacy Policy
+// export const metadata = {
+//   title: "Privacy Policy | VegaCart – Your Trustworthy Daily Essentials Delivery App",
+//   other: {
+//     title: [
+//       "VegaCart – Data Privacy & Security Policy | Your Information is Safe With Us"
+//     ]
+//   },
+//   description:
+//     "At VegaCart, your privacy is our top priority. Learn how we collect, use, and protect your personal data when you shop for daily essentials through our quick delivery service in Jaunpur City.",
+//   keywords: [
+//     "VegaCart privacy policy",
+//     "Data protection policy",
+//     "User data safety",
+//     "Personal information security",
+//     "Privacy in grocery delivery app",
+//     "Online delivery data use",
+//     "VegaCart customer data protection",
+//     "Grocery app privacy guidelines",
+//     "Secure online shopping",
+//     "Privacy policy Jaunpur grocery app"
+//   ],
+// };
+

@@ -4,7 +4,7 @@
   "description": "Get your daily grocery and kirana needs delivered in minutes with VegaCart – the fastest delivery service.",
  "icons": [
   {
-   "src": "\/android-icon-36x36.png",
+   "src": "/favicon/android-icon-36x36.png",
    "sizes": "36x36",
    "type": "image\/png",
    "density": "0.75"
@@ -43,5 +43,5 @@
  "start_url": "/",
   "display": "standalone",
   "theme_color": "#69247C",
-  "background_color": "#F9E6CF"
+  "background_color": "#f6f0ff"
 }

@@ -76,3 +76,29 @@ const page = () => {
 };
 
 export default page;
+
+
+// seo dynamic meta
+// export const metadata = {
+//   title: "Quick Delivery of Daily Essentials | Groceries, Personal Care & More | VegaCart",
+//   other: {
+//     title: [
+//       "VegaCart – Daily Essentials Delivered Fast | Groceries, Home & Personal Products"
+//     ]
+//   },
+//   description:
+//     "Get your daily essentials delivered quickly with VegaCart. Shop groceries, home care, personal care, and more with instant delivery in your city. Reliable service across multiple pincodes in Jaunpur City",
+//   keywords: [
+//     "Daily essentials delivery",
+//     "Quick grocery delivery",
+//     "Personal care products online",
+//     "Instant delivery service",
+//     "VegaCart delivery",
+//     "Home essentials fast delivery",
+//     "Grocery delivery in Jaunpur",
+//     "Online convenience store",
+//     "Fastest delivery app",
+//     "Daily needs at your doorstep"
+//   ],
+// };
+
