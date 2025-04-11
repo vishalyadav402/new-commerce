@@ -11,12 +11,9 @@ const LocationX = ({ isOpen, setIsOpen }) => {
   const [availableLocations, setAvailableLocations] = useState([]);
 
   const pincodeLocations = {
-    "225001": ["Nawabganj, Barabanki", "Near Chowk", "Near Avadh Restaurant"],
-    "230134": ["Near Raipur Road", "Near PNB Bank"],
-    "230135": ["Near Dhakwa Mod", "Near Reliance Trends"],
-    "222004": ["Near ByPass Road", "Near SBI Bank"],
-    "222005": ["Near Hero Agency", "Near Bajaj Agency"],
-    "222006": ["Near Swaraj Agency", "Near Mahindra Agency"],
+    "230134": ["Near Dhangarh Chauraha", "Prithviganj Bazaar", "Near Prithviganj Petrol Pump", "Near Petrol Pump Jameene"],
+    "230135": ["Near Dhakwa Mod", "Near Reliance Trends","Near Raipur Road", "Near PNB Bank", "Near ByPass Road", "Near SBI Bank","Near Hero Agency", "Near Bajaj Agency","Near Swaraj Agency", "Near Mahindra Agency"],
+    "222001": ["Badlapur Padaw", "Machlishahar Padaw", "OlandGanj", "Naiganj", "Shahi Pul", "Politechnic Chowk", "Wajidpur Tiraha", "Jesis Chowk", "TD College North Gate", "TD College South Gate"]
   };
 
   useEffect(() => {
@@ -78,7 +75,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
               setAvailableLocations([]);
             }
           } else {
-            alert("Could not detect pincode from your location.");
+            alert("Sorry, we are not yet at this location!.");
           }
         } catch (error) {
           console.error("Geoapify error:", error);
@@ -113,7 +110,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                 </p>
                 <div className="flex">
                   <p className="text-sm font-semibold">
-                    {selectedLocation || "222001, Jaunpur"}
+                    {selectedLocation || "Near Reliance Trends, 230135"}
                   </p>
                   <ArrowDropDownIcon />
                 </div>
@@ -141,15 +138,22 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                   </div>
                   <ClearIcon onClick={handleCloseModal} className="text-pink-dark cursor-pointer" />
                 </div>
-                <div className="flex justify-start mt-2 px-4">
-                    <button
+                
+                <div className="flex justify-start gap-2 px-4 pt-2">
+                <button
                       onClick={detectLocation}
-                      className="text-sm text-purple-600 hover:text-purple-800"
+                      className="text-[0.8em] bg-pink-dark rounded-md leading-none text-white"
                     >
-                      📍 Detect My Location
-                    </button>
-                  </div>
-                <div className="px-4 pt-2">
+                     Detect My Location
+                </button>
+                <div className="flex items-center justify-center">
+  <div className="flex-grow h-px bg-gray-300 w-2"></div>
+  <div className="border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center text-gray-300 text-[0.8em] font-semibold">
+    OR
+  </div>
+  <div className="flex-grow h-px bg-gray-300 w-2"></div>
+</div>
+
                   <input
                     type="text"
                     placeholder="Enter your pincode"
