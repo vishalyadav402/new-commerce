@@ -9,6 +9,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 // import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 // import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { Box, Modal } from '@mui/material';
+import toast from 'react-hot-toast';
 
 const ManageCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -116,7 +117,7 @@ const ManageCategory = () => {
     } else {
       await axios.post('https://api.therashtriya.com/api/subcategory', formData);
     }
-     alert("Sub category updated successfully.")
+     toast.success("Sub category updated successfully.")
     fetchCategories();
     handleCloseSubcategory();
   };

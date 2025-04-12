@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import AdminLayout from "@/app/AdminLayout";
 import Swal from "sweetalert2"; 
 import Addproductcategory from "../component/Addproductcategory";
+import toast from "react-hot-toast";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -75,7 +76,7 @@ const Product = () => {
       fetchProducts();
       handleCloseProduct();
     } catch (error) {
-      alert("Error creating/updating product: " + error);
+      toast.error("Error creating/updating product: " + error);
     }
   };
 

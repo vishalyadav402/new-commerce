@@ -36,7 +36,7 @@ const OrderStatus = ({ open, setOpen, cartopen, onCancel, totalPrice, cartItems 
 //cartState
 const cartState = JSON.parse(localStorage.getItem('cartState')) || { items: [], totalQuantity: 0, totalAmount: 0 };
 // {"items":[{"id":22,"price":"20.00","quantity":1,"totalPrice":"20.00","name":"Lay's West Indies Hot n Sweet Chilli Flavour Potato Chips","image":"https://api.therashtriya.com/uploads/1737190481539.avif"}],"totalQuantity":1,"totalAmount":"020.00"}
-alert(JSON.stringify(cartState.totalAmount))   
+toast.success(JSON.stringify(cartState.totalAmount))   
 try {
       const data = {
         total_amount: cartState.totalAmount,
@@ -61,7 +61,7 @@ try {
       setLoading(false);
       handleSuccess(response.data);
     } catch (error) {
-      alert("Order placement error:"+ error);
+      toast.error("Order placement error:"+ error);
       setLoading(false);
       handleError(error);
     }

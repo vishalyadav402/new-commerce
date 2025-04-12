@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import toast from "react-hot-toast";
 
 const LocationX = ({ isOpen, setIsOpen }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -51,7 +52,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
 
   const detectLocation = async () => {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser.");
+      toast.error("Geolocation is not supported by your browser.");
       return;
     }
 
@@ -71,20 +72,21 @@ const LocationX = ({ isOpen, setIsOpen }) => {
             setPincodeInput(detectedPincode);
             if (pincodeLocations[detectedPincode]) {
               setAvailableLocations(pincodeLocations[detectedPincode]);
+              toast.success("Detected PinCode"+" : "+detectedPincode)
             } else {
               setAvailableLocations([]);
             }
           } else {
-            alert("Sorry, we are not yet at this location!.");
+            toast.error("Sorry, we are not yet at this location!.");
           }
         } catch (error) {
           console.error("Geoapify error:", error);
-          alert("Something went wrong while detecting your location.");
+          toast.error("Something went wrong while detecting your location.");
         }
       },
       (error) => {
         console.error("Geolocation error:", error);
-        alert("Unable to detect your location.");
+        toast.error("Unable to detect your location.");
       }
     );
   };
@@ -123,36 +125,40 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                   position: "absolute",
                   top: "50%",
                   left: "50%",
+                  paddingBottom:"50px",
                   transform: "translate(-50%, -50%)",
-                  width: { xs: "95%", sm: "70%", md: "60%", lg: "50%", xl: "40%" },
+                  width: { xs: "95%", sm: "70%", md: "50%", lg: "30%", xl: "35%" },
                   bgcolor: "background.paper",
                   boxShadow: 24,
                   borderRadius: "8px",
                   overflow: "hidden",
                 }}
               >
-                <div className="flex justify-between p-3 bg-gradient-to-b from-purple-100 to-white rounded-md">
+                <div className="bg-gradient-to-b from-purple-100 to-white ">
+                <div className="flex justify-between p-3 rounded-md">
                   <div>
-                    <p className="font-bold md:text-3xl text-2xl">Where should we deliver?</p>
-                    <p className="font-light my-2">Provide your pincode to serve you better</p>
+                    <p className="font-bold md:text-2xl text-xl">Where should we deliver?</p>
+                    <p className="font-light mb-2">Provide your pincode to serve you better</p>
                   </div>
                   <ClearIcon onClick={handleCloseModal} className="text-pink-dark cursor-pointer" />
                 </div>
                 
-                <div className="flex justify-start gap-2 px-4 pt-2">
+                <div className="md:flex justify-start gap-2 px-4 pt-2">
                 <button
                       onClick={detectLocation}
-                      className="text-[0.8em] bg-pink-dark rounded-md leading-none text-white"
+                      className="text-[0.8em] flex self-center py-3 px-2 bg-pink-dark rounded-md leading-none text-white"
                     >
                      Detect My Location
                 </button>
-                <div className="flex items-center justify-center">
-  <div className="flex-grow h-px bg-gray-300 w-2"></div>
-  <div className="border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center text-gray-300 text-[0.8em] font-semibold">
-    OR
-  </div>
-  <div className="flex-grow h-px bg-gray-300 w-2"></div>
-</div>
+
+                {/* OR */}
+                <div className="flex w-12 my-2 md:my-0 items-center justify-center">
+                  <div className="flex-grow h-px bg-gray-300 w-2"></div>
+                  <div className="border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center text-gray-300 text-[0.8em] font-semibold">
+                    OR
+                  </div>
+                  <div className="flex-grow h-px bg-gray-300 w-2"></div>
+                </div>
 
                   <input
                     type="text"
@@ -160,11 +166,11 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                     value={pincodeInput}
                     onChange={handlePincodeChange}
                     maxLength={6}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    className="border border-gray-300 rounded-md px-3 py-2 text-sm"
                   />
-
-                  
                 </div>
+</div>
+                {/* location list */}
                <div className="px-2">
                 {availableLocations.length > 0 && (
                   <div className="grid grid-cols-3 p-2 md:grid-cols-4 gap-2 mt-4">
@@ -174,12 +180,12 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                         <button
                           key={index}
                           onClick={() => handleLocationClick(fullLocation)}
-                          className={`text-xs border rounded-md border-purple-300 text-black font-normal px-1 py-1 h-12 self-center hover:bg-purple-dark hover:text-white ${
+                          className={`text-xs border rounded-md border-purple-300 text-black font-normal px-2 py-1 h-12 self-center hover:bg-purple-dark hover:text-white ${
                             fullLocation === selectedLocation ? "bg-purple-dark text-white" : ""
                           }`}
                         >
-                          <span className="block font-semibold leading-none">{loc}</span>
-                          <span className="block text-[11px]">{pincodeInput}</span>
+                          <span className="block font-medium text-[11px] leading-none">{loc}</span>
+                          {/* <span className="block text-[10px]">{pincodeInput}</span> */}
                         </button>
                       );
                     })}
@@ -187,17 +193,20 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                 )}
                 </div>
 
+                {/* when location not serviceable */}
                 {pincodeInput.length === 6 && availableLocations.length === 0 && (
-                  <div className="text-center text-red-500 mt-4">
-                    No locations found for this pincode.
-                  </div>
+                 <div className="flex flex-col items-center justify-center mt-8 px-4 text-center">
+                 <img
+                   src="/no-location-available.svg" // Replace with your actual image path
+                   alt="Service not available"
+                   className="w-48 h-48 object-contain"
+                 />
+                 <h2 className="text-xl font-semibold text-gray-800 mt-4">Oops!</h2>
+                 <p className="text-gray-600 mt-2 text-sm max-w-md">
+                 VegaCart is not available at this pincode as of now. Please select a different pincode.
+                 </p>
+               </div>
                 )}
-
-                <div className="text-center my-3 py-2">
-                  <h2 className="text-pink-dark text-2xl font-semibold">
-                    अब घर बैठे किराना का सामान मंगवाएं!📱
-                  </h2>
-                </div>
               </Box>
             </Modal>
           </div>

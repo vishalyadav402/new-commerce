@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const fetchAndStoreAddress = async () => {
   const loginToken = localStorage.getItem('loginToken') || null;
@@ -35,7 +36,7 @@ const fetchAndStoreAddress = async () => {
     }
   } catch (error) {
     console.error("Error fetching address:", error.response?.data || error.message);
-    alert(`Error fetching address: ${error.response?.data?.message || error.message}`);
+    toast.error(`Error fetching address: ${error.response?.data?.message || error.message}`);
   }
 };
 

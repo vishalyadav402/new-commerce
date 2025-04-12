@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import InstallPWA from "./components/InstallPWA";
+import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon"></link>
     </head>
       <body className={inter.className}>
+         <Toaster position="bottom-center" />
           {children}
           <InstallPWA/>
       </body>
