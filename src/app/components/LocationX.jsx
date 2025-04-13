@@ -5,6 +5,7 @@ import { Modal, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 const LocationX = ({ isOpen, setIsOpen }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -123,7 +124,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
               <Box
                 sx={{
                   position: "absolute",
-                  top: "50%",
+                  top: "30%",
                   left: "50%",
                   paddingBottom:"50px",
                   transform: "translate(-50%, -50%)",
@@ -196,10 +197,12 @@ const LocationX = ({ isOpen, setIsOpen }) => {
                 {/* when location not serviceable */}
                 {pincodeInput.length === 6 && availableLocations.length === 0 && (
                  <div className="flex flex-col items-center justify-center mt-8 px-4 text-center">
-                 <img
+                 <Image
                    src="/no-location-available.svg" // Replace with your actual image path
                    alt="Service not available"
                    className="w-48 h-48 object-contain"
+                   height={100}
+                   width={100}
                  />
                  <h2 className="text-xl font-semibold text-gray-800 mt-4">Oops!</h2>
                  <p className="text-gray-600 mt-2 text-sm max-w-md">

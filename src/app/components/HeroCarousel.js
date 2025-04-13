@@ -47,15 +47,12 @@ const router = useRouter();
   return (
     <Box>
       <Swiper
-        // cssMode={true}
         slidesPerView={1}
         spaceBetween={10}
         grabCursor={true}
         freeMode={true}
-        mousewheel={true}
         loop={true}
         autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
-        keyboard={true}
         modules={[FreeMode, Mousewheel, Keyboard, Autoplay]}
         breakpoints={{
           640: { slidesPerView: 2, spaceBetween: 10 },
