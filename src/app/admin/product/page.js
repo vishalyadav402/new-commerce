@@ -8,6 +8,7 @@ import AdminLayout from "@/app/AdminLayout";
 import Swal from "sweetalert2"; 
 import Addproductcategory from "../component/Addproductcategory";
 import toast from "react-hot-toast";
+import dynamic from "next/dynamic";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -95,11 +96,13 @@ const Product = () => {
     if (result.isConfirmed) {
       try {
         await axios.delete(`https://api.therashtriya.com/api/product/${id}`);
-        Swal.fire("Deleted!", "The product has been deleted.", "success");
+        // Swal.fire("Deleted!", "The product has been deleted.", "success");
+        toast.success("The product has been deleted.");
         fetchProducts();
       } catch (error) {
-        Swal.fire("Error!", "Failed to delete the product.", "error");
+        // Swal.fire("Error!", "Failed to delete the product.", "error");
         console.error("Error deleting product:", error);
+        toast.error("Error deleting product.")
       }
     }
   };
@@ -175,7 +178,6 @@ const Product = () => {
             </tr>
           </thead>
           <tbody>
-            {JSON.stringify(products)}
             {products.map((product) => (
               <tr key={product.ProductID}>
                 <td className="border border-gray-300 px-4 py-2">
@@ -345,4 +347,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default dynamic(() => Promise.resolve(Product), { ssr: false });

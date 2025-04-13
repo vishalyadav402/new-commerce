@@ -124,7 +124,7 @@ const LocationX = ({ isOpen, setIsOpen }) => {
               <Box
                 sx={{
                   position: "absolute",
-                  top: "30%",
+                  top: "50%",
                   left: "50%",
                   paddingBottom:"50px",
                   transform: "translate(-50%, -50%)",
