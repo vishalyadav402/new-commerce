@@ -135,7 +135,7 @@ const AddProductCategory = ({ ProdID,fetchProducts }) => {
       <div className="w-full self-center lg:w-[calc(33.33%-0.5rem)] bg-gray-100 rounded-md border border-dashed border-gray-700 p-1">
         <button
           onClick={() => setIsOpen(true)}
-          className="text-blue-400 font-semibold text-[0.6rem] md:text-[0.7rem] hover:text-blue-500 flex w-full gap-1"
+          className="text-blue-400 font-semibold text-[0.5rem] md:text-[0.6rem] hover:text-blue-500 flex w-full gap-1"
         >
           <div className="rounded-md bg-blue-400 hover:bg-blue-500 text-white p-1">
               <AddIcon/>
@@ -149,10 +149,10 @@ const AddProductCategory = ({ ProdID,fetchProducts }) => {
             className="flex items-center justify-between w-full lg:w-[calc(33.33%-0.5rem)] bg-gray-100 rounded-md border border-dashed border-gray-700 p-1"
           >
             <div className="flex flex-col">
-              <span className="text-gray-800 font-medium text-[0.6rem] md:text-[0.7rem] leading-none capitalize">
+              <span className="text-gray-800 font-medium text-[0.5rem] md:text-[0.6rem] leading-none capitalize">
                 {item.CategorySlug}
               </span>
-              <span className="text-gray-600 text-[0.6rem] md:text-[0.7rem] leading-none capitalize">
+              <span className="text-gray-600 text-[0.4rem] md:text-[0.5rem] leading-none capitalize">
                 {" "}
                 {item.SubcategorySlug}
               </span>

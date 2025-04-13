@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import Addproductcategory from "../component/Addproductcategory";
 import toast from "react-hot-toast";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -176,33 +177,35 @@ const Product = () => {
               <th className="border border-gray-300 px-4 py-2">Slug</th>
               <th className="border border-gray-300 px-4 py-2">MRP</th>
               <th className="border border-gray-300 px-4 py-2">SP</th>
-              <th className="border border-gray-300 px-4 py-2">Discount(%)</th>
+              <th className="border border-gray-300 px-4 py-2">Discount</th>
               <th className="border border-gray-300 px-4 py-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {[...products].reverse().map((product) => (
               <tr key={product.ProductID}>
                 <td className="border border-gray-300 px-4 py-2">
                   {product.ProductImage && (
-                    <img
+                    <Image
                       src={product.ProductImage}
-                      alt="Product"
-                      className="h-20 w-20 object-cover rounded-xl shadow-lg"
+                      alt={product.ProductName}
+                      height={100}
+                      width={100}
+                      className="h-20 w-20 object-cover rounded-xl shadow-lg bg-white px-3 py-1"
                     />
                   )}
                 </td>
-                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.6rem] md:text-sm leading-none">
                   {product.ProductName}  <Addproductcategory ProdID={product.ProductID}/>
                 </td>
-                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
+                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.6rem] md:text-sm leading-none">
                 {product.Product_Slug}
                 </td>
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
-               <strike> ₹ {product.ProductMrp}</strike>
+               <strike>{product.ProductMrp}</strike>
                 </td>
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm">
-                ₹ {product.ProductPrice}
+                {product.ProductPrice}
                 </td>
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
                 {product.ProductMrp && product.ProductPrice ? `${Math.round(((product.ProductMrp - product.ProductPrice) / product.ProductMrp) * 100)}%` : "0%"}
@@ -237,7 +240,7 @@ const Product = () => {
             minWidth: 200,
             maxWidth:800,
             bgcolor: "white",
-            p: 4,
+            p: 2,
             mx: "auto",
             mt: 10,
             borderRadius: 2,
@@ -306,7 +309,7 @@ const Product = () => {
             placeholder="Price"
             className="w-full border px-3 py-2 rounded mb-4"
           /> */}
-      <div className="flex flex-row justify-start gap-1">
+      <div className="justify-start md:space-x-2">
       <input
         type="text"
         name="ProductMrp"
