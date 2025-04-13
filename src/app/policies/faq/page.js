@@ -17,10 +17,10 @@ const page = () => {
           {/* Question 1 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              1. What is Quick Commerce?
+              1. What is VegaCartGo?
             </h2>
             <p className="text-gray-600">
-              Quick Commerce is a fast and convenient way to order groceries and daily essential products online. We deliver your orders within a short time frame, ensuring you get what you need without delay.
+            VegaCartGo is a fast and convenient way to order groceries and daily essential products online. We deliver your orders within a short time frame, ensuring you get what you need without delay.
             </p>
           </div>
 
@@ -136,7 +136,7 @@ const page = () => {
               11. How can I track my order?
             </h2>
             <p className="text-gray-600">
-              Once your order is confirmed, you will receive an order confirmation email/SMS with a tracking link. You can also log in to your account on the web portal to track your order in real-time.
+              Once your order is confirmed, you can log in to your account on the web portal to track your order in real-time.
             </p>
           </div>
 
@@ -168,9 +168,9 @@ const page = () => {
             <p className="text-gray-600">
               You can reach our customer support team via:
               <ul className="list-disc list-inside mt-2">
-                <li><strong>Email:</strong> support@dailyneeds.com</li>
-                <li><strong>Phone:</strong> +91-XXXX-XXXXXX</li>
-                <li><strong>Live Chat:</strong> Available on the web portal during business hours (8 AM - 6 PM).</li>
+                <li><strong>Email:</strong> support@vegacartgo.com</li>
+                <li><strong>Whatsapp Chat:</strong> +91-9506280968</li>
+                {/* <li><strong>Live Chat:</strong> Available on the web portal during business hours (8 AM - 6 PM).</li> */}
               </ul>
             </p>
           </div>
@@ -246,14 +246,14 @@ const page = () => {
               href="mailto:support@quickcommerce.com"
               className="text-blue-600 hover:underline"
             >
-              support@dailyneeds.com
+              support@vegacartgo.com
             </a>
             <span className="mx-2 text-gray-400">|</span>
             <a
-              href="tel:+91-XXXX-XXXXXX"
+              href="tel:+919506280968"
               className="text-blue-600 hover:underline"
             >
-              +91-XXXX-XXXXXX
+              +91-9506280968
             </a>
           </div>
         </div>

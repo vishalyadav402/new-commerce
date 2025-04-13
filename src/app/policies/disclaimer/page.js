@@ -12,12 +12,12 @@ const page = () => {
 
         {/* Last Updated */}
         <p className="text-gray-600 text-sm mb-8">
-          <strong>Last Updated:</strong> [Insert Date]
+          <strong>Last Updated:</strong> 13 April 2025
         </p>
 
         {/* Introduction */}
         <p className="text-gray-700 mb-6">
-          The information provided on the <strong>Quick Commerce</strong> web portal is for general informational purposes only. While we strive to ensure the accuracy and reliability of the information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the products, services, or related information.
+          The information provided on the <strong>VegaCartGo</strong> web portal is for general informational purposes only. While we strive to ensure the accuracy and reliability of the information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the products, services, or related information.
         </p>
 
         {/* Section 1: Product Availability */}
@@ -60,7 +60,7 @@ const page = () => {
             4. Limitation of Liability
           </h2>
           <p className="text-gray-700">
-            Quick Commerce shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of our services or inability to use our services.
+          VegaCartGo shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of our services or inability to use our services.
           </p>
         </div>
 

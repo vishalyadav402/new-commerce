@@ -69,15 +69,18 @@ const Product = () => {
             headers: { "Content-Type": "multipart/form-data" },
           }
         );
+        toast.success("Product Updated Successfully.")
       } else {
         await axios.post("https://api.therashtriya.com/api/product", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
+        toast.success("Product Added Successfully.")
       }
       fetchProducts();
       handleCloseProduct();
     } catch (error) {
-      toast.error("Error creating/updating product: " + error);
+      console.log("Error creating/updating product: " + error);
+      toast.error("Failed to Add / Update Product.");
     }
   };
 

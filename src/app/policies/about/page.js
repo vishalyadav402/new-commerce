@@ -12,7 +12,7 @@ const page = () => {
 
         {/* Introduction */}
         <p className="text-gray-700 mb-6">
-          Welcome to <strong>Quick Commerce</strong>! At Quick Commerce, we are revolutionizing the way you shop for groceries and daily essentials. Our mission is to provide fast, reliable, and convenient delivery services, ensuring that you get what you need, when you need it.
+          Welcome to <strong>VegaCartGo</strong>! At VegaCartGo, we are revolutionizing the way you shop for groceries and daily essentials. Our mission is to provide fast, reliable, and convenient delivery services, ensuring that you get what you need, when you need it.
         </p>
 
         {/* Our Story */}
@@ -21,7 +21,7 @@ const page = () => {
             Our Story
           </h2>
           <p className="text-gray-700">
-            Founded in <strong>[Insert Year]</strong>, Quick Commerce was born out of a simple idea: to make grocery shopping effortless and time-efficient. We understand the challenges of busy lifestyles, and we’re here to simplify your life by bringing the store to your doorstep.
+            Founded in <strong>2025</strong>, VegaCartGo was born out of a simple idea: to make grocery shopping effortless and time-efficient. We understand the challenges of busy lifestyles, and we’re here to simplify your life by bringing the store to your doorstep.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ const page = () => {
           </h2>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
             <li><strong>Customer First:</strong> Your satisfaction is our top priority.</li>
-            <li><strong>Speed and Efficiency:</strong> We deliver within 60-90 minutes.</li>
+            <li><strong>Speed and Efficiency:</strong> We deliver within almost 60-90 minutes.</li>
             <li><strong>Quality Assurance:</strong> Only the best products make it to your cart.</li>
             <li><strong>Sustainability:</strong> We are committed to eco-friendly practices.</li>
           </ul>
@@ -67,7 +67,7 @@ const page = () => {
             Join Us on Our Journey
           </h2>
           <p className="text-gray-700">
-            We are constantly evolving to serve you better. Thank you for choosing <strong>Quick Commerce</strong> – your partner in convenience and quality.
+            We are constantly evolving to serve you better. Thank you for choosing <strong>VegaCartGo</strong> – your partner in convenience and quality.
           </p>
         </div>
       </div>

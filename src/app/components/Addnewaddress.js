@@ -75,7 +75,7 @@ const AddNewAddress = ({ open, setOpen }) => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-[500px]">
         <div className="flex justify-between mb-3">
           <p className="text-xl font-semibold">Add New Address</p>
-          <p className="text-lg font-semibold cursor-pointer text-red-500" onClick={handleClose}><CloseIcon /></p>
+          <p className="text-lg font-semibold cursor-pointer text-pink-dark" onClick={handleClose}><CloseIcon /></p>
         </div>
 
         <input
@@ -107,7 +107,7 @@ const AddNewAddress = ({ open, setOpen }) => {
           {["Home", "Work", "Hotel", "Other"].map((option) => (
             <button
               key={option}
-              className={`px-2 py-1 border rounded text-sm ${formData.addressLabel === option ? "bg-[#14803c] text-white" : "bg-gray-50"}`}
+              className={`px-2 py-1 border rounded text-sm ${formData.addressLabel === option ? "bg-purple-dark text-white" : "bg-gray-50"}`}
               onClick={() => handleLabelChange(option)}
             >
               {option}
@@ -131,9 +131,9 @@ const AddNewAddress = ({ open, setOpen }) => {
           onChange={handleInputChange}
         />
 
-        {errorMessage && <p className="text-red-500 text-sm mb-3">{errorMessage}</p>}
+        {errorMessage && <p className="text-pink-dark text-sm mb-3">{errorMessage}</p>}
         
-        <button className="w-full p-2 bg-[#14803c] text-white rounded" onClick={onSubmit}>Save Address</button>
+        <button className="w-full p-2 bg-purple-dark text-white rounded" onClick={onSubmit}>Save Address</button>
       </div>
     </div>
   );

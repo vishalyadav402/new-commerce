@@ -12,12 +12,12 @@ const page = () => {
 
         {/* Last Updated */}
         <p className="text-gray-600 text-sm mb-8">
-          <strong>Last Updated:</strong> [Insert Date]
+          <strong>Last Updated:</strong> 13 April 2025
         </p>
 
         {/* Introduction */}
         <p className="text-gray-700 mb-6">
-          Welcome to <strong>Quick Commerce</strong>! These Terms and Conditions govern your use of our web portal and services. By accessing or using our platform, you agree to comply with and be bound by these terms. Please read them carefully.
+          Welcome to <strong>VegaCartGo</strong>! These Terms and Conditions govern your use of our web portal and services. By accessing or using our platform, you agree to comply with and be bound by these terms. Please read them carefully.
         </p>
 
         {/* Section 1: Acceptance of Terms */}
@@ -36,7 +36,7 @@ const page = () => {
             2. Services Offered
           </h2>
           <p className="text-gray-700">
-            Quick Commerce provides an online platform for ordering groceries and daily essential products. We deliver to select pincodes as specified on our web portal.
+          VegaCartGo provides an online platform for ordering groceries and daily essential products. We deliver to select pincodes as specified on our web portal.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ const page = () => {
             <br />
             - You agree to provide accurate delivery details.
             <br />
-            - Payment can be made via credit/debit cards, net banking, digital wallets, or cash on delivery (COD).
+            - Payment can be made via UPI / digital wallets, or cash on delivery (COD).
             <br />
             - We reserve the right to cancel orders in case of pricing errors, stock unavailability, or suspicious activity.
           </p>
@@ -120,7 +120,7 @@ const page = () => {
             8. Intellectual Property
           </h2>
           <p className="text-gray-700">
-            All content on the platform (e.g., logos, text, images) is owned by Quick Commerce and protected by intellectual property laws. You may not use, copy, or distribute any content without our prior written consent.
+            All content on the platform (e.g., logos, text, images) is owned by VegaCartGo and protected by intellectual property laws. You may not use, copy, or distribute any content without our prior written consent.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ const page = () => {
             9. Limitation of Liability
           </h2>
           <p className="text-gray-700">
-            Quick Commerce is not liable for:
+          VegaCartGo is not liable for:
           </p>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
             <li>Delays or failures due to circumstances beyond our control (e.g., natural disasters, strikes).</li>
@@ -154,7 +154,7 @@ const page = () => {
             11. Governing Law
           </h2>
           <p className="text-gray-700">
-            These Terms and Conditions are governed by the laws of <strong>[Insert Country/State]</strong>. Any disputes will be resolved in the courts of <strong>[Insert Jurisdiction]</strong>.
+            These Terms and Conditions are governed by the laws of <strong>India / Uttar Pradesh</strong>. Any disputes will be resolved in the courts of <strong> State Court</strong>.
           </p>
         </div>
 
@@ -177,9 +177,9 @@ const page = () => {
             If you have any questions or concerns about these Terms and Conditions, please contact us at:
           </p>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
-            <li><strong>Email:</strong> support@quickcommerce.com</li>
-            <li><strong>Phone:</strong> +91-XXXX-XXXXXX</li>
-            <li><strong>Address:</strong> [Insert Company Address]</li>
+            <li><strong>Email:</strong> support@vegacartgo.com</li>
+            <li><strong>Phone:</strong> +91-9506280968</li>
+            {/* <li><strong>Address:</strong> [Insert Company Address]</li> */}
           </ul>
         </div>
       </div>

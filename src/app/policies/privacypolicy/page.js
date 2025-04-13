@@ -12,12 +12,12 @@ const PrivacyPolicy = () => {
 
         {/* Last Updated */}
         <p className="text-gray-600 text-sm mb-8">
-          <strong>Last Updated:</strong> 15 Feb 2025
+          <strong>Last Updated:</strong> 13 April 2025
         </p>
 
         {/* Introduction */}
         <p className="text-gray-700 mb-6">
-          Welcome to <strong>Daily Needs</strong>! We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy outlines how we collect, use, and protect your information when you use our web portal and services.
+          Welcome to <strong>VegaCartGo</strong>! We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy outlines how we collect, use, and protect your information when you use our web portal and services.
         </p>
 
         {/* Section 1: Information We Collect */}
@@ -118,7 +118,7 @@ const PrivacyPolicy = () => {
             <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time.</li>
           </ul>
           <p className="text-gray-700 mt-4">
-            To exercise these rights, please contact us at <strong>support@quickcommerce.com</strong>.
+            To exercise these rights, please contact us at <strong>support@vegacartgo.com</strong>.
           </p>
         </div>
 
@@ -161,9 +161,9 @@ const PrivacyPolicy = () => {
             If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
           </p>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
-            <li><strong>Email:</strong> support@quickcommerce.com</li>
-            <li><strong>Phone:</strong> +91-XXXX-XXXXXX</li>
-            <li><strong>Address:</strong> [Insert Company Address]</li>
+            <li><strong>Email:</strong> support@vegacartgo.com</li>
+            <li><strong>Phone:</strong> +919506280968</li>
+            {/* <li><strong>Address:</strong> </li> */}
           </ul>
         </div>
       </div>
