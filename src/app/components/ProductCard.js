@@ -2,8 +2,11 @@
 import { useRouter } from 'next/navigation';
 import Addtocartbtn from './Addtocartbtn';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 const ProductCard = ({data}) => {
   const router = useRouter();
+  const params = useParams();
+  
  console.log(JSON.stringify(data))
   return (
     <>    
@@ -27,7 +30,7 @@ const ProductCard = ({data}) => {
         e.target.src = '/icon.png'; // Fallback image
       }}
       height={100} width={100}
-      onClick={()=>router.push('/'+'baby-care/baby-food/'+`${data.Product_Slug}`.replaceAll(' ','-'))}
+      onClick={()=>router.push("/"+params.category+"/"+params.subcategory+"/"+data.Product_Slug)}
        className="cursor-pointer w-full h-32 object-contain" src={data.ProductImage || '/icon.png'} alt={data.ProductName} />
       <div className="p-2">
         {/* <p className='p-1 mb-1 bg-beige-light rounded-md. w-16 text-[0.5em] font-semibold text-center'> 60-90 MINS</p> */}

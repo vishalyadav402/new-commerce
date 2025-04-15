@@ -51,7 +51,7 @@ const Page = () => {
         const response = await axios.get(
           `https://api.therashtriya.com/api/products?category=${url_category}&subcategory=${url_subcategory || ""}`
         );
-        console.log(JSON.stringify(response.data))
+        // alert(JSON.stringify(response.data))
         setProductData(response.data);
       } catch (error) {
         setError(error);
