@@ -6,7 +6,7 @@ const Master = ({children}) => {
   return (
     <div>
         <Header/>
-        <div className='md:my-20 min-h-[50vh]'>
+        <div className='md:my-20 lg:px-[8rem] min-h-[50vh]'>
           {children}
         </div>
         <Footer/>

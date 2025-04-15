@@ -46,6 +46,23 @@ const Page = () => {
     fetchProductData();
   }, []);
 
+  useEffect(() => {
+    if (!params.subcategory && data.length > 0) {
+      const currentCategory = data.find((item) => item.Cat_Slug === params.category);
+  
+      if (currentCategory && currentCategory.Subcategories?.length > 0) {
+        const firstActiveSub = currentCategory.Subcategories.find(
+          (sub) => sub.subcat_isActive === "true"
+        );
+  
+        if (firstActiveSub) {
+          router.push(`/${params.category}/${firstActiveSub.subCat_Slug}`);
+        }
+      }
+    }
+  }, [data, params.category, params.subcategory]);
+  
+
   // Fetch product data
   const fetchProductData = async () => {
     try {
@@ -64,7 +81,7 @@ const Page = () => {
     <ClientLayout>
       <div className="px-0 md:px-4">
         {/* ✅ Swiper for Horizontal Category List */}
-        <div className="relative flex items-center md:mb-2">
+        <div className="relative flex items-center h-10 md:mb-2">
           {/* ✅ Prev Button (Hidden if Disabled) */}
           {!isBeginning && (
             <button
@@ -122,17 +139,6 @@ const Page = () => {
               <ul key={index} className="space-y-0 bg-white">
                 {item.Cat_Slug == url_category && (
                   <>
-                    <li
-                      onClick={() => router.push(`/${url_category}`)}
-                      className="p-2 flex justify-center items-center md:justify-start flex-col md:flex-row cursor-pointer bg-white hover:bg-purple-200 md:border-purple-100 md:border"
-                    >
-                      <div className="flex justify-center items-center h-[48px] w-[48px] overflow-hidden bg-gray-100">
-                        <GridViewIcon color="disabled" />
-                      </div>
-                      <p className="flex justify-center md:ps-3 md:items-center text-sm md:text-md font-normal">
-                        All
-                      </p>
-                    </li>
 
                     {item.Subcategories &&
                       item.Subcategories.map((subcategory, subIndex) => (
@@ -150,7 +156,7 @@ const Page = () => {
                                 <Image
                                   src={
                                     subcategory.SubcategoryImage ||
-                                    "/no-photo.png"
+                                    "/images/placeholder-icon.png"
                                   }
                                   style={{
                                     height: "100%",
@@ -163,7 +169,7 @@ const Page = () => {
                                   alt="subcategory image"
                                 />
                               </div>
-                              <p className="md:self-center md:ps-2 text-gray-500 text-center font-normal md:text-gray-700 md:font-medium text-[11px] leading-none md:text-sm text-ellipsis line-clamp-3 overflow-hidden">
+                              <p className="md:self-center md:ps-2 text-gray-500 text-start font-normal md:text-gray-700 md:font-medium text-[11px] leading-none md:text-sm text-ellipsis line-clamp-3 overflow-hidden">
                                 {subcategory.SubcategoryName}
                               </p>
                             </li>
@@ -179,11 +185,10 @@ const Page = () => {
           {/* ✅ Products */}
           <div className="col-span-4 max-h-[75vh] overflow-auto no-scrollbar">
             {loading ? (
-              <div className="flex justify-center items-center min-h-[80vh] w-full">
-                <Loader />
-              </div>
+              ""
+              //  <p className="col-span-full">Loding Products...</p>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 min-h-screen p-1 md:gap-4 bg-gray-100 md:p-4 p:2 rounded">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 min-h-screen p-1 md:gap-2 bg-gray-100 md:p-4 p:2 rounded">
                 {productData.map((data, index) => (
                   <div key={index}>
                     <ProductCard data={data} />

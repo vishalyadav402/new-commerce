@@ -52,7 +52,7 @@ export default function Home() {
               width={100}
               layout="responsive"
               placeholder="blur"
-              blurDataURL="/no-photo.png" // Low-quality placeholder image
+              blurDataURL="/images/placeholder-icon.png" // Low-quality placeholder image
             />
           </div>
 
@@ -73,7 +73,6 @@ export default function Home() {
           <p className="text-2xl text-gray-700 mt-4 font-bold">Explore by Products</p>
           <ProductSlider productData={productData} />
         </div>
-
       </main>
     </ClientLayout>
   );

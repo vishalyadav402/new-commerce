@@ -62,10 +62,10 @@ const slug = params.productdetail;
     <div class="col-span-1 md:col-span-1 p-3 md:p-10 overflow-y-auto max-h-[100vh] bg-white border">
         <div className='flex justify-center'>
         <ImageMagnifier
-        src={productdetails?.ProductImage||"/no-photo.png"}  // Replace with your image URL
+        src={productdetails?.ProductImage||"/images/placeholder-icon.png"}  // Replace with your image URL
         zoom={2}  // Adjust the zoom level
       />
-        {/* <Image src={'/no-photo.png'} height={100} width={100} style={{height:'300px',width:'300px'}}></Image> */}
+        {/* <Image src={'/images/placeholder-icon.png'} height={100} width={100} style={{height:'300px',width:'300px'}}></Image> */}
         </div>
 
         {/* product details part */}

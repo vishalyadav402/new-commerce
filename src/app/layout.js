@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         {/* SEO Meta Tags */}
         <link rel="canonical" href="https://vegacartgo.com/" />
         <meta name="title" content="Dailyneeds delivered in minutes | vegacartgo"/>
-        <meta name="description" content="Shop groceries online & get them delivered to your doorstep in minutes. Enjoy instant delivery with VegaCart."/>
+        <meta name="description" content="Shop groceries online & get them delivered to your doorstep in minutes. Enjoy instant delivery with vegacartgo."/>
         <meta name="keywords" content="Buy Grocery Online, Online Grocery, Grofers, Groffers, Groferss, blinkit grofers, blinkit, blink it, Grocery Store, Online Grocery Shopping, Online Grocery Store, Online Supermarket, Free Delivery, Great Offers, Best Prices"/>
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
         <meta name="author" content="vegacartgo"/>
@@ -26,15 +26,15 @@ export default function RootLayout({ children }) {
         <meta property="og:title" content="Dailyneeds delivered in minutes | vegacartgo"/>
         <meta property="og:site_name" content="vegacartgo"/>
         <meta property="og:url" content="https://vegacartgo.com/"/>
-        <meta property="og:description" content="Shop groceries online & get them delivered to your doorstep in minutes. Enjoy instant delivery with VegaCart."/>
+        <meta property="og:description" content="Shop groceries online & get them delivered to your doorstep in minutes. Enjoy instant delivery with vegacartgo."/>
         <meta property="og:type" content="website"/>
-        <meta property="og:image" content="/icon.png"/>
+        <meta property="og:image" content="/favicon/favicon.ico"/>
 
         {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Dailyneeds delivering in minutes | vegacartgo" />
         <meta name="twitter:description" content="Shop groceries online & get them delivered to your doorstep in minutes. Enjoy instant delivery with vegacartgo." />
-        <meta name="twitter:image" content="/icon.png" />
+        <meta name="twitter:image" content="/favicon/favicon.ico" />
         <meta name="twitter:site" content="@vegacartgo" />
         <meta name="twitter:creator" content="@vegacartgo" />
 
