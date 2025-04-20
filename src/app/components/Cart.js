@@ -21,7 +21,7 @@ export default function Cart() {
   const [openorderStatus, setOpenorderstatus] = useState(false);
   // const savedAddress = localStorage.hasOwnProperty("savedAddress")?JSON.parse(localStorage.getItem("savedAddress")) : {};
   const [savedAddress, setSavedAddress] = useState({});
-  const DeliveryCharge = 15;
+  const DeliveryCharge = 20;
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedAddr = localStorage.getItem("savedAddress");
@@ -221,7 +221,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
                   <>
                     {item.quantity} items <span className="font-extralight text-gray-400">|</span>
                   </>
-                )} ₹{parseInt(item.totalPrice)}.00
+                )} ₹{parseInt(item.totalPrice)}
                   </p>
                 </div>
                 {/* Quantity Controls */}
@@ -296,10 +296,11 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
 
           {/* Right Side: Payment Options */}
           <div className="flex flex-col md:flex-row gap-2 md:mt-0">
-            {/* <button onClick={()=>onContinueOnlineClick()} className="w-[90px] h-11 text-[13px] font-semibold text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-300 text-center leading-tight">
-              Pay Online
+            {/* <button onClick={()=>onContinueOnlineClick()} className="w-[90px] h-11 text-[13px] font-semibold text-white bg-pink-dark rounded-lg transition duration-300 text-center leading-tight">
+              Pay Online <br />
+              <span className="text-[11px] font-light">(UPI)</span>
             </button> */}
-            <button onClick={()=>onContinueCODClick()} className="w-[110px] h-11 text-[13px] font-semibold text-white bg-pink-dark rounded-lg hover:bg-purple-dark transition duration-300 text-center leading-tight">
+            <button onClick={()=>onContinueCODClick()} className="w-[110px] h-11 text-[13px] font-semibold text-white bg-pink-dark rounded-lg transition duration-300 text-center leading-tight">
               Pay Cash/UPI <br />
               <span className="text-[11px] font-light">(On delivery)</span>
             </button>

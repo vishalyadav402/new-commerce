@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from "react";
 import 'tailwindcss/tailwind.css';
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
 import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Image from "next/image";
@@ -50,6 +48,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
   const sendOtp = async () => {
     if (mobileNumber.length === 10) {
       try {
+        setIsLoading(true);
         const response = await fetch("https://api.therashtriya.com/auth/send-otp", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -62,12 +61,15 @@ const Login = ({ isOpen = null, onClose = null }) => {
           setOtpVerified(null);
           setErrorMessage("");
         } else {
+          setIsLoading(false);
           setErrorMessage(data.message || "Failed to send OTP. Please try again.");
         }
       } catch (error) {
+        setIsLoading(false);
         setErrorMessage("Network error. Please try again.");
       }
     } else {
+      setIsLoading(false);
       setErrorMessage("Please enter a valid Whatsapp Number.");
     }
   };
@@ -170,7 +172,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
                       mobileNumber.length === 10 ? "bg-green-700" : "bg-gray-300"
                     } text-white`}
                   >
-                    Send OTP on WhatsApp
+                   {isLoading? "Sending OTP.." : "Send OTP on WhatsApp"}
                   </button>
                   {errorMessage && <p className="text-red-500 text-xs mt-2">{errorMessage}</p>}
                 </div>

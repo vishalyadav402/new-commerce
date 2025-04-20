@@ -2,14 +2,17 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import ClientLayout from "../ClientLayout";
-import { LocalMall, SupportAgent, Home, Person, Logout } from "@mui/icons-material";
+import { LocalMall, SupportAgent, Home, Person, Logout} from "@mui/icons-material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Image from "next/image";
 import axios from "axios";
+import Login from "./Login";
+
 
 const Menu = ({ activeSection, setActiveSection, refresh }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("loginToken");
 
   const menuItems = [
     { name: "Profile", icon: <Person />, route: "/account/profile" },
@@ -58,7 +61,7 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
           <Image src={"/images/userprofile_icon.png"} className="rounded-full" height={40} width={40} alt="image"/>
         </div>
         <div>
-          <h3 className="font-semibold text-md">{userData.name || "User"}</h3>
+          <h3 className="font-semibold text-md leading-none">Welcome, {(userData.name || "User").slice(0, 20)}</h3>
           <p className="text-gray-400 text-[0.9em]">{userData.phone}</p>
         </div>
       </div>
@@ -80,11 +83,18 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
 
 
 
-
 const AccountLayout = ({ children, refresh, loading}) => {
   const router = useRouter();
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("Profile");
+  const [showLogin, setShowLogin] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("loginToken");
+    if (!token) {
+      setShowLogin(true);
+    }
+  }, []);
 
   useEffect(() => {
     // Map path to section name dynamically
@@ -94,7 +104,6 @@ const AccountLayout = ({ children, refresh, loading}) => {
       "/account/order": "Orders",
       "/account/order/order-details": "Order-Details",
       "/account/support": "Support",
-
     };
 
     // Update activeSection based on current path
@@ -115,10 +124,14 @@ const AccountLayout = ({ children, refresh, loading}) => {
             <div onClick={() => router.back()} className="bg-white cursor-pointer border-b p-2 font-semibold flex items-center">
               <ArrowBackIosIcon /> {activeSection}
             </div>
-            <div className="min-h-screen p-4 max-h-screen overflow-y-auto">{children || "loading"}</div>
+            <div className="min-h-screen p-4 max-h-screen overflow-y-auto">{children || "Loading..."}</div>
           </div>
         </div>
       </div>
+
+      {/* Show Login Modal if not authenticated */}
+      <Login isOpen={showLogin} onClose={() => setShowLogin(true)} />
+
     </ClientLayout>
   );
 };

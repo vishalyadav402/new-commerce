@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Loader from "../components/Loader";
+import AccountLayout from "../components/AccountLayout";
 
 const Page = () => {
   const router = useRouter();
@@ -11,9 +11,13 @@ const Page = () => {
        router.replace("/account/profile");
     }, [router]);
 
+   
+
   if (loading) {
     return (
-      <Loader/>
+      <AccountLayout>
+      <></>
+      </AccountLayout>
     );
   }
 

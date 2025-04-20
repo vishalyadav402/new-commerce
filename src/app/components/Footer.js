@@ -52,10 +52,9 @@ const Footer = () => {
           <div className="flex flex-col items-start md:items-start space-y-4">
             <p className='text-lg font-semibold'>All categories</p>
             <ul className="space-y-2 text-sm">
-            <li><a href="/categories" className="text-md font-medium">Grocery</a></li>
-              <li><a href="/categories" className="text-md font-medium">Daily Essentials</a></li>
-              <li><a href="/categories" className="text-md font-medium">Cleaning Needs</a></li>
-              <li><a href="/categories" className="text-md font-medium">Laundary</a></li>
+              <li><a href="/baby-care" className="text-md font-medium">Baby Care</a></li>
+              <li><a href="/cleaning-essentials" className="text-md font-medium">Cleaning Needs</a></li>
+              <li><a href="/personal-care" className="text-md font-medium">Personal Care</a></li>
             </ul>
           </div>
 
@@ -63,10 +62,12 @@ const Footer = () => {
           <div className="flex flex-col items-start md:items-start space-y-4">
             <p className='text-lg font-semibold'>Popular categories</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="/categories" className="text-md font-medium">Fruits & Vegetables</a></li>
-              <li><a href="/categories" className="text-md font-medium">Dairy Products</a></li>
-              <li><a href="/categories" className="text-md font-medium">Food & Beverages</a></li>
-              <li><a href="/categories" className="text-md font-medium">Baby Care</a></li>
+              <li><a href="/cleaning-essentials/floor-and-surface-cleaners" className="text-md font-medium">Floor & Surface Cleaners</a></li>
+              <li><a href="/personal-care/feminine-care" className="text-md font-medium">Feminine Care</a></li>
+              <li><a href="/personal-care/mens-grooming" className="text-md font-medium">Men's Grooming</a></li>
+              <li><a href="/personal-care/bathing-soaps" className="text-md font-medium">Bathing Soaps</a></li>
+              <li><a href="/personal-care/facial-care" className="text-md font-medium">Facial Care</a></li>
+              <li><a href="/personal-care/womens-grooming" className="text-md font-medium">Woomen's Grooming</a></li>
             </ul>
           </div>
 
