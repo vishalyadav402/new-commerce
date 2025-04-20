@@ -12,7 +12,6 @@ import Login from "./Login";
 const Menu = ({ activeSection, setActiveSection, refresh }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const token = localStorage.getItem("loginToken");
 
   const menuItems = [
     { name: "Profile", icon: <Person />, route: "/account/profile" },
