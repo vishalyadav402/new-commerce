@@ -7,11 +7,11 @@ import { IconButton } from "@mui/material";
 import PlaceIcon from '@mui/icons-material/Place';
 const Page = () => {
   const [addresses, setAddresses] = useState([]);
-  const LoginToken = "";
-  // localStorage.getItem("loginToken")&&localStorage.getItem('loginToken');
  
   useEffect(() => {
     const fetchAddresses = async () => {
+      const LoginToken = localStorage.getItem("loginToken");
+      if (!LoginToken) return;
       try {
         const response = await axios.get('https://api.therashtriya.com/user/delivery-address', {
           headers: {

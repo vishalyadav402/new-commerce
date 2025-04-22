@@ -10,6 +10,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 // import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { Box, Modal } from '@mui/material';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 const ManageCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -171,7 +172,7 @@ const toggleCategory = (categoryID) => {
 };
   return (
     <AdminLayout>
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-20">
       <div className="flex mb-4">
         <button className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded mr-2" onClick={() => handleOpen()}>Add Category</button>
         <button className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded" onClick={() => handleOpenSubcategory()}>Add Subcategory</button>
@@ -230,7 +231,21 @@ const toggleCategory = (categoryID) => {
           <React.Fragment key={category.CategoryID}>
             <tr className="bg-gray-100 border-b">
               <td className="py-2 px-4">
-                <img src={category.CategoryImage} alt={category.CategoryName} className="w-12 h-12" />
+                {/* <img src={category.CategoryImage} alt={category.CategoryName} className="w-12 h-12" /> */}
+                <div className="h-[52px] w-[52px] overflow-hidden bg-white p-1">
+                  <Image
+                    src={category.CategoryImage || "/images/placeholder-icon.png"}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      position: "relative",
+                      transform: "scale(0.99)",
+                    }}
+                    height={100}
+                    width={100}
+                    alt={category.CategoryName}
+                  />
+                </div>
               </td>
               <td className="py-2 px-4 font-medium self-center">
                 <div className='flex'>

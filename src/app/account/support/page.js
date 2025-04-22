@@ -9,24 +9,24 @@ function Page() {
   const [status, setStatus] = useState('');
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     setStatus('Sending...');
     emailjs.send(
-      'service_atxmjsq', // Replace with your actual EmailJS Service ID
-      'template_1ipcgn2', // Replace with your actual EmailJS Template ID
+      'service_atxmjsq', // EmailJS Service ID
+      'template_1ipcgn2', // EmailJS Template ID
       {
         mobile: data.mobile,
         email: data.email,
         message: data.message,
       },
-      'LS8vhY88JQ7oXhUxW' // Replace with your actual EmailJS Public Key
+      'LS8vhY88JQ7oXhUxW' // EmailJS Public Key
     )
     .then(() => {
       setStatus('Message sent successfully!');
       reset();
     })
     .catch((err) => {
-      console.error('FAILED...', err);
+      // console.error('FAILED...', err);
       setStatus('Failed to send message. Please try again later.');
     });
   };

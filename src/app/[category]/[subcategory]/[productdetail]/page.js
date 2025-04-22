@@ -44,7 +44,7 @@ const slug = params.productdetail;
      try {
         !slug&&alert("Product Slug is empty!, please check database product table.");
          const response = await axios.get('https://api.therashtriya.com/api/products/'+slug);
-         setproductdetails(response.data[0]);
+         setproductdetails(response.data);
        } catch (error) {
          console.error(error);
        }

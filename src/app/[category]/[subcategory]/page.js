@@ -4,7 +4,6 @@ import axios from "axios";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState, useMemo, useRef } from "react";
-import GridViewIcon from "@mui/icons-material/GridView";
 import ClientLayout from "@/app/ClientLayout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -51,7 +50,7 @@ const Page = () => {
         const response = await axios.get(
           `https://api.therashtriya.com/api/products?category=${url_category}&subcategory=${url_subcategory || ""}`
         );
-        // alert(JSON.stringify(response.data))
+        // console.log(JSON.stringify(response.data))
         setProductData(response.data);
       } catch (error) {
         setError(error);
@@ -167,7 +166,7 @@ const Page = () => {
                       }}
                       height={100}
                       width={100}
-                      alt="subcategory image"
+                      alt={subcategory.SubcategoryName}
                     />
                   </div>
                   <p className="md:self-center md:ps-2 text-gray-500 text-center md:text-start font-normal md:text-gray-700 md:font-medium text-[11px] leading-none md:text-sm text-ellipsis line-clamp-3 overflow-hidden">
@@ -180,7 +179,7 @@ const Page = () => {
 
           {/* ✅ Products (Updates Only on Subcategory Click) */}
           <div className="col-span-4 max-h-[75vh] overflow-auto no-scrollbar">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 min-h-screen p-1 md:gap-2 bg-gray-100 md:p-4 p:2 rounded">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 p-1 md:gap-2 bg-gray-100 md:p-4 p:2 rounded">
               {loading ? (
                 <p className="col-span-full">Loding Products...</p>
               ) : error ? (

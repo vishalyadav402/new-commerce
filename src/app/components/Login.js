@@ -44,7 +44,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
     setErrorMessage("");
     setSuccessMessage("");
   };
-
+// send otp
   const sendOtp = async () => {
     if (mobileNumber.length === 10) {
       try {
@@ -60,6 +60,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
           setOtpSent(true);
           setOtpVerified(null);
           setErrorMessage("");
+          setIsLoading(false);
         } else {
           setIsLoading(false);
           setErrorMessage(data.message || "Failed to send OTP. Please try again.");
@@ -73,7 +74,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
       setErrorMessage("Please enter a valid Whatsapp Number.");
     }
   };
-
+// verify otp
   const verifyOtp = async () => {
     setIsLoading(true);
     if (otp.length === 6) {
@@ -117,6 +118,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
 
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+// logout
   // const logout = () => {
   //   localStorage.removeItem("loginToken"); 
   //   window.location.reload(); // Refresh the page to apply logout state
@@ -157,13 +159,13 @@ const Login = ({ isOpen = null, onClose = null }) => {
                   <div className="flex mt-1 w-full max-w-80 relative">
                     <input
                       type="text"
-                      className="flex-1 block w-full pl-12 pr-3 py-3 placeholder:text-base placeholder:tracking-wide text-xl tracking-widest bg-white border border-purple-300 rounded-xl focus:outline-none focus:ring-0"
+                      className="flex-1 block w-full pl-14 pr-3 py-3 placeholder:text-base placeholder:tracking-wide text-xl tracking-widest bg-white border border-purple-300 rounded-xl focus:outline-none focus:ring-0"
                       placeholder="Enter Whatsapp Number"
                       maxLength="10"
                       value={mobileNumber}
                       onChange={(e) => setMobileNumber(e.target.value.replace(/[^0-9]/g, ""))}
                     />
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><span className="text-green-500"><WhatsAppIcon/></span></span>
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><span className="text-green-500"><WhatsAppIcon className="h-8 w-8"/></span></span>
                   </div>
                   <button
                     onClick={sendOtp}

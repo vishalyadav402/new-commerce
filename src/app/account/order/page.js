@@ -23,9 +23,10 @@ const router = useRouter();
   // order api fetch----------------
   useEffect(() => {
     const fetchOrders = async () => {
+      if (!loginToken) return;
       try {
         const response = await axios.get("https://api.therashtriya.com/api/orders", {
-          headers: { Authorization: `Bearer ${LoginToken}` },
+          headers: { Authorization: `Bearer ${loginToken}` },
         });
         setOrders(response.data);
       } catch (error) {

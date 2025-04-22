@@ -41,22 +41,24 @@ const AllCategory = () => {
                   category.cat_isActive === true || category.cat_isActive === "true"
               ) // Filter only active categories
               .map((category) => (
-                <div
+                <>
+                {category.CategoryImage&& <div
                   className="cursor-pointer shadow-sm rounded-xl"
                   onClick={() => router.push("/" + category.Cat_Slug)}
                   key={category.CategoryID}
                 >
                   <div className="flex justify-center text-center rounded-xl shadow-sm">
                     <Image
-                      src={category.CategoryImage || "/icon.png"}
+                      src={category.CategoryImage || "/images/placeholder-icon.png"}
                       alt={category.CategoryName}
                       className="w-full h-24 object-contain rounded-xl"
                       height={100}
                       width={100}
-                      style={{ height: "100%", width: "100%" }}
+                      style={{ height: "100%", width: "100%"}}
                     />
                   </div>
-                </div>
+                </div>}
+                </>
               ))}
       </div>
     </div>

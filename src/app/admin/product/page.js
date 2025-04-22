@@ -183,17 +183,24 @@ const Product = () => {
           </thead>
           <tbody>
             {[...products].reverse().map((product) => (
+              <>
               <tr key={product.ProductID}>
                 <td className="border border-gray-300 px-4 py-2">
-                  {product.ProductImage && (
-                    <Image
-                      src={product.ProductImage}
-                      alt={product.ProductName}
-                      height={100}
-                      width={100}
-                      className="h-20 w-20 object-cover rounded-xl shadow-lg bg-white px-3 py-1"
-                    />
-                  )}
+                    <div className="h-[52px] w-[52px] overflow-hidden bg-white">
+                      <Image
+                        src={product.ProductImage || "/images/placeholder-icon.png"}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          position: "relative",
+                          transform: "scale(0.99)",
+                        }}
+                        height={100}
+                        width={100}
+                        alt={product.ProductName}
+                        // onClick={() => setIsModalOpen(true)}
+                      />
+                    </div>
                 </td>
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.6rem] md:text-sm leading-none">
                   {product.ProductName}  <Addproductcategory ProdID={product.ProductID}/>
@@ -207,7 +214,7 @@ const Product = () => {
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm">
                 {product.ProductPrice}
                 </td>
-                <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
+                <td className="border border-gray-300 text-green-700 px-2 md:px-4 py-2 text-[0.7rem] md:text-sm leading-none">
                 {product.ProductMrp && product.ProductPrice ? `${Math.round(((product.ProductMrp - product.ProductPrice) / product.ProductMrp) * 100)}%` : "0%"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
@@ -228,6 +235,8 @@ const Product = () => {
 
                 </td>
               </tr>
+              
+              </>
             ))}
           </tbody>
         </table>
@@ -348,6 +357,10 @@ const Product = () => {
           </div>
         </Box>
       </Modal>
+
+     
+
+
     </div>
     </AdminLayout>
   );

@@ -19,7 +19,7 @@ export default function Home() {
  
     const product_Data = async ()=>{
         try {
-            const response = await axios.get('https://api.therashtriya.com/api/products');
+            const response = await axios.get('https://api.therashtriya.com/api/products?category=baby-care&subcategory=');
             setproductData(response.data);
           } catch (error) {
             console.error(error);
@@ -70,8 +70,8 @@ export default function Home() {
           <ProductSlider productData={productData} />
         
           {/* Product Slider */}
-          <p className="text-2xl text-gray-700 mt-4 font-bold">Explore by Products</p>
-          <ProductSlider productData={productData} />
+          {/* <p className="text-2xl text-gray-700 mt-4 font-bold">Explore by Products</p>
+          <ProductSlider productData={productData} /> */}
         </div>
       </main>
     </ClientLayout>
