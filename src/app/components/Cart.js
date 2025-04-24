@@ -269,7 +269,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
 
         <Login isOpen={showLogin} onClose={() => setShowLogin(false)} />
         <AddNewAddress open={DeliveryaddressOpen} setOpen={setDeliveryaddressOpen} handleOpen={handleOpen}/>
-        <OrderStatus open={openorderStatus} setOpen={setOpenorderstatus} cartopen={setOpen} onCancel={handleCancel} totalPrice={totalAmount + DeliveryCharge} orderStatus="processing" />
+        <OrderStatus open={openorderStatus} setOpen={setOpenorderstatus} cartopen={setOpen} onCancel={handleCancel} deliveryaddress={savedAddress.floor+","+savedAddress.buildingName+","+savedAddress.landmark} deliveryfee={DeliveryCharge} totalPrice={totalAmount + DeliveryCharge} orderStatus="processing" />
 
         {/* when address and login is captured */}
         <div className="mt-3 bg-white rounded-lg">

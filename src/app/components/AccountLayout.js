@@ -64,17 +64,19 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
           <p className="text-gray-400 text-[0.9em]">{userData.phone}</p>
         </div>
       </div>
-      {menuItems.map((item) => (
-        <button
-          key={item.name}
-          onClick={() => handleMenuClick(item)}
-          className={`flex items-center space-x-3 w-full text-[0.9em] text-left p-4 border-b transition ${
-            activeSection === item.name ? "bg-gray-300" : ""
-          }`}
-        >
-          {item.icon} <span>{item.name}</span>
-        </button>
-      ))}
+      {menuItems
+  .filter((item) => item.name !== "Orders-deta")
+  .map((item) => (
+    <button
+      key={item.name}
+      onClick={() => handleMenuClick(item)}
+      className={`flex items-center space-x-3 w-full text-[0.9em] text-left p-4 border-b transition ${
+        activeSection === item.name ? "bg-gray-300" : ""
+      }`}
+    >
+      {item.icon} <span>{item.name}</span>
+    </button>
+))}
     </div>
   );
 };
@@ -101,7 +103,6 @@ const AccountLayout = ({ children, refresh, loading}) => {
       "/account/profile": "Profile",
       "/account/addresses": "Addresses",
       "/account/order": "Orders",
-      "/account/order/order-details": "Order-Details",
       "/account/support": "Support",
     };
 

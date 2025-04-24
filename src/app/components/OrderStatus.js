@@ -7,13 +7,15 @@ import { emptyCart } from "@/store/cartSlice";
 import { CheckCircle } from "@mui/icons-material";
 import { format } from "date-fns";
 import CloseIcon from "@mui/icons-material/Close";
+import { useRouter } from "next/navigation";
 
-const OrderStatus = ({ open, setOpen, cartopen, onCancel, totalPrice, cartItems = [] }) => {
+const OrderStatus = ({ open, setOpen, cartopen, onCancel, deliveryaddress, deliveryfee, totalPrice, cartItems = [] }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [cancelled, setCancelled] = useState(false);
 
   const LoginToken = localStorage.getItem("loginToken");
+  const router = useRouter();
 
   useEffect(() => {
     if (open && !cancelled) {
@@ -23,34 +25,25 @@ const OrderStatus = ({ open, setOpen, cartopen, onCancel, totalPrice, cartItems 
   }, [open, cancelled]);
 
   const placeOrder = async () => {
-    // if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
-    //   console.error("cartItems is undefined or empty.");
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Cart is Empty",
-    //     text: "Please add items to your cart before placing an order.",
-    //   });
-    //   setLoading(false);
-    //   setOpen(false);
-    //   return;
-    // }
+  
 
 //cartState
 const cartState = JSON.parse(localStorage.getItem('cartState')) || { items: [], totalQuantity: 0, totalAmount: 0 };
-toast.success(JSON.stringify(cartState.totalAmount))   
 try {
       const data = {
         total_amount: cartState.totalAmount,
         payment_method: "POD",
+        deliveryaddress: deliveryaddress,
+        deliveryfee:deliveryfee,
         items: cartState.items.map((item) => ({
           product_id: item.id,
           quantity: item.quantity,
           price: parseFloat(item.price), // Convert price to number
         })),
       };
+      
       const response = await axios.post(
-        "https://api.therashtriya.com/api/orders",
-        data,
+        "https://api.therashtriya.com/api/orders",data,
         {
           headers: {
             "Content-Type": "application/json",
@@ -62,7 +55,6 @@ try {
       setLoading(false);
       handleSuccess(response.data);
     } catch (error) {
-      toast.error("Order placement error:"+ error);
       setLoading(false);
       handleError(error);
     }
@@ -77,6 +69,7 @@ try {
       title: "Order Placed!",
       text: "Your order has been placed successfully.",
     });
+    router.push("/account/order/"+data.order_id)
   };
 
   const handleError = (error) => {
@@ -98,11 +91,18 @@ try {
     }).then(() => onCancel());
   };
 
-  const orderDate = new Date().toISOString(); // Capture once at order placement
-  const formattedDateTime = format(new Date(orderDate), "PPpp");
+
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+
+  useEffect(() => {
+    const orderDate = new Date();
+    const formatted = orderDate.toLocaleString();
+    setFormattedDateTime(formatted);
+  }, []);
+
   const paymentStatus = "upi" ;
   
-
+// to check payment status
   const getPaymentStatusLabel = () => {
     if (paymentStatus === "upi") {
       return (
@@ -140,7 +140,7 @@ try {
            <div className="flex items-center space-x-3 mb-4">
         <CheckCircle className="text-green-600" />
         <h2 className="text-green-800 text-xl font-semibold">Order Confirmed!</h2>
-      </div>
+           </div>
       <p className="text-green-700 mb-2">We've received your order and it's being processed.</p>
       
       <div className="bg-white p-4 rounded-xl border border-green-200 shadow-sm mb-4">

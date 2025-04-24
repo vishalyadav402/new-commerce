@@ -5,37 +5,61 @@ import axios from 'axios';
 import { Edit, Delete } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import PlaceIcon from '@mui/icons-material/Place';
+import toast from 'react-hot-toast';
+import AddNewAddress from '@/app/components/Addnewaddress';
 const Page = () => {
   const [addresses, setAddresses] = useState([]);
- 
+  const LoginToken = localStorage.getItem("loginToken");
+
+
+  const fetchAddresses = async () => {
+
+    if (!LoginToken) return;
+    try {
+      const response = await axios.get('https://api.therashtriya.com/user/delivery-address', {
+        headers: {
+          'Authorization': `Bearer ${LoginToken}`
+        }
+      });
+      setAddresses(response.data);
+    } catch (error) {
+      console.error("Error fetching addresses:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchAddresses = async () => {
-      const LoginToken = localStorage.getItem("loginToken");
-      if (!LoginToken) return;
-      try {
-        const response = await axios.get('https://api.therashtriya.com/user/delivery-address', {
-          headers: {
-            'Authorization': `Bearer ${LoginToken}`
-          }
-        });
-        setAddresses(response.data);
-      } catch (error) {
-        console.error("Error fetching addresses:", error);
-      }
-    };
     fetchAddresses();
   }, []);
 
- 
- 
+//  delete address
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`https://api.therashtriya.com/user/delivery-address/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${LoginToken}`
+        }
+      });
+  
+      toast.success("Address deleted successfully!");
+      fetchAddresses(); 
+  
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete the address. Please try again.");
+    }
+  };
 
+   //for delivery address
+    const [DeliveryaddressOpen, setDeliveryaddressOpen] = useState(false);
+    const handleOpen = () => setDeliveryaddressOpen(true);
   return (
     <AccountLayout>
       <div className="flex justify-between items-center border-b pb-4 mb-4">
         <h3 className="text-md font-semibold">All Saved Addresses</h3>
         <button
           className="bg-pink-500 hover:bg-pink-600 text-[0.8em] text-white px-4 py-2 rounded-md"
-          onClick={() => setShowForm(true)}
+          // onClick={() => setShowForm(true)}
+          onClick={() =>handleOpen()}
         >
           Add New Address
         </button>
@@ -67,6 +91,8 @@ const Page = () => {
       ) : (
         <p className="text-gray-500 text-sm">No saved addresses.</p>
       )}
+
+     <AddNewAddress open={DeliveryaddressOpen} setOpen={setDeliveryaddressOpen} handleOpen={handleOpen}/>
     </AccountLayout>
   );
 };

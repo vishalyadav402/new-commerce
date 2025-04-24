@@ -37,21 +37,24 @@ const router = useRouter();
     };
 
     fetchOrders();
-  }, []);
+  }, [loginToken]);
 // order------------------------
   return (
     <AccountLayout>
       <div>
           {orders.map((order, index) => (
             <div key={index} className="p-4 bg-white border rounded-md mb-4">
-              <div className="flex justify-between items-center border-b cursor-pointer" onClick={()=>router.push('/account/order/'+ JSON.stringify(order))}>
+              <p className='text-[0.5em]'>{JSON.stringify(order)}</p>
+              <div className="flex justify-between items-center border-b cursor-pointer" onClick={()=>router.push('/account/order/'+ JSON.stringify(order.order_id))}>
                 <div>
                   <div className="flex justify-start items-center gap-2 mb-2">
-                    <Image src={"/images/userprofile_icon.png"} className="rounded-md" height={40} width={40} alt={"/images/userprofile_icon.png"} />
-                    <Image src={"/images/userprofile_icon.png"} className="rounded-md" height={40} width={40} alt={"/images/userprofile_icon.png"}/>
-                    <Image src={"/images/userprofile_icon.png"} className="rounded-md" height={40} width={40} alt={"/images/userprofile_icon.png"}/>
+                {order.items.map((item) => (
+                  <div key={item.order_item_id}>
+                    <Image src={"https://api.therashtriya.com"+item.ProductImage} alt={item.ProductName} className="rounded-md" height={80} width={80} />
                   </div>
-                  <p className="font-semibold text-[0.8em] text-gray-800">Order {order.status}</p>
+                    ))}
+                    </div>
+                  <p className="font-semibold text-[0.8em] capitalize text-gray-800">Order {order.status}</p>
                   <p className="text-gray-400 text-[0.8em]">Placed at {new Date(order.created_at).toLocaleString()}</p>
                   <p className="font-light text-[0.8em] text-gray-400">Payment Method ({order.payment_method})</p>
                 </div>
