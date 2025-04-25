@@ -81,11 +81,11 @@ const slug = params.productdetail;
     {/* right part */}
     <div class="col-span-1 md:col-span-1 p-3 md:p-10 overflow-y-auto max-h-[100vh] border">
       <div>
-        <p className='text-gray-400 font-semibold text-[0.75rem]'>{params.category+"/"+params.subcategory+"/"+params.productdetail}
+        <p className='text-gray-400 font-medium capitalize text-[0.75rem]'>{params.category+"/"+params.subcategory+"/"+params.productdetail}
           {/* {productdetails?.ProductName}*/}</p>
         <p className='text-[1.5rem] leading-tight font-semibold my-2'>{productdetails?.ProductName}</p>
-        <p className='bg-[#f0f0f0] rounded-sm p-1 my-2 text-gray-400 text-sm max-w-[5rem] text-center'>30 Mins</p>
-        <a href='/' className='text-[#0C831F] text-[18px] font-[500] my-1'>View all by Shop Name <ArrowRightIcon/></a>
+        <p className='bg-[#f0f0f0] rounded-sm p-1 my-2 text-gray-400 text-sm max-w-[5rem] text-center'>90 Mins</p>
+        {/* <a href='/' className='text-[#0C831F] text-[18px] font-[500] my-1'>View all by Shop Name <ArrowRightIcon/></a> */}
         <hr class="border-t border-gray-200 my-5"/>
       </div>
 
@@ -105,10 +105,10 @@ const slug = params.productdetail;
           {whyshopquestions.map((item,index)=>(<>
           <div className='flex mb-5'>
             <div className="self-center">
-            <div style={{width:'50px',width:'50px'}}><Image src={item.imgicon} height={100} width={100} style={{height:'100%',width:'100%'}}></Image></div>
+            <div style={{width:'70px',width:'70px'}}><Image src={item.imgicon} height={100} width={100} style={{height:'100%',width:'100%'}}></Image></div>
             </div>
             <div className='self-center ps-5'>
-              <p className='text-[0.75rem] text-gray-800'>{item.title}</p>
+              <p className='text-[0.85rem] font-medium text-gray-800'>{item.title}</p>
               <p className='text-[0.75rem] text-gray-500'>{item.para}</p>
             </div>
           </div>

@@ -44,13 +44,13 @@ const router = useRouter();
       <div>
           {orders.map((order, index) => (
             <div key={index} className="p-4 bg-white border rounded-md mb-4">
-              <p className='text-[0.5em]'>{JSON.stringify(order)}</p>
-              <div className="flex justify-between items-center border-b cursor-pointer" onClick={()=>router.push('/account/order/'+ JSON.stringify(order.order_id))}>
+              {/* <p className='text-[0.5em]'>{JSON.stringify(order)}</p> */}
+              <div className="flex justify-between items-center cursor-pointer" onClick={()=>router.push('/account/order/'+ JSON.stringify(order.order_id))}>
                 <div>
                   <div className="flex justify-start items-center gap-2 mb-2">
                 {order.items.map((item) => (
-                  <div key={item.order_item_id}>
-                    <Image src={"https://api.therashtriya.com"+item.ProductImage} alt={item.ProductName} className="rounded-md" height={80} width={80} />
+                  <div key={item.order_item_id} className='h-14 w-14'>
+                    <Image src={"https://api.therashtriya.com"+item.ProductImage} alt={item.ProductName} className="rounded-md object-contain" style={{height:'60px',width:'60px'}} height={100} width={100} />
                   </div>
                     ))}
                     </div>
@@ -63,9 +63,9 @@ const router = useRouter();
                 <button className='flex mt-2 bg-green-100 text-green-700 rounded-sm ps-2 py-0 self-center font-semibold text-[0.8em]'>View Order<NavigateNextIcon/></button>
                 </div>
               </div>
-              <div className='text-center mt-2'>
+              {/* <div className='text-center mt-2'>
               <button className="text-red-500 font-semibold my-1 text-[0.8em]">Order Again</button>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

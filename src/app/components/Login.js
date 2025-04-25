@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import 'tailwindcss/tailwind.css';
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import CloseIcon from "@mui/icons-material/Close";
@@ -16,11 +16,22 @@ const Login = ({ isOpen = null, onClose = null }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const mobileInputRef = useRef(null);
+  const otpInputsRef = useRef([]);
+
   useEffect(() => {
     if (isOpen !== null) {
       setIsModalOpen(isOpen);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (otpSent) {
+      setTimeout(() => otpInputsRef.current[0]?.focus(), 100);
+    } else {
+      setTimeout(() => mobileInputRef.current?.focus(), 100);
+    }
+  }, [otpSent]);
 
   const openModal = () => {
     if (isOpen === null) {
@@ -44,7 +55,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
     setErrorMessage("");
     setSuccessMessage("");
   };
-// send otp
+
   const sendOtp = async () => {
     if (mobileNumber.length === 10) {
       try {
@@ -74,7 +85,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
       setErrorMessage("Please enter a valid Whatsapp Number.");
     }
   };
-// verify otp
+
   const verifyOtp = async () => {
     setIsLoading(true);
     if (otp.length === 6) {
@@ -82,32 +93,31 @@ const Login = ({ isOpen = null, onClose = null }) => {
         const response = await fetch("https://api.therashtriya.com/auth/verify-otp", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ phone: mobileNumber,otp: otp}),
+          body: JSON.stringify({ phone: mobileNumber, otp: otp }),
         });
 
         const data = await response.json();
         if (response.ok) {
-          setOtpSent(true);
           setOtpVerified(null);
           setErrorMessage("");
-         //store token value 
+
           setTimeout(() => {
             const newToken = data.token;
             localStorage.setItem("loginToken", newToken);
-            
+
             setOtpVerified(true);
             setSuccessMessage("You are logged in successfully!");
             setIsLoading(false);
             setTimeout(() => closeModal(), 3000);
           }, 3000);
-
         } else {
+          setIsLoading(false);
           setErrorMessage(data.message || "Failed to verify OTP. Please try again.");
         }
       } catch (error) {
+        setIsLoading(false);
         setErrorMessage("Network error. Please try again.");
       }
-    
     } else {
       setOtpVerified(false);
       setErrorMessage("Incorrect OTP. Please try again.");
@@ -115,25 +125,36 @@ const Login = ({ isOpen = null, onClose = null }) => {
     }
   };
 
+  const handleOtpChange = (value, index) => {
+    if (!/^\d?$/.test(value)) return;
+    const otpArray = otp.split('');
+    otpArray[index] = value;
+    const updatedOtp = otpArray.join('').padEnd(6, '');
+    setOtp(updatedOtp);
 
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+    if (value && index < 5) {
+      otpInputsRef.current[index + 1]?.focus();
+    }
+  };
 
-// logout
-  // const logout = () => {
-  //   localStorage.removeItem("loginToken"); 
-  //   window.location.reload(); // Refresh the page to apply logout state
-  // };
+  const handleOtpKeyDown = (e, index) => {
+    if (e.key === 'Backspace' && !otp[index] && index > 0) {
+      const otpArray = otp.split('');
+      otpArray[index - 1] = '';
+      setOtp(otpArray.join('').padEnd(6, ''));
+      otpInputsRef.current[index - 1]?.focus();
+    }
+  };
 
   return (
     <>
-        {isOpen === null && (
-          <button
-            onClick={openModal}
-            className="text-gray-700 font-medium hover:text-gray-900 mb-2 md:mb-0 md:ml-4">
-            Login
-          </button>
-        )}
-     
+      {isOpen === null && (
+        <button
+          onClick={openModal}
+          className="text-gray-700 font-medium hover:text-gray-900 mb-2 md:mb-0 md:ml-4">
+          Login
+        </button>
+      )}
 
       {(isModalOpen || isOpen) && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -143,7 +164,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
             </button>
 
             <div className="flex justify-center mb-4">
-            <Image src="/icon.png" height={80} width={80} className="text-gray-700" alt="logo"></Image>
+              <Image src="/icon.png" height={80} width={80} className="text-gray-700" alt="logo" />
             </div>
 
             <button onClick={closeModal} className="absolute top-6 right-6 text-pink-dark hover:text-purple-dark">
@@ -158,6 +179,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
                 <div className="flex flex-col mt-1 w-full max-w-80 relative">
                   <div className="flex mt-1 w-full max-w-80 relative">
                     <input
+                      ref={mobileInputRef}
                       type="text"
                       className="flex-1 block w-full pl-14 pr-3 py-3 placeholder:text-base placeholder:tracking-wide text-xl tracking-widest bg-white border border-purple-300 rounded-xl focus:outline-none focus:ring-0"
                       placeholder="Enter Whatsapp Number"
@@ -165,7 +187,9 @@ const Login = ({ isOpen = null, onClose = null }) => {
                       value={mobileNumber}
                       onChange={(e) => setMobileNumber(e.target.value.replace(/[^0-9]/g, ""))}
                     />
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"><span className="text-green-500"><WhatsAppIcon className="h-8 w-8"/></span></span>
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                      <WhatsAppIcon className="text-green-500 h-8 w-8" />
+                    </span>
                   </div>
                   <button
                     onClick={sendOtp}
@@ -174,21 +198,31 @@ const Login = ({ isOpen = null, onClose = null }) => {
                       mobileNumber.length === 10 ? "bg-green-700" : "bg-gray-300"
                     } text-white`}
                   >
-                   {isLoading? "Sending OTP.." : "Send OTP on WhatsApp"}
+                    {isLoading ? "Sending OTP.." : "Send OTP on WhatsApp"}
                   </button>
                   {errorMessage && <p className="text-red-500 text-xs mt-2">{errorMessage}</p>}
                 </div>
               ) : (
                 <div className="flex flex-col w-full max-w-80 items-center justify-center mb-4">
-                  <p className="text-green-500 text-xs mb-2"><span className="text-green-500"><WhatsAppIcon/></span> OTP sent on {mobileNumber}.</p>
-                  <input
-                    type="text"
-                    className="flex-1 text-center block w-full px-3 py-3 bg-white border border-purple-300 rounded-xl focus:outline-none focus:ring-0"
-                    placeholder="Enter OTP"
-                    maxLength="6"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                  />
+                  <p className="text-green-500 text-xs mb-2">
+                    <WhatsAppIcon /> OTP sent on {mobileNumber}.
+                  </p>
+
+                  <div className="flex justify-center gap-2 mt-2">
+                    {[...Array(6)].map((_, index) => (
+                      <input
+                        key={index}
+                        ref={(el) => (otpInputsRef.current[index] = el)}
+                        type="text"
+                        maxLength={1}
+                        value={otp[index] || ""}
+                        onChange={(e) => handleOtpChange(e.target.value, index)}
+                        onKeyDown={(e) => handleOtpKeyDown(e, index)}
+                        className="w-12 h-12 text-center border border-purple-300 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      />
+                    ))}
+                  </div>
+
                   <button
                     onClick={verifyOtp}
                     disabled={otp.length !== 6 || isLoading}
@@ -199,17 +233,6 @@ const Login = ({ isOpen = null, onClose = null }) => {
                     {isLoading ? "Verifying OTP..." : "Verify OTP"}
                   </button>
 
-                  {/* {otpVerified !== null && (
-                    <div className="mt-4">
-                      {otpVerified ? (
-                        <div className="flex gap-2">
-                          <CheckCircleIcon className="text-green-700" fontSize="large" /> OTP Verified!
-                        </div>
-                      ) : (
-                        <CancelIcon className="text-red-500" fontSize="large" />
-                      )}
-                    </div>
-                  )} */}
                   {errorMessage && <p className="text-red-500 text-xs mt-2">{errorMessage}</p>}
                   {successMessage && <p className="text-green-500 text-xs mt-2">{successMessage}</p>}
                 </div>

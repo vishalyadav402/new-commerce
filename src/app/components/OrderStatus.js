@@ -27,9 +27,9 @@ const OrderStatus = ({ open, setOpen, cartopen, onCancel, deliveryaddress, deliv
   const placeOrder = async () => {
   
 
-//cartState
-const cartState = JSON.parse(localStorage.getItem('cartState')) || { items: [], totalQuantity: 0, totalAmount: 0 };
-try {
+    //cartState
+    const cartState = JSON.parse(localStorage.getItem('cartState')) || { items: [], totalQuantity: 0, totalAmount: 0 };
+    try {
       const data = {
         total_amount: cartState.totalAmount,
         payment_method: "POD",
@@ -58,7 +58,7 @@ try {
       setLoading(false);
       handleError(error);
     }
-  };
+    };
 
   const handleSuccess = (data) => {
     setOpen(false);

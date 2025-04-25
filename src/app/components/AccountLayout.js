@@ -7,6 +7,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Image from "next/image";
 import axios from "axios";
 import Login from "./Login";
+import { useParams } from "next/navigation";
 
 
 const Menu = ({ activeSection, setActiveSection, refresh }) => {
@@ -22,6 +23,12 @@ const Menu = ({ activeSection, setActiveSection, refresh }) => {
   ];
 
   const handleMenuClick = (item) => {
+    if (item.name === "Log Out") {
+      localStorage.removeItem("loginToken");
+      location.reload(); // or set a state to trigger login modal
+      return;
+    }
+  
     setActiveSection(item.name);
     if (item.route) {
       router.push(item.route);
@@ -98,19 +105,22 @@ const AccountLayout = ({ children, refresh, loading}) => {
   }, []);
 
   useEffect(() => {
-    // Map path to section name dynamically
-    const sectionMap = {
-      "/account/profile": "Profile",
-      "/account/addresses": "Addresses",
-      "/account/order": "Orders",
-      "/account/support": "Support",
-    };
-
-    // Update activeSection based on current path
-    if (sectionMap[pathname]) {
-      setActiveSection(sectionMap[pathname]);
+    if (pathname.startsWith("/account/profile")) {
+      setActiveSection("Profile");
+    } else if (pathname.startsWith("/account/addresses")) {
+      setActiveSection("Addresses");
+    } else if (pathname.startsWith("/account/order")) {
+      setActiveSection("Orders");
+    } else if (pathname.startsWith("/account/support")) {
+      setActiveSection("Customer Support");
     }
   }, [pathname]);
+
+
+// Inside your component:
+const params = useParams();
+const paramKey = Object.keys(params)[0]; // returns 'order-details'
+const displayTitle = paramKey === "order-details" ? paramKey : activeSection;
 
   return (
     <ClientLayout>
@@ -121,9 +131,11 @@ const AccountLayout = ({ children, refresh, loading}) => {
 
           {/* Main Content */}
           <div className="md:w-3/4 w-full bg-gray-50">
-            <div onClick={() => router.back()} className="bg-white cursor-pointer border-b p-2 font-semibold flex items-center">
-              <ArrowBackIosIcon /> {activeSection}
-            </div>
+          <div onClick={() => router.back()} className="bg-white capitalize cursor-pointer border-b p-2 font-semibold flex items-center">
+            <ArrowBackIosIcon />
+            {displayTitle}
+          </div>
+
             <div className="min-h-screen p-4 max-h-screen overflow-y-auto">{children || "Loading..."}</div>
           </div>
         </div>

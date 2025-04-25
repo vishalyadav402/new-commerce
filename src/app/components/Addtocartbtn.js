@@ -70,7 +70,7 @@ const Addtocartbtn = ({ data, pagetitle}) => {
           onClick={() => {
             increment();
           }}
-          className="px-4 py-[0.4em] font-medium text-[0.9em] text-gray-700 bg-white rounded-md border border-purple-300"
+          className="px-4 py-[0.4em] font-medium text-[0.9em] text-beige-light bg-pink-dark rounded-md border border-purple-300"
         >
           Add to Cart
         </button>

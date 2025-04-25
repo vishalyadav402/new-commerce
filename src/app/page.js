@@ -1,30 +1,12 @@
 "use client";
 
 import AllCategory from "@/app/components/AllCategory";
-import ProductSlider from "@/app/components/ProductSlider";
 import Image from "next/image";
 import ClientLayout from "./ClientLayout";
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import HeroCarousel from "./components/HeroCarousel";
+import CategorisedProducts from "./components/CategorisedProducts";
 
 export default function Home() {
-
-  useEffect(() => {
-    product_Data();
-   }, [])
-   
- 
-   const [productData, setproductData]=useState([]);
- 
-    const product_Data = async ()=>{
-        try {
-            const response = await axios.get('https://api.therashtriya.com/api/products?category=baby-care&subcategory=');
-            setproductData(response.data);
-          } catch (error) {
-            console.error(error);
-          }
-    }
 
   return (
     <ClientLayout>
@@ -66,12 +48,8 @@ export default function Home() {
           <AllCategory />
 
           {/* Product Slider */}
-          <p className="text-2xl text-gray-700 mt-4 font-bold">Baby Care Products</p>
-          <ProductSlider productData={productData} />
-        
-          {/* Product Slider */}
-          {/* <p className="text-2xl text-gray-700 mt-4 font-bold">Explore by Products</p>
-          <ProductSlider productData={productData} /> */}
+          <CategorisedProducts/>
+          
         </div>
       </main>
     </ClientLayout>

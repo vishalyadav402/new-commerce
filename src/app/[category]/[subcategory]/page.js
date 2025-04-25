@@ -179,9 +179,15 @@ const Page = () => {
 
           {/* ✅ Products (Updates Only on Subcategory Click) */}
           <div className="col-span-4 max-h-[75vh] overflow-auto no-scrollbar">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 p-1 md:gap-2 bg-gray-100 md:p-4 p:2 rounded">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 min-h-[75vh] p-1 md:gap-2 bg-gray-100 md:p-4 p:2 rounded">
               {loading ? (
-                <p className="col-span-full">Loding Products...</p>
+                [...Array(12)].map((_, i) => (
+                  <div key={i} className="animate-pulse space-y-2 bg-white p-2 rounded shadow">
+                    <div className="h-24 md:h-32 bg-gray-300 rounded"></div>
+                    <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                    <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                  </div>
+                ))
               ) : error ? (
                 <p className="text-center col-span-full text-pink-dark">Failed to load products.</p>
               ) : productData.length > 0 ? (
@@ -191,7 +197,11 @@ const Page = () => {
                   </div>
                 ))
               ) : (
-                <p className="col-span-full">No products found.</p>
+                <div className="col-span-full flex flex-col items-center justify-center py-10 text-center text-gray-500">
+                <img src="/images/placeholder-icon.png" alt="No products" className="w-32 h-32 mb-4" />
+                <p className="text-lg font-semibold">No products found</p>
+                <p className="text-sm">Please try a different subcategory or check back later.</p>
+              </div>
               )}
             </div>
           </div>

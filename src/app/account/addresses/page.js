@@ -7,8 +7,10 @@ import { IconButton } from "@mui/material";
 import PlaceIcon from '@mui/icons-material/Place';
 import toast from 'react-hot-toast';
 import AddNewAddress from '@/app/components/Addnewaddress';
+import Loader from '@/app/components/Loader';
 
 const Page = () => {
+  const [loading, setLoading] = useState(false);
   const [addresses, setAddresses] = useState([]);
   const [loginToken, setLoginToken] = useState(null);
   const [DeliveryaddressOpen, setDeliveryaddressOpen] = useState(false);
@@ -36,14 +38,17 @@ const Page = () => {
   const handleDelete = async (id) => {
     if (!loginToken) return;
     try {
+      setLoading(true);
       await axios.delete(`https://api.therashtriya.com/user/delivery-address/${id}`, {
         headers: {
           'Authorization': `Bearer ${loginToken}`
         }
       });
+      setLoading(false);
       toast.success("Address deleted successfully!");
       fetchAddresses(loginToken);
     } catch (error) {
+      setLoading(false);
       console.error(error);
       toast.error("Failed to delete the address. Please try again.");
     }
@@ -67,8 +72,7 @@ const Page = () => {
         addresses.map((address) => (
           <div
             key={address.id}
-            className="flex items-start justify-between mb-3 md:p-4"
-          >
+            className="flex items-start justify-between mb-3 md:p-2 rounded-md shadow-sm bg-white">
             <div className="flex items-start space-x-3">
               <PlaceIcon className="text-purple-600 self-center" />
               <div>
@@ -83,9 +87,11 @@ const Page = () => {
               <IconButton color="gray">
                 <Edit />
               </IconButton>
+              {loading?<Loader/>:
               <IconButton color="gray" onClick={() => handleDelete(address.id)}>
                 <Delete />
               </IconButton>
+              }
             </div>
           </div>
         ))

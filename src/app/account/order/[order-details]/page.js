@@ -41,9 +41,9 @@ const orderId = params["order-details"];
 
   return (
     <AccountLayout>
-      <div className="max-w-3xl mx-auto bg-gray-100 shadow-md rounded-lg">
+      <div className="max-w-3xl mx-auto rounded-lg">
         {/* Header */}
-        <div className="flex justify-between bg-white items-center border-b mb-2 p-4">
+        <div className="flex justify-between bg-white rounded-md shadow-sm items-center border-b mb-4 p-4">
           <div>
             <h2 className="text-[0.8em] font-semibold">Order #{orderDetails.order_id}</h2>
             <p className="text-gray-700 text-[0.8em]">{orderDetails.items.length} items</p>
@@ -54,7 +54,7 @@ const orderId = params["order-details"];
         </div>
 
         {/* Delivery Status */}
-        <div className="flex justify-between bg-white p-4 mb-2">
+        <div className="flex justify-between bg-white rounded-md shadow-sm p-4 mb-4">
         <div className="flex gap-2 items-center">
           {orderDetails.status.toLowerCase() === 'completed' && (
             <FaCheckCircle className="text-green-600" size={20} />
@@ -95,13 +95,15 @@ const orderId = params["order-details"];
         </div>
 
         {/* Items List */}
-        <div className="mt-4 border-t bg-white p-4 mb-2">
+        <div className="border-t bg-white rounded-md shadow-sm p-4 mb-4">
           <h3 className="text-sm font-semibold">{orderDetails.items.length} items in Shipment</h3>
           <div className="mt-2 space-y-3">
             {orderDetails.items.map((item, index) => (
               <div key={index} className="flex justify-between text-sm">
                 <div className="flex gap-2">
-                  <Image src={"https://api.therashtriya.com"+item.ProductImage} height={40} width={40} className="border rounded-md" alt={item.ProductName} />
+                  <div className="h-14 w-14">
+                  <Image src={"https://api.therashtriya.com"+item.ProductImage} className="rounded-md object-contain" style={{height:'60px',width:'60px'}} height={100} width={100} alt={item.ProductName} />
+                  </div>
                   <div className="self-center">
                     <p className="font-medium text-[0.8em] leading-[0.8em]">{item.ProductName}</p>
                     <p className="text-gray-500 text-[0.8em]">Qty: {item.quantity}</p>
@@ -114,7 +116,7 @@ const orderId = params["order-details"];
         </div>
 
         {/* Bill Summary */}
-        <div className="mt-6 border-t bg-white p-4 mb-2">
+        <div className="border-t bg-white rounded-md shadow-sm p-4 mb-4">
           <h3 className="text-xl font-semibold"><ReceiptIcon /> Bill Summary</h3>
           <div className="mt-2 text-[0.8em] space-y-1">
             <div className="flex justify-between">
@@ -132,19 +134,19 @@ const orderId = params["order-details"];
             <div className="flex justify-between">
               <p className="underline">Delivery Fee</p>
               <div className="flex gap-1">
-                <p className="font-medium  text-gray-400">₹{orderDetails.deliveryfee}</p>
+                <p className="font-medium line-through text-gray-400">₹{orderDetails.deliveryfee}</p>
                 {/* line-through */}
-                {/* <p className="font-medium text-green-600">₹0</p> */}
+                <p className="font-medium text-green-600">₹0</p>
               </div>
             </div>
-            <div className="flex justify-between font-semibold text-lg mt-2">
+            <div className="flex justify-between font-semibold text-lg mt-4">
               <div className="flex flex-col">
                 <p className="leading-none text-md">Total Bill</p>
-                <span className="text-[0.7em] font-normal text-gray-400">Incl. all taxes and charges</span>
+                {/* <span className="text-[0.7em] font-normal text-gray-400">Incl. all taxes and charges</span> */}
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-right">
                 <p>₹{orderDetails.total_amount}</p>
-                <span className="bg-green-50 text-[0.7em] px-2 text-green-700 font-semibold">SAVED ₹233.51</span>
+                {/* <span className="bg-green-50 text-[0.7em] px-2 text-green-700 font-semibold">SAVED ₹233.51</span> */}
               </div>
             </div>
           </div>
@@ -154,7 +156,7 @@ const orderId = params["order-details"];
         </div>
 
         {/* Order Info */}
-        <div className="mt-6 border-t bg-white p-4 mb-2 text-sm">
+        <div className="border-t bg-white rounded-md shadow-sm p-4 mb-4 text-sm">
           <h3 className="text-md font-semibold mb-3">Order Details</h3>
           <p className="text-gray-600 text-[0.9em] leading-[0.5em]">Order ID</p>
           <p className="font-normal text-[0.9em]">#{orderDetails.order_id}</p>
@@ -172,11 +174,11 @@ const orderId = params["order-details"];
           <FormattedDate date={orderDetails.updated_at} /></p>
         </div>
 
-        <div className="bg-white p-4">
+        {/* <div className="bg-white p-4">
           <button className="mt-6 w-full bg-pink-500 py-2 text-white rounded-md font-semibold">
             Order Again
           </button>
-        </div>
+        </div> */}
       </div>
     </AccountLayout>
   );

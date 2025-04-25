@@ -20,12 +20,12 @@ const data = [
     alts: "Baby Care",
     link:"/baby-care",
   },
-  {
-    id: 2,
-    image: "/images/banner/cakeshop.png",
-    alts: "Cake Shop",
-    link:"/bakery-biscuits/cakes-and-rolls",
-  },
+  // {
+  //   id: 2,
+  //   image: "/images/banner/cakeshop.png",
+  //   alts: "Cake Shop",
+  //   link:"/bakery-biscuits/cakes-and-rolls",
+  // },
 ];
 
 const HeroCarousel = () => {
