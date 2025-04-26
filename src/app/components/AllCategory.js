@@ -41,7 +41,7 @@ const AllCategory = () => {
                   category.cat_isActive === true || category.cat_isActive === "true"
               ) // Filter only active categories
               .map((category) => (
-                <>
+                <div key={category.CategoryID}>
                 {category.CategoryImage&& <div
                   className="cursor-pointer shadow-sm rounded-xl"
                   onClick={() => router.push("/" + category.Cat_Slug)}
@@ -58,7 +58,7 @@ const AllCategory = () => {
                     />
                   </div>
                 </div>}
-                </>
+                </div>
               ))}
       </div>
     </div>

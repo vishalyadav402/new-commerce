@@ -9,8 +9,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
     <head>
-        <meta charset="UTF-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta charSet="UTF-8"/>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <title>Dailyneeds delivered in minutes | vegacartgo</title>
 
@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
-        <link rel="manifest" href="/favicon/manifest.json"/>
+        <link rel="manifest" href="/manifest.json"/>
         <meta name="msapplication-TileColor" content="#da532c"/>
         <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png"/>
         <meta name="theme-color" content="#69247C"></meta>

@@ -122,7 +122,6 @@ const checkTokenCOD = () => {
   if (savedAddress) {
     //call order status
     setOpenorderstatus(true);
-    
   }else{
     handleOpen();
   }
@@ -159,7 +158,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
       role="presentation"
     >
       <div className="flex justify-between bg-white p-3 rounded-md">
-        <p className="text-lg font-semibold">My Cart</p>
+        <p className="text-lg font-semibold">Vega Cart</p>
         <p
           className="text-lg font-semibold cursor-pointer"
           onClick={toggleDrawer(false)}
@@ -196,59 +195,61 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
                 <AccessTimeIcon className="h-8 w-8" />
               </div>
               <div className="self-center">
-                <p className="font-bold text-md">Quickest Delivery</p>
+                <p className="font-bold text-md">60 - 90 Mins Delivery</p>
                 <p className="text-[0.80rem] font-normal text-gray-600">
                   Shipment of {totalQuantity} item{totalQuantity > 1 ? '(s)':''}
                 </p>
               </div>
             </div>
-
-            {cartItems?.map((item, index) => (
-              <div key={index} className="flex justify-between my-5">
-                <div className="h-[60px] w-[60px] p-1 border rounded-md">
-                  <Image
-                    src={item.image}
-                    height={100}
-                    width={100}
-                    style={{ height: "100%", width: "100%" }}
-                    alt="Product"
-                  />  
-                </div>
-                <div className="flex-1 ps-3">
-                  <p className="capitalize text-[0.80rem]">{item.name}</p>
-                  <p className="text-sm font-semibold">
-                    {item.quantity > 1 && (
-                  <>
-                    {item.quantity} items <span className="font-extralight text-gray-400">|</span>
-                  </>
-                )} ₹{parseInt(item.totalPrice)}
-                  </p>
-                </div>
-                {/* Quantity Controls */}
-                <div className="flex items-center space-x-0">
-                  <button
-                    onClick={() => handleRemoveItem(item.id)}
-                    className="px-2 font-semibold text-white bg-gray-400 rounded hover:bg-gray-600"
-                  >
-                    -
-                  </button>
-                  <span className="w-5 text-center">{item.quantity}</span>
-                  <button
-                    onClick={() =>
-                      handleAddItem({
-                        id: item.id,
-                        name: item.name,
-                        price: item.price,
-                      })
-                    }
-                    className="px-2 font-semibold text-white bg-gray-400 rounded hover:bg-gray-600"
-                  >
-                    +
-                  </button>
-                  
-                </div>
-              </div>
-            ))}
+            <div className="overflow-auto no-scrollbar mt-2 max-h-[40vh]">
+                {cartItems?.map((item, index) => (
+                  <div key={index} className="flex justify-between my-2">
+                    <div className="h-[40px] w-[40px] p-1 border rounded-md">
+                      <Image
+                        src={item.image}
+                        height={100}
+                        width={100}
+                        style={{ height: "100%", width: "100%" }}
+                        alt="Product"
+                        className="object-contain"
+                      />  
+                    </div>
+                    <div className="flex-1 px-3">
+                      <p className="capitalize text-[0.80rem] text-ellipsis line-clamp-1 overflow-hidden">{item.name}</p>
+                      <p className="text-sm font-semibold">
+                        {item.quantity > 1 && (
+                      <>
+                        {item.quantity} items <span className="font-extralight text-gray-400">|</span>
+                      </>
+                    )} ₹{parseInt(item.totalPrice)}
+                      </p>
+                    </div>
+                    {/* Quantity Controls */}
+                    <div className="flex items-start space-x-0">
+                      <button
+                        onClick={() => handleRemoveItem(item.id)}
+                        className="px-2 font-semibold text-white bg-pink-400 rounded hover:bg-purple-600"
+                      >
+                        -
+                      </button>
+                      <span className="w-5 text-center">{item.quantity}</span>
+                      <button
+                        onClick={() =>
+                          handleAddItem({
+                            id: item.id,
+                            name: item.name,
+                            price: item.price,
+                          })
+                        }
+                        className="px-2 font-semibold text-white bg-pink-400 rounded hover:bg-purple-600"
+                      >
+                        +
+                      </button>
+                      
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
 
           <div className="mt-3 bg-white p-3 rounded-md">
@@ -285,24 +286,24 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
           </div>
         }
 
-
+{/* checkout */}
        <div className="absolute bottom-0 left-0 right-0">
         <div className="flex flex-row items-center justify-between p-4 bg-purple-dark rounded-t-lg">
           {/* Left Side: Payment Info */}
           <div className="flex-1 md:text-left">
             <p className="text-beige-light text-[12px] leading-tight">To Pay</p>
-            <p className="text-sm font-semibold text-beige-light leading-tight">₹{totalAmount + DeliveryCharge}</p>
+            <p className="text-lg font-semibold text-beige-light leading-tight">₹{totalAmount + DeliveryCharge}</p>
           </div>
 
           {/* Right Side: Payment Options */}
-          <div className="flex flex-col md:flex-row gap-2 md:mt-0">
-            {/* <button onClick={()=>onContinueOnlineClick()} className="w-[90px] h-11 text-[13px] font-semibold text-white bg-pink-dark rounded-lg transition duration-300 text-center leading-tight">
-              Pay Online <br />
-              <span className="text-[11px] font-light">(UPI)</span>
+          <div className="flex md:flex-row gap-2 md:mt-0">
+            {/* <button onClick={()=>onContinueOnlineClick()} className="w-[90px] h-11 text-lg font-semibold text-white bg-pink-dark rounded-lg text-center leading-[0.8em]">
+              Online <br />
+              <span className="text-[12px] font-light">(UPI)</span>
             </button> */}
-            <button onClick={()=>onContinueCODClick()} className="w-[110px] h-11 text-[13px] font-semibold text-white bg-pink-dark rounded-lg transition duration-300 text-center leading-tight">
-              Pay Cash/UPI <br />
-              <span className="text-[11px] font-light">(On delivery)</span>
+            <button onClick={()=>onContinueCODClick()} className="w-[110px] h-11 text-lg font-semibold text-purple-dark bg-white rounded-lg text-center leading-[0.8em]">
+              POD <br />
+              <span className="text-[12px] font-light">(Pay On delivery)</span>
             </button>
           </div>
         </div>

@@ -32,10 +32,10 @@ const Footer = () => {
         </button>
 
         {/* Orders */}
-        <button onClick={() => router.push("/account/order")} className="flex flex-col items-center">
+        {/* <button onClick={() => router.push("/account/order")} className="flex flex-col items-center">
           <Receipt fontSize="medium" />
           <span className="text-xs">Orders</span>
-        </button>
+        </button> */}
 
         {/* cart */}
         <Cart/>

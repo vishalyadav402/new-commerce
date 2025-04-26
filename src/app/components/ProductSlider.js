@@ -23,7 +23,6 @@ const ProductSlider = ({productData}) => {
         slidesPerView={6}
         spaceBetween={10}
         freeMode={true}
-        Navigation={{ clickable: true }}
         cssMode={true}
         navigation={true}
         mousewheel={true}
