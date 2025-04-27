@@ -16,6 +16,10 @@ const Login = ({ isOpen = null, onClose = null }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Resend OTP Timer State
+  const [timer, setTimer] = useState(0);
+  const [canResendOtp, setCanResendOtp] = useState(false);
+
   const mobileInputRef = useRef(null);
   const otpInputsRef = useRef([]);
 
@@ -28,10 +32,28 @@ const Login = ({ isOpen = null, onClose = null }) => {
   useEffect(() => {
     if (otpSent) {
       setTimeout(() => otpInputsRef.current[0]?.focus(), 100);
+      startTimer();
     } else {
       setTimeout(() => mobileInputRef.current?.focus(), 100);
     }
   }, [otpSent]);
+
+  useEffect(() => {
+    let interval;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else if (timer === 0 && otpSent) {
+      setCanResendOtp(true);
+    }
+    return () => clearInterval(interval);
+  }, [timer, otpSent]);
+
+  const startTimer = () => {
+    setTimer(60);
+    setCanResendOtp(false);
+  };
 
   const openModal = () => {
     if (isOpen === null) {
@@ -54,6 +76,8 @@ const Login = ({ isOpen = null, onClose = null }) => {
     setOtpVerified(null);
     setErrorMessage("");
     setSuccessMessage("");
+    setTimer(0);
+    setCanResendOtp(false);
   };
 
   const sendOtp = async () => {
@@ -72,6 +96,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
           setOtpVerified(null);
           setErrorMessage("");
           setIsLoading(false);
+          startTimer();
         } else {
           setIsLoading(false);
           setErrorMessage(data.message || "Failed to send OTP. Please try again.");
@@ -83,6 +108,12 @@ const Login = ({ isOpen = null, onClose = null }) => {
     } else {
       setIsLoading(false);
       setErrorMessage("Please enter a valid Whatsapp Number.");
+    }
+  };
+
+  const resendOtp = async () => {
+    if (canResendOtp && mobileNumber.length === 10) {
+      sendOtp();
     }
   };
 
@@ -204,7 +235,7 @@ const Login = ({ isOpen = null, onClose = null }) => {
                 </div>
               ) : (
                 <div className="flex flex-col w-full max-w-80 items-center justify-center mb-4">
-                  <p className="text-green-500 text-xs mb-2">
+                  <p className="text-green-500 text-md mb-2">
                     <WhatsAppIcon /> OTP sent on {mobileNumber}.
                   </p>
 
@@ -232,6 +263,17 @@ const Login = ({ isOpen = null, onClose = null }) => {
                   >
                     {isLoading ? "Verifying OTP..." : "Verify OTP"}
                   </button>
+
+                  {timer > 0 ? (
+                    <p className="text-xs text-gray-500 mt-2">Resend OTP in {timer} sec</p>
+                  ) : (
+                    <button
+                      onClick={resendOtp}
+                      className="text-sm mt-2 text-blue-600 hover:underline focus:outline-none"
+                    >
+                      Resend OTP ?
+                    </button>
+                  )}
 
                   {errorMessage && <p className="text-red-500 text-xs mt-2">{errorMessage}</p>}
                   {successMessage && <p className="text-green-500 text-xs mt-2">{successMessage}</p>}

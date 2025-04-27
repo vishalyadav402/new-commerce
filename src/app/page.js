@@ -48,7 +48,7 @@ export default function Home() {
           <AllCategory />
 
           {/* Product Slider */}
-          <CategorisedProducts/>
+          {/* <CategorisedProducts/> */}
           
         </div>
       </main>

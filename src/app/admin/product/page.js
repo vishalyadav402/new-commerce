@@ -10,6 +10,7 @@ import Addproductcategory from "../component/Addproductcategory";
 import toast from "react-hot-toast";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import ProductVariant from "../component/ProductVariant";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -30,7 +31,7 @@ const Product = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://api.therashtriya.com/api/products");
+      const response = await axios.get("https://api.therashtriya.com/api/admin/products");
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -204,6 +205,7 @@ const Product = () => {
                 </td>
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.6rem] md:text-sm leading-none">
                   {product.ProductName}  <Addproductcategory ProdID={product.ProductID}/>
+                  <ProductVariant prodID={product.ProductID}/>
                 </td>
                 <td className="border border-gray-300 px-2 md:px-4 py-2 text-[0.6rem] md:text-sm leading-none">
                 {product.Product_Slug}

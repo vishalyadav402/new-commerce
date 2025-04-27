@@ -16,12 +16,12 @@ function CustomizedInputBase({ bordersearchbox, searchpage, setDemo, headerprops
   const router = useRouter();
   const autocompleteRef = useRef();
 
-  // ✅ Fetch data only once when mounted
   useEffect(() => {
     const fetchKeywordData = async () => {
       const city = localStorage.getItem("city");
       if (!city) return;
       try {
+        await new Promise((resolve) => setTimeout(resolve, 1500)); // ⏳ 1.5 sec delay
         const response = await categoryservices_location(city);
         dataFind(response.data);
       } catch (error) {
@@ -60,6 +60,18 @@ function CustomizedInputBase({ bordersearchbox, searchpage, setDemo, headerprops
     }
   };
 
+  const saveRecentSearch = (searchTerm) => {
+    try {
+      let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+      recentSearches = recentSearches.filter(item => item !== searchTerm); // remove duplicates
+      recentSearches.unshift(searchTerm); // add to start
+      recentSearches = recentSearches.slice(0, 10); // keep only latest 10
+      localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+    } catch (error) {
+      console.error('Failed to save recent search:', error);
+    }
+  };
+
   const handleSearch = (value) => {
     const formattedSearchKey = value.replaceAll(" ", "-");
     let city = "", subcity = "";
@@ -89,10 +101,11 @@ function CustomizedInputBase({ bordersearchbox, searchpage, setDemo, headerprops
         }
       }
     }
+
+    saveRecentSearch(value); // ✅ Save search in localStorage
     setLoading(false);
   };
 
-  // ✅ Debounce the typing input
   const debouncedChangeHandler = useCallback(
     debounce((value) => {
       const isValidValue = KeyWordData.some(option => option.label === value);
@@ -216,5 +229,4 @@ function CustomizedInputBase({ bordersearchbox, searchpage, setDemo, headerprops
   );
 }
 
-// ✅ Memoized to prevent unnecessary re-mounts
 export default React.memo(CustomizedInputBase);
