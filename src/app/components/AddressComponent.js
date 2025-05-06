@@ -32,7 +32,7 @@ const fetchAndStoreAddress = async () => {
       // console.log("Address saved:", formattedAddress);
     } else {
       localStorage.setItem("savedAddress", JSON.stringify({}));
-      toast.error("No addresses found.");
+      console.error("No addresses found.");
     }
   } catch (error) {
     console.error("Error fetching address:", error.response?.data || error.message);

@@ -78,15 +78,14 @@ const Page = () => {
               <div>
                 <p className="font-semibold text-sm text-gray-800">{address.delivery_type}</p>
                 <p className="text-gray-400 text-[0.8em]">
-                  {address.receiver_name}, {address.house_no}, {address.society_name}, {address.landmark}, 
-                  {new Date(address.created_at).toLocaleString()}, Phone- {address.mobile_no}
+                  {address.receiver_name}, {address.house_no}, {address.society_name}, {address.landmark}, {new Date(address.created_at).toLocaleString()}, Phone- {address.mobile_no}
                 </p>
               </div>
             </div>
             <div className="flex space-x-3">
-              <IconButton color="gray">
+              {/* <IconButton color="gray">
                 <Edit />
-              </IconButton>
+              </IconButton> */}
               {loading?<Loader/>:
               <IconButton color="gray" onClick={() => handleDelete(address.id)}>
                 <Delete />
@@ -103,6 +102,8 @@ const Page = () => {
         open={DeliveryaddressOpen} 
         setOpen={setDeliveryaddressOpen} 
         handleOpen={handleOpen} 
+        filladdress={false}
+        onAddressSaved={() => fetchAddresses(loginToken)}
       />
     </AccountLayout>
   );

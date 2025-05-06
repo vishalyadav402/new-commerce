@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-const AddNewAddress = ({ open, setOpen }) => {
+const AddNewAddress = ({ open, setOpen, filladdress, onAddressSaved }) => {
   const handleClose = () => setOpen(false);
 
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const AddNewAddress = ({ open, setOpen }) => {
   useEffect(() => {
     if (open) {
       const savedAddress = localStorage.getItem("savedAddress");
-      if (savedAddress) {
+      if (filladdress && savedAddress) {
         setFormData(JSON.parse(savedAddress));
       }
     }
@@ -60,9 +61,10 @@ const AddNewAddress = ({ open, setOpen }) => {
           Authorization: `Bearer ${LoginToken}`, // Replace with actual token
         },
       });
-
+      onAddressSaved();
       console.log("Address saved successfully!", response.data);
       localStorage.setItem("savedAddress", JSON.stringify(formData));
+      toast.success("Address saved successfully!");
       handleClose();
     } catch (error) {
       console.error("Error saving address:", error.response?.data || error.message);
@@ -81,7 +83,7 @@ const AddNewAddress = ({ open, setOpen }) => {
         <input
           name="buildingName"
           placeholder="Society & Block No.*"
-          className="w-full p-1.5 text-sm border rounded mb-3"
+          className="w-full p-1.5 text-sm capitalize border rounded mb-3"
           value={formData.buildingName}
           onChange={handleInputChange}
         />
@@ -89,7 +91,7 @@ const AddNewAddress = ({ open, setOpen }) => {
         <input
           name="floor"
           placeholder="House No. & Floor*"
-          className="w-full p-1.5 text-sm border rounded mb-3"
+          className="w-full p-1.5 text-sm capitalize border rounded mb-3"
           value={formData.floor}
           onChange={handleInputChange}
         />
@@ -97,7 +99,7 @@ const AddNewAddress = ({ open, setOpen }) => {
         <input
           name="landmark"
           placeholder="Landmark & Area Name (Optional)"
-          className="w-full p-1.5 text-sm border rounded mb-3"
+          className="w-full p-1.5 text-sm capitalize border rounded mb-3"
           value={formData.landmark}
           onChange={handleInputChange}
         />
@@ -118,7 +120,7 @@ const AddNewAddress = ({ open, setOpen }) => {
         <input
           name="receiverName"
           placeholder="Receiver Name"
-          className="w-full p-1.5 text-sm border rounded mb-3"
+          className="w-full p-1.5 text-sm capitalize border rounded mb-3"
           value={formData.receiverName}
           onChange={handleInputChange}
         />
@@ -126,7 +128,7 @@ const AddNewAddress = ({ open, setOpen }) => {
         <input
           name="mobileNumber"
           placeholder="Mobile Number"
-          className="w-full p-1.5 text-sm border rounded mb-3"
+          className="w-full p-1.5 text-sm capitalize border rounded mb-3"
           value={formData.mobileNumber}
           onChange={handleInputChange}
         />

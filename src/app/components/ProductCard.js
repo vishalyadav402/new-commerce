@@ -26,8 +26,9 @@ const ProductCard = ({data}) => {
         e.target.src = '/images/placeholder-icon.png'; // Fallback image
       }}
       height={100} width={100}
+      // onClick={()=>router.push("/cleaning-essentials/floor-and-surface-cleaners/colin-glass-cleaner")}
       onClick={()=>router.push("/"+data.categoryslug+"/"+data.subcategoryslug+"/"+data.Product_Slug)}
-       className="cursor-pointer w-full h-32 object-contain" src={data.ProductImage || '/images/placeholder-icon.png'} alt={data.ProductName} />
+      className="cursor-pointer w-full h-32 object-contain" src={data.ProductImage || '/images/placeholder-icon.png'} alt={data.ProductName} />
       <div className="p-2">
         {/* <p className='p-1 mb-1 bg-beige-light rounded-md. w-16 text-[0.5em] font-semibold text-center'> 60-90 MINS</p> */}
         <div className='min-h-12'>

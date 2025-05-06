@@ -269,7 +269,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
           </div>
 
         <Login isOpen={showLogin} onClose={() => setShowLogin(false)} />
-        <AddNewAddress open={DeliveryaddressOpen} setOpen={setDeliveryaddressOpen} handleOpen={handleOpen}/>
+        <AddNewAddress open={DeliveryaddressOpen} setOpen={setDeliveryaddressOpen} handleOpen={handleOpen} filladdress={true}/>
         <OrderStatus open={openorderStatus} setOpen={setOpenorderstatus} cartopen={setOpen} onCancel={handleCancel} deliveryaddress={savedAddress.floor+","+savedAddress.buildingName+","+savedAddress.landmark} deliveryfee={DeliveryCharge} totalPrice={totalAmount + DeliveryCharge} orderStatus="processing" />
 
         {/* when address and login is captured */}
@@ -320,7 +320,7 @@ const cartState = localStorage.hasOwnProperty("cartState")&&JSON.parse(localStor
     <>
       <button
         onClick={toggleDrawer(true)}
-        className="flex gap-2 items-center bg-pink-dark text-beige-light font-semibold rounded-lg px-2 py-1 text-sm ml-0 md:ml-4"
+        className={`flex gap-2 items-center ${totalQuantity===0?'bg-gray-50':'bg-pink-dark'} text-beige-light font-semibold rounded-lg px-2 py-1 text-sm ml-0 md:ml-4`}
       >
         <LocalMallIcon />
         <div className="flex flex-col items-start">

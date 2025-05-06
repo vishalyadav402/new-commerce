@@ -143,7 +143,6 @@ const Page = () => {
           {/* ✅ Subcategory List (Static) */}
           <div className="col-span-1 max-h-[75vh] overflow-auto no-scrollbar">
             <ul className="space-y-0 bg-white">
-
               {/* ✅ Subcategories (Filtered in useMemo) */}
               {subcategories.map((subcategory, subIndex) => (
                 <li
@@ -155,7 +154,7 @@ const Page = () => {
                       : "p-2 gap-1 flex flex-col justify-center items-center md:justify-start md:flex-row cursor-pointer"
                   }
                 >
-                  <div className="h-[48px] w-[48px] overflow-hidden bg-gray-100">
+                  <div className="h-[48px] min-w-[48px] w-[48px]overflow-hidden bg-gray-100">
                     <Image
                       src={subcategory.SubcategoryImage || "/images/placeholder-icon.png"}
                       style={{

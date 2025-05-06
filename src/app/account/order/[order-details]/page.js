@@ -101,11 +101,11 @@ const orderId = params["order-details"];
             {orderDetails.items.map((item, index) => (
               <div key={index} className="flex justify-between text-sm">
                 <div className="flex gap-2">
-                  <div className="h-14 w-14">
-                  <Image src={"https://api.therashtriya.com"+item.ProductImage} className="rounded-md object-contain" style={{height:'60px',width:'60px'}} height={100} width={100} alt={item.ProductName} />
+                  <div className="h-12 w-12 flex justify-center items-center border rounded-md">
+                  <Image src={"https://api.therashtriya.com"+item.ProductImage} className="rounded-md object-contain" style={{height:'45px',width:'45px'}} height={100} width={100} alt={item.ProductName} />
                   </div>
                   <div className="self-center">
-                    <p className="font-medium text-[0.8em] leading-[0.8em]">{item.ProductName}</p>
+                    <p className="font-medium text-[0.8em] leading-[1em]">{item.ProductName}</p>
                     <p className="text-gray-500 text-[0.8em]">Qty: {item.quantity}</p>
                   </div>
                 </div>

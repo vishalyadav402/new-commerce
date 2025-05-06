@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Image from "next/image";
 
-const Login = ({ isOpen = null, onClose = null }) => {
+const Login = ({ isOpen = null, onClose = null, refreshToken }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mobileNumber, setMobileNumber] = useState("");
   const [otpSent, setOtpSent] = useState(false);
@@ -128,10 +128,11 @@ const Login = ({ isOpen = null, onClose = null }) => {
         });
 
         const data = await response.json();
+
         if (response.ok) {
           setOtpVerified(null);
           setErrorMessage("");
-
+          refreshToken();
           setTimeout(() => {
             const newToken = data.token;
             localStorage.setItem("loginToken", newToken);

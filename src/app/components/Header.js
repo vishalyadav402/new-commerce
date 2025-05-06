@@ -22,9 +22,12 @@ const Header = ({ setsearchField, pageTitle, searchField }) => {
  
   const [LoginToken, setLoginToken] = useState("");
   useEffect(() => {
-    setLoginToken(typeof window !== "undefined" && localStorage.getItem("loginToken") !== null);
+    refreshToken();
   }, [LoginToken])
 
+  const refreshToken = () =>{
+    setLoginToken(typeof window !== "undefined" && localStorage.getItem("loginToken") !== null);
+  }
 
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
   const [inputValue, setInputValue] = useState(searchField || '');
@@ -113,7 +116,7 @@ const inputRef = useRef(null);
       <div className="order-2 lg:order-5">
         {LoginToken ? <p onClick={()=>route.push('/account/profile')} className='cursor-pointer'>
           <span>Account <ArrowDropDownIcon/></span>
-        </p> : <Login />}
+        </p> : <Login  refreshToken={refreshToken}/>}
       </div>
       {/* cart */}
       {<div className='hidden lg:block lg:order-6'>
